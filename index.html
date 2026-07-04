@@ -123,7 +123,82 @@
                 </div>
             </div>
         </section>
+                <section class="grid-utility-section" style="max-width: 1200px; margin: 60px auto; padding: 40px 20px; background: rgba(43, 18, 76, 0.4); border: 1px solid rgba(223, 18, 178, 0.15); border-radius: 16px; backdrop-filter: blur(10px); box-sizing: border-box;">
+            <div style="margin-bottom: 30px; border-left: 4px solid #ff4757; padding-left: 15px;">
+                <h2 style="font-size: 1.8rem; margin: 0 0 5px 0; color: #FBE4D8; font-family: sans-serif; letter-spacing: 1px;">🛠️ INTERACTIVE ARTIST GRID MAKER</h2>
+                <p style="margin: 0; font-size: 0.9rem; color: #DFB6B2; opacity: 0.8;">Upload your practice references to generate scalable alignment matrices automatically.</p>
+            </div>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
+                <div style="background: #190019; border: 1px solid rgba(223, 182, 178, 0.2); padding: 25px; border-radius: 12px; display: flex; flex-direction: column; gap: 15px;">
+                    <div style="display: flex; flex-direction: column; gap: 6px;">
+                        <label style="font-size: 0.85rem; color: #DFB6B2; font-family: monospace;">[INPUT_TARGET] Choose Local Reference:</label>
+                        <input type="file" id="imageLoader" accept="image/*" onchange="handleGridImage(event)" style="padding: 10px; background: #2B124C; border: 1px solid rgba(223,182,178,0.3); border-radius: 6px; color: #FBE4D8;">
+                    </div>
+                    <div style="display: flex; flex-direction: column; gap: 6px;">
+                        <label style="font-size: 0.85rem; color: #DFB6B2; font-family: monospace;">[MATRIX_COUNT] Set Grid Rows / Columns:</label>
+                        <input type="number" id="gridSizeInput" value="6" min="2" max="35" oninput="rebuildCanvasGrid()" style="padding: 10px; background: #2B124C; border: 1px solid rgba(223,182,178,0.3); border-radius: 6px; color: #FBE4D8; outline: none;">
+                    </div>
+                    <div style="display: flex; flex-direction: column; gap: 6px;">
+                        <label style="font-size: 0.85rem; color: #DFB6B2; font-family: monospace;">[STROKE_COLOR] Select Channel Color:</label>
+                        <select id="gridColorInput" onchange="rebuildCanvasGrid()" style="padding: 10px; background: #2B124C; border: 1px solid rgba(223,182,178,0.3); border-radius: 6px; color: #FBE4D8; outline: none;">
+                            <option value="#ff4757">Neon Crimson Red</option>
+                            <option value="#00ffcc">Cyan Pulse Tech</option>
+                            <option value="#ffffff">Pure Matte White</option>
+                            <option value="#000000">Deep Shadow Black</option>
+                        </select>
+                    </div>
+                    <button onclick="downloadGridCanvas()" style="background: #ff4757; color: #fff; font-weight: bold; border: none; padding: 12px; border-radius: 6px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; transition: 0.2s; margin-top: 10px;"><i class="fa-solid fa-cloud-arrow-down"></i> Export Grid Canvas</button>
+                </div>
 
+                <div style="background: #0f020f; border: 2px dashed rgba(223, 182, 178, 0.2); border-radius: 12px; display: flex; justify-content: center; align-items: center; min-height: 320px; overflow: hidden; position: relative;">
+                    <div id="canvasPlaceholder" style="text-align: center; color: #DFB6B2; opacity: 0.6; font-size: 0.88rem; padding: 20px; font-family: sans-serif;">
+                        <i class="fa-solid fa-qrcode" style="font-size: 2.5rem; margin-bottom: 12px; display: block; color: #ff4757;"></i>
+                        No operational template loaded. Upload a reference file to calibrate real-time drawing grids overlay lines maps.
+                    </div>
+                    <canvas id="gridCanvas" style="max-width: 100%; max-height: 450px; object-fit: contain; display: none;"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <section class="feedback-hub-section" style="max-width: 1200px; margin: 50px auto; padding: 0 20px; box-sizing: border-box;">
+            <div style="margin-bottom: 25px;">
+                <h3 style="font-size: 1.4rem; color: #ff4757; font-family: monospace; letter-spacing: 1px; text-transform: uppercase; margin: 0 0 5px 0;">💬 Verified Community Reviews</h3>
+                <p style="margin: 0; font-size: 0.88rem; color: #DFB6B2; opacity: 0.7;">Real student case studies interacting with our learning portals framework layout tracks.</p>
+            </div>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+                <div style="background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(223, 182, 178, 0.1); border-radius: 12px; padding: 20px; font-family: sans-serif;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+                        <span style="font-weight: bold; color: #FBE4D8; font-size: 0.95rem;">Arpit Sharma</span>
+                        <span style="color: #ffa502; font-size: 0.8rem;"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></span>
+                    </div>
+                    <p style="color: #DFB6B2; font-size: 0.88rem; margin: 0; line-height: 1.5; font-style: italic;">
+                        "Maine is site ka Anime Masterclass portal use kiya. Loomis structure calculations and split jaw rules bohot step-by-step explain kiye hain. Line stability me kafi improvement aaya hai."
+                    </p>
+                </div>
+
+                <div style="background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(223, 182, 178, 0.1); border-radius: 12px; padding: 20px; font-family: sans-serif;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+                        <span style="font-weight: bold; color: #FBE4D8; font-size: 0.95rem;">Neha Vishwakarma</span>
+                        <span style="color: #ffa502; font-size: 0.8rem;"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></span>
+                    </div>
+                    <p style="color: #DFB6B2; font-size: 0.88rem; margin: 0; line-height: 1.5; font-style: italic;">
+                        "Shading tools core module section kafi useful hai. Blending stumps techniques aur ambient shadows drop calculations direct and simple hain. Beginners ke liye best space h."
+                    </p>
+                </div>
+
+                <div style="background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(223, 182, 178, 0.1); border-radius: 12px; padding: 20px; font-family: sans-serif;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+                        <span style="font-weight: bold; color: #FBE4D8; font-size: 0.95rem;">Rohan Chhetri</span>
+                        <span style="color: #ffa502; font-size: 0.8rem;"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></span>
+                    </div>
+                    <p style="color: #DFB6B2; font-size: 0.88rem; margin: 0; line-height: 1.5; font-style: italic;">
+                        "Grid tool options is platform ka ultimate add-on hai. Ab Pinterest links se direct coordinates sets upload karke lines structure practice sheet save karna bohot smooth ho jata h."
+                    </p>
+                </div>
+            </div>
+        </section>
         <footer class="footer-section">
             <div class="footer-grid">
                 <div class="footer-block main-brand-block">
@@ -360,9 +435,76 @@
         function closeSystemModal(modalId) {
             document.getElementById(modalId).style.display = 'none';
         }
+                function closeSystemModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+        }
                                      
+        // =========================================================
+        // DYNAMIC GRID ENGINE CODE (PASTE IT HERE)
+        // =========================================================
+        let currentLoadedImgElement = null;
 
-    </script> 
+        function handleGridImage(event) {
+            const assetReader = new FileReader();
+            assetReader.onload = function(eventResult) {
+                const baseImgNode = new Image();
+                baseImgNode.onload = function() {
+                    currentLoadedImgElement = baseImgNode;
+                    document.getElementById('canvasPlaceholder').style.display = 'none';
+                    document.getElementById('gridCanvas').style.display = 'block';
+                    rebuildCanvasGrid();
+                };
+                baseImgNode.src = eventResult.target.result;
+            };
+            if(event.target.files[0]) {
+                assetReader.readAsDataURL(event.target.files[0]);
+            }
+        }
+
+        function rebuildCanvasGrid() {
+            if (!currentLoadedImgElement) return;
+            const renderingCanvas = document.getElementById('gridCanvas');
+            const contextualBuffer = renderingCanvas.getContext('2d');
+            
+            renderingCanvas.width = currentLoadedImgElement.width;
+            renderingCanvas.height = currentLoadedImgElement.height;
+            contextualBuffer.drawImage(currentLoadedImgElement, 0, 0);
+
+            const userGridDimensions = parseInt(document.getElementById('gridSizeInput').value) || 6;
+            const targetLineColorStyle = document.getElementById('gridColorInput').value || "#ff4757";
+
+            contextualBuffer.strokeStyle = targetLineColorStyle;
+            contextualBuffer.lineWidth = Math.max(1, renderingCanvas.width / 250);
+
+            const horizontalStepInterval = renderingCanvas.height / userGridDimensions;
+            for (let indexValue = 1; indexValue < userGridDimensions; indexValue++) {
+                contextualBuffer.beginPath();
+                contextualBuffer.moveTo(0, indexValue * horizontalStepInterval);
+                contextualBuffer.lineTo(renderingCanvas.width, indexValue * horizontalStepInterval);
+                contextualBuffer.stroke();
+            }
+
+            const verticalStepInterval = renderingCanvas.width / userGridDimensions;
+            for (let indexValue = 1; indexValue < userGridDimensions; indexValue++) {
+                contextualBuffer.beginPath();
+                contextualBuffer.moveTo(indexValue * verticalStepInterval, 0);
+                contextualBuffer.lineTo(indexValue * verticalStepInterval, renderingCanvas.height);
+                contextualBuffer.stroke();
+            }
+        }
+
+        function downloadGridCanvas() {
+            if (!currentLoadedImgElement) {
+                alert("Please initialize a valid reference template map configuration first.");
+                return;
+            }
+            const activeCanvas = document.getElementById('gridCanvas');
+            const executionVirtualAnchor = document.createElement('a');
+            executionVirtualAnchor.download = 'ayartstudio_grid_matrix.png';
+            executionVirtualAnchor.href = activeCanvas.toDataURL('image/png');
+            executionVirtualAnchor.click();
+        }
+    </script>
     </div>
     </div>
 </body>

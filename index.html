@@ -541,6 +541,22 @@
         function closeSystemModal(modalId) {
             document.getElementById(modalId).style.display = 'none';
         }
+            <script>
+        // === AAPKI ORIGINAL SCRIPT LINES (100% UNTOUCHED) ===
+        function openPortal(portalId) {
+            document.getElementById(portalId).classList.add('portal-active');
+            document.body.style.overflow = 'hidden';
+        }
+        function closePortal(portalId) {
+            document.getElementById(portalId).classList.remove('portal-active');
+            document.body.style.overflow = 'auto';
+        }
+        function openSystemModal(modalId) {
+            document.getElementById(modalId).style.display = 'flex';
+        }
+        function closeSystemModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+        }
                                      
         // =================================================================
         // ADVANCED STUDIO GRID ENGINE MODULE LOGIC
@@ -673,7 +689,5 @@
 
         document.addEventListener('DOMContentLoaded', initialFeedbackSystemLoader);
     </script>
-    </div>
-    </div>
-</body>
+    </div> </body>
 </html>

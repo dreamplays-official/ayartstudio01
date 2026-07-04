@@ -123,82 +123,80 @@
                 </div>
             </div>
         </section>
-                <section class="grid-utility-section" style="max-width: 1200px; margin: 60px auto; padding: 40px 20px; background: rgba(43, 18, 76, 0.4); border: 1px solid rgba(223, 18, 178, 0.15); border-radius: 16px; backdrop-filter: blur(10px); box-sizing: border-box;">
-            <div style="margin-bottom: 30px; border-left: 4px solid #ff4757; padding-left: 15px;">
-                <h2 style="font-size: 1.8rem; margin: 0 0 5px 0; color: #FBE4D8; font-family: sans-serif; letter-spacing: 1px;">🛠️ INTERACTIVE ARTIST GRID MAKER</h2>
-                <p style="margin: 0; font-size: 0.9rem; color: #DFB6B2; opacity: 0.8;">Upload your practice references to generate scalable alignment matrices automatically.</p>
+        <section class="grid-utility-section" style="max-width: 1200px; margin: 50px auto; padding: 35px 20px; background: rgba(25, 0, 25, 0.6); border: 1px solid rgba(223, 182, 178, 0.15); border-radius: 14px; backdrop-filter: blur(8px); box-sizing: border-box;">
+            <div style="margin-bottom: 25px; border-left: 4px solid #ff4757; padding-left: 12px;">
+                <h2 style="font-size: 1.6rem; margin: 0 0 4px 0; color: #FBE4D8; font-family: sans-serif; letter-spacing: 0.5px;">🛠️ STUDIO ARTIST GRID ENGINE</h2>
+                <p style="margin: 0; font-size: 0.85rem; color: #DFB6B2; opacity: 0.8;">Upload local canvases to map responsive structural drawing coordinates lines.</p>
             </div>
             
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
-                <div style="background: #190019; border: 1px solid rgba(223, 182, 178, 0.2); padding: 25px; border-radius: 12px; display: flex; flex-direction: column; gap: 15px;">
-                    <div style="display: flex; flex-direction: column; gap: 6px;">
-                        <label style="font-size: 0.85rem; color: #DFB6B2; font-family: monospace;">[INPUT_TARGET] Choose Local Reference:</label>
-                        <input type="file" id="imageLoader" accept="image/*" onchange="handleGridImage(event)" style="padding: 10px; background: #2B124C; border: 1px solid rgba(223,182,178,0.3); border-radius: 6px; color: #FBE4D8;">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 25px;">
+                <div style="background: #190019; border: 1px solid rgba(223, 182, 178, 0.2); padding: 20px; border-radius: 10px; display: flex; flex-direction: column; gap: 12px;">
+                    <div style="display: flex; flex-direction: column; gap: 5px;">
+                        <label style="font-size: 0.8rem; color: #DFB6B2; font-family: monospace;">[IMAGE_SOURCE] Select Reference File:</label>
+                        <input type="file" id="imageLoader" accept="image/*" onchange="handleGridImage(event)" style="padding: 8px; background: #2B124C; border: 1px solid rgba(223,182,178,0.25); border-radius: 5px; color: #FBE4D8; font-size: 0.85rem;">
                     </div>
-                    <div style="display: flex; flex-direction: column; gap: 6px;">
-                        <label style="font-size: 0.85rem; color: #DFB6B2; font-family: monospace;">[MATRIX_COUNT] Set Grid Rows / Columns:</label>
-                        <input type="number" id="gridSizeInput" value="6" min="2" max="35" oninput="rebuildCanvasGrid()" style="padding: 10px; background: #2B124C; border: 1px solid rgba(223,182,178,0.3); border-radius: 6px; color: #FBE4D8; outline: none;">
+                    
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                        <div style="display: flex; flex-direction: column; gap: 5px;">
+                            <label style="font-size: 0.8rem; color: #DFB6B2; font-family: monospace;">[GRID] Size:</label>
+                            <input type="number" id="gridSizeInput" value="6" min="2" max="40" oninput="rebuildCanvasGrid()" style="padding: 8px; background: #2B124C; border: 1px solid rgba(223,182,178,0.25); border-radius: 5px; color: #FBE4D8; outline: none;">
+                        </div>
+                        <div style="display: flex; flex-direction: column; gap: 5px;">
+                            <label style="font-size: 0.8rem; color: #DFB6B2; font-family: monospace;">[LINE] Weight:</label>
+                            <input type="number" id="lineWidthInput" value="2" min="1" max="10" oninput="rebuildCanvasGrid()" style="padding: 8px; background: #2B124C; border: 1px solid rgba(223,182,178,0.25); border-radius: 5px; color: #FBE4D8; outline: none;">
+                        </div>
                     </div>
-                    <div style="display: flex; flex-direction: column; gap: 6px;">
-                        <label style="font-size: 0.85rem; color: #DFB6B2; font-family: monospace;">[STROKE_COLOR] Select Channel Color:</label>
-                        <select id="gridColorInput" onchange="rebuildCanvasGrid()" style="padding: 10px; background: #2B124C; border: 1px solid rgba(223,182,178,0.3); border-radius: 6px; color: #FBE4D8; outline: none;">
+
+                    <div style="display: flex; flex-direction: column; gap: 5px;">
+                        <label style="font-size: 0.8rem; color: #DFB6B2; font-family: monospace;">[COLOR] Custom Stroke Hex:</label>
+                        <select id="gridColorInput" onchange="rebuildCanvasGrid()" style="padding: 8px; background: #2B124C; border: 1px solid rgba(223,182,178,0.25); border-radius: 5px; color: #FBE4D8; outline: none;">
                             <option value="#ff4757">Neon Crimson Red</option>
                             <option value="#00ffcc">Cyan Pulse Tech</option>
                             <option value="#ffffff">Pure Matte White</option>
                             <option value="#000000">Deep Shadow Black</option>
+                            <option value="#ffa502">Vibrant Amber Yellow</option>
                         </select>
                     </div>
-                    <button onclick="downloadGridCanvas()" style="background: #ff4757; color: #fff; font-weight: bold; border: none; padding: 12px; border-radius: 6px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; transition: 0.2s; margin-top: 10px;"><i class="fa-solid fa-cloud-arrow-down"></i> Export Grid Canvas</button>
+
+                    <div style="display: flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.03); padding: 8px; border-radius: 5px; border: 1px solid rgba(223,182,178,0.1);">
+                        <input type="checkbox" id="toggleLabelsInput" checked onchange="rebuildCanvasGrid()" style="cursor: pointer;">
+                        <label for="toggleLabelsInput" style="font-size: 0.8rem; color: #DFB6B2; font-family: monospace; cursor: pointer; user-select: none;">Render Coordinate Labels (1,2,3...)</label>
+                    </div>
+
+                    <button onclick="downloadGridCanvas()" style="background: #ff4757; color: #fff; font-weight: bold; font-size: 0.9rem; border: none; padding: 10px; border-radius: 5px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px; transition: 0.2s;"><i class="fa-solid fa-cloud-arrow-down"></i> Export Grid Canvas</button>
                 </div>
 
-                <div style="background: #0f020f; border: 2px dashed rgba(223, 182, 178, 0.2); border-radius: 12px; display: flex; justify-content: center; align-items: center; min-height: 320px; overflow: hidden; position: relative;">
-                    <div id="canvasPlaceholder" style="text-align: center; color: #DFB6B2; opacity: 0.6; font-size: 0.88rem; padding: 20px; font-family: sans-serif;">
-                        <i class="fa-solid fa-qrcode" style="font-size: 2.5rem; margin-bottom: 12px; display: block; color: #ff4757;"></i>
-                        No operational template loaded. Upload a reference file to calibrate real-time drawing grids overlay lines maps.
+                <div style="background: #0f020f; border: 1px dashed rgba(223, 182, 178, 0.25); border-radius: 10px; display: flex; justify-content: center; align-items: center; min-height: 280px; overflow: hidden; position: relative; padding: 10px;">
+                    <div id="canvasPlaceholder" style="text-align: center; color: #DFB6B2; opacity: 0.6; font-size: 0.85rem; padding: 15px;">
+                        <i class="fa-solid fa-qrcode" style="font-size: 2rem; margin-bottom: 8px; display: block; color: #ff4757;"></i>
+                        No live workspace active. Upload reference templates to calibrate dynamic drawing guides setup mapping layout.
                     </div>
-                    <canvas id="gridCanvas" style="max-width: 100%; max-height: 450px; object-fit: contain; display: none;"></canvas>
+                    <canvas id="gridCanvas" style="max-width: 100%; max-height: 380px; object-fit: contain; display: none; box-shadow: 0 4px 15px rgba(0,0,0,0.6);"></canvas>
                 </div>
             </div>
         </section>
 
-        <section class="feedback-hub-section" style="max-width: 1200px; margin: 50px auto; padding: 0 20px; box-sizing: border-box;">
-            <div style="margin-bottom: 25px;">
-                <h3 style="font-size: 1.4rem; color: #ff4757; font-family: monospace; letter-spacing: 1px; text-transform: uppercase; margin: 0 0 5px 0;">💬 Verified Community Reviews</h3>
-                <p style="margin: 0; font-size: 0.88rem; color: #DFB6B2; opacity: 0.7;">Real student case studies interacting with our learning portals framework layout tracks.</p>
+        <section class="feedback-hub-section" style="max-width: 1200px; margin: 40px auto; padding: 0 20px; box-sizing: border-box;">
+            <div style="margin-bottom: 20px;">
+                <h3 style="font-size: 1.3rem; color: #ff4757; font-family: monospace; letter-spacing: 0.5px; text-transform: uppercase; margin: 0 0 4px 0;">💬 Live Community Feedback Hub</h3>
+                <p style="margin: 0; font-size: 0.85rem; color: #DFB6B2; opacity: 0.7;">Submit your experience below. Feedback renders onto our interface stream pipeline tracking node.</p>
             </div>
             
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
-                <div style="background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(223, 182, 178, 0.1); border-radius: 12px; padding: 20px; font-family: sans-serif;">
-                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
-                        <span style="font-weight: bold; color: #FBE4D8; font-size: 0.95rem;">Arpit Sharma</span>
-                        <span style="color: #ffa502; font-size: 0.8rem;"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></span>
-                    </div>
-                    <p style="color: #DFB6B2; font-size: 0.88rem; margin: 0; line-height: 1.5; font-style: italic;">
-                        "Maine is site ka Anime Masterclass portal use kiya. Loomis structure calculations and split jaw rules bohot step-by-step explain kiye hain. Line stability me kafi improvement aaya hai."
-                    </p>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 20px; align-items: start;">
+                <div style="background: rgba(43, 18, 76, 0.25); border: 1px solid rgba(223, 182, 178, 0.15); padding: 20px; border-radius: 10px;">
+                    <h4 style="margin: 0 0 12px 0; font-size: 0.95rem; color: #FBE4D8; font-family: sans-serif;">Share Your Experience</h4>
+                    <form id="feedbackForm" onsubmit="executeLiveSubmission(event)" style="display: flex; flex-direction: column; gap: 10px;">
+                        <input type="text" id="fbUsername" placeholder="Enter Your Nickname..." required style="padding: 8px 12px; background: #190019; border: 1px solid rgba(223,182,178,0.25); border-radius: 5px; color: #FBE4D8; font-size: 0.85rem; outline: none;">
+                        <textarea id="fbContent" rows="3" placeholder="Write honest feedback about tools layout portals tracks..." required style="padding: 8px 12px; background: #190019; border: 1px solid rgba(223,182,178,0.25); border-radius: 5px; color: #FBE4D8; font-size: 0.85rem; outline: none; resize: none;"></textarea>
+                        <button type="submit" style="background: transparent; border: 1px solid #ff4757; color: #ff4757; padding: 8px 15px; font-weight: bold; border-radius: 5px; cursor: pointer; transition: 0.2s; font-size: 0.85rem; align-self: flex-start;">Add Live Feedback</button>
+                    </form>
                 </div>
 
-                <div style="background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(223, 182, 178, 0.1); border-radius: 12px; padding: 20px; font-family: sans-serif;">
-                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
-                        <span style="font-weight: bold; color: #FBE4D8; font-size: 0.95rem;">Neha Vishwakarma</span>
-                        <span style="color: #ffa502; font-size: 0.8rem;"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></span>
+                <div style="display: flex; flex-direction: column; gap: 12px;" id="liveFeedbackFeed">
                     </div>
-                    <p style="color: #DFB6B2; font-size: 0.88rem; margin: 0; line-height: 1.5; font-style: italic;">
-                        "Shading tools core module section kafi useful hai. Blending stumps techniques aur ambient shadows drop calculations direct and simple hain. Beginners ke liye best space h."
-                    </p>
-                </div>
-
-                <div style="background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(223, 182, 178, 0.1); border-radius: 12px; padding: 20px; font-family: sans-serif;">
-                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
-                        <span style="font-weight: bold; color: #FBE4D8; font-size: 0.95rem;">Rohan Chhetri</span>
-                        <span style="color: #ffa502; font-size: 0.8rem;"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></span>
-                    </div>
-                    <p style="color: #DFB6B2; font-size: 0.88rem; margin: 0; line-height: 1.5; font-style: italic;">
-                        "Grid tool options is platform ka ultimate add-on hai. Ab Pinterest links se direct coordinates sets upload karke lines structure practice sheet save karna bohot smooth ho jata h."
-                    </p>
-                </div>
             </div>
         </section>
+        <footer class="footer-section">
         <footer class="footer-section">
             <div class="footer-grid">
                 <div class="footer-block main-brand-block">
@@ -439,9 +437,13 @@
             document.getElementById(modalId).style.display = 'none';
         }
                                      
-        // =========================================================
-        // DYNAMIC GRID ENGINE CODE (PASTE IT HERE)
-        // =========================================================
+                function closeSystemModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+        }
+                                     
+        // =================================================================
+        // ADVANCED GRID ENGINE PIPELINE LOGIC WITH TEXT NODE RENDERS
+        // =================================================================
         let currentLoadedImgElement = null;
 
         function handleGridImage(event) {
@@ -472,9 +474,16 @@
 
             const userGridDimensions = parseInt(document.getElementById('gridSizeInput').value) || 6;
             const targetLineColorStyle = document.getElementById('gridColorInput').value || "#ff4757";
+            const customLineWidthConfig = parseInt(document.getElementById('lineWidthInput').value) || 2;
+            const labelActivationStatus = document.getElementById('toggleLabelsInput').checked;
 
             contextualBuffer.strokeStyle = targetLineColorStyle;
-            contextualBuffer.lineWidth = Math.max(1, renderingCanvas.width / 250);
+            contextualBuffer.lineWidth = customLineWidthConfig;
+
+            // Font configurations mapping logic dynamically scaled
+            const calibratedFontSize = Math.max(12, renderingCanvas.width / 45);
+            contextualBuffer.font = `bold ${calibratedFontSize}px sans-serif`;
+            contextualBuffer.fillStyle = targetLineColorStyle;
 
             const horizontalStepInterval = renderingCanvas.height / userGridDimensions;
             for (let indexValue = 1; indexValue < userGridDimensions; indexValue++) {
@@ -482,6 +491,10 @@
                 contextualBuffer.moveTo(0, indexValue * horizontalStepInterval);
                 contextualBuffer.lineTo(renderingCanvas.width, indexValue * horizontalStepInterval);
                 contextualBuffer.stroke();
+
+                if (labelActivationStatus) {
+                    contextualBuffer.fillText(" Y" + indexValue, 5, (indexValue * horizontalStepInterval) - 5);
+                }
             }
 
             const verticalStepInterval = renderingCanvas.width / userGridDimensions;
@@ -490,6 +503,10 @@
                 contextualBuffer.moveTo(indexValue * verticalStepInterval, 0);
                 contextualBuffer.lineTo(indexValue * verticalStepInterval, renderingCanvas.height);
                 contextualBuffer.stroke();
+
+                if (labelActivationStatus) {
+                    contextualBuffer.fillText(" X" + indexValue, (indexValue * verticalStepInterval) + 5, calibratedFontSize + 5);
+                }
             }
         }
 
@@ -500,10 +517,67 @@
             }
             const activeCanvas = document.getElementById('gridCanvas');
             const executionVirtualAnchor = document.createElement('a');
-            executionVirtualAnchor.download = 'ayartstudio_grid_matrix.png';
+            executionVirtualAnchor.download = 'ayartstudio_pro_grid.png';
             executionVirtualAnchor.href = activeCanvas.toDataURL('image/png');
             executionVirtualAnchor.click();
         }
+
+        // =================================================================
+        // DYNAMIC LOCAL STORAGE REVIEWS & COMMENT DRIVER ENGINE
+        // =================================================================
+        const dynamicFallbackFeedbacks = [
+            { user: "Arpit Sharma", content: "Anime portal calculation methods are great. Step-by-step Loomis tracking lines scaling structure works perfectly." },
+            { user: "Neha Vishwakarma", content: "Shading grid system values modules are useful for drawing reference templates. Quick layout saving option is stable." }
+        ];
+
+        function initialFeedbackSystemLoader() {
+            const outputTargetBlock = document.getElementById('liveFeedbackFeed');
+            if(!outputTargetBlock) return;
+            
+            let loadedFeedbackRecords = JSON.parse(localStorage.getItem('ayartFeedbacks'));
+            if (!loadedFeedbackRecords || loadedFeedbackRecords.length === 0) {
+                localStorage.setItem('ayartFeedbacks', JSON.stringify(dynamicFallbackFeedbacks));
+                loadedFeedbackRecords = dynamicFallbackFeedbacks;
+            }
+
+            outputTargetBlock.innerHTML = '';
+            loadedFeedbackRecords.forEach(function(item) {
+                const templateFeedBlock = `
+                    <div style="background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(223, 182, 178, 0.1); border-radius: 8px; padding: 15px; font-family: sans-serif;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                            <span style="font-weight: bold; color: #FBE4D8; font-size: 0.9rem;">${escapeHtml(item.user)}</span>
+                            <span style="color: #ffa502; font-size: 0.75rem;"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></span>
+                        </div>
+                        <p style="color: #DFB6B2; font-size: 0.82rem; margin: 0; line-height: 1.4; font-style: italic;">"${escapeHtml(item.content)}"</p>
+                    </div>`;
+                outputTargetBlock.innerHTML += templateFeedBlock;
+            });
+        }
+
+        function executeLiveSubmission(event) {
+            event.preventDefault();
+            const usernameInput = document.getElementById('fbUsername').value.trim();
+            const contentInput = document.getElementById('fbContent').value.trim();
+
+            if (!usernameInput || !contentInput) return;
+
+            let runtimeFeedbackRecords = JSON.parse(localStorage.getItem('ayartFeedbacks')) || [];
+            runtimeFeedbackRecords.unshift({ user: usernameInput, content: contentInput });
+            
+            localStorage.setItem('ayartFeedbacks', JSON.stringify(runtimeFeedbackRecords));
+            
+            document.getElementById('fbUsername').value = '';
+            document.getElementById('fbContent').value = '';
+            initialFeedbackSystemLoader();
+        }
+
+        function escapeHtml(textString) {
+            return textString.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
+        }
+
+        // Initialize user comments rendering setup map configuration logs
+        document.addEventListener('DOMContentLoaded', initialFeedbackSystemLoader);
+        initialFeedbackSystemLoader();
     </script>
     </div>
     </div>

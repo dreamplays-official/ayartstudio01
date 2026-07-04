@@ -524,23 +524,119 @@
 
         // =================================================================
         // DYNAMIC LOCAL STORAGE REVIEWS & COMMENT DRIVER ENGINE
+        // ================================================================
+            <script>
+        // === AAPKI ORIGINAL SCRIPT LINES (UNTOUCHED) ===
+        function openPortal(portalId) {
+            document.getElementById(portalId).classList.add('portal-active');
+            document.body.style.overflow = 'hidden';
+        }
+        function closePortal(portalId) {
+            document.getElementById(portalId).classList.remove('portal-active');
+            document.body.style.overflow = 'auto';
+        }
+        function openSystemModal(modalId) {
+            document.getElementById(modalId).style.display = 'flex';
+        }
+        function closeSystemModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+        }
+                                     
         // =================================================================
-        const dynamicFallbackFeedbacks = [
-            { user: "Arpit Sharma", content: "Anime portal calculation methods are great. Step-by-step Loomis tracking lines scaling structure works perfectly." },
-            { user: "Neha Vishwakarma", content: "Shading grid system values modules are useful for drawing reference templates. Quick layout saving option is stable." }
-        ];
+        // ADVANCED STUDIO GRID ENGINE MODULE LOGIC
+        // =================================================================
+        let currentLoadedImgElement = null;
 
+        function handleGridImage(event) {
+            const assetReader = new FileReader();
+            assetReader.onload = function(eventResult) {
+                const baseImgNode = new Image();
+                baseImgNode.onload = function() {
+                    currentLoadedImgElement = baseImgNode;
+                    document.getElementById('canvasPlaceholder').style.display = 'none';
+                    document.getElementById('gridCanvas').style.display = 'block';
+                    rebuildCanvasGrid();
+                };
+                baseImgNode.src = eventResult.target.result;
+            };
+            if(event.target.files[0]) {
+                assetReader.readAsDataURL(event.target.files[0]);
+            }
+        }
+
+        function rebuildCanvasGrid() {
+            if (!currentLoadedImgElement) return;
+            const renderingCanvas = document.getElementById('gridCanvas');
+            const contextualBuffer = renderingCanvas.getContext('2d');
+            
+            renderingCanvas.width = currentLoadedImgElement.width;
+            renderingCanvas.height = currentLoadedImgElement.height;
+            contextualBuffer.drawImage(currentLoadedImgElement, 0, 0);
+
+            const userGridDimensions = parseInt(document.getElementById('gridSizeInput').value) || 6;
+            const targetLineColorStyle = document.getElementById('gridColorInput').value || "#ff4757";
+            const customLineWidthConfig = parseInt(document.getElementById('lineWidthInput').value) || 2;
+            const labelActivationStatus = document.getElementById('toggleLabelsInput').checked;
+
+            contextualBuffer.strokeStyle = targetLineColorStyle;
+            contextualBuffer.lineWidth = customLineWidthConfig;
+
+            const calibratedFontSize = Math.max(12, renderingCanvas.width / 45);
+            contextualBuffer.font = `bold ${calibratedFontSize}px sans-serif`;
+            contextualBuffer.fillStyle = targetLineColorStyle;
+
+            const horizontalStepInterval = renderingCanvas.height / userGridDimensions;
+            for (let indexValue = 1; indexValue < userGridDimensions; indexValue++) {
+                contextualBuffer.beginPath();
+                contextualBuffer.moveTo(0, indexValue * horizontalStepInterval);
+                contextualBuffer.lineTo(renderingCanvas.width, indexValue * horizontalStepInterval);
+                contextualBuffer.stroke();
+
+                if (labelActivationStatus) {
+                    contextualBuffer.fillText(" Y" + indexValue, 5, (indexValue * horizontalStepInterval) - 5);
+                }
+            }
+
+            const verticalStepInterval = renderingCanvas.width / userGridDimensions;
+            for (let indexValue = 1; indexValue < userGridDimensions; indexValue++) {
+                contextualBuffer.beginPath();
+                contextualBuffer.moveTo(indexValue * verticalStepInterval, 0);
+                contextualBuffer.lineTo(indexValue * verticalStepInterval, renderingCanvas.height);
+                contextualBuffer.stroke();
+
+                if (labelActivationStatus) {
+                    contextualBuffer.fillText(" X" + indexValue, (indexValue * verticalStepInterval) + 5, calibratedFontSize + 5);
+                }
+            }
+        }
+
+        function downloadGridCanvas() {
+            if (!currentLoadedImgElement) {
+                alert("Please initialize a valid reference template map configuration first.");
+                return;
+            }
+            const activeCanvas = document.getElementById('gridCanvas');
+            const executionVirtualAnchor = document.createElement('a');
+            executionVirtualAnchor.download = 'ayartstudio_pro_grid.png';
+            executionVirtualAnchor.href = activeCanvas.toDataURL('image/png');
+            executionVirtualAnchor.click();
+        }
+
+        // =================================================================
+        // DYNAMIC REAL USER COMMENT & FEEDBACK CORE ENGINE
+        // =================================================================
         function initialFeedbackSystemLoader() {
             const outputTargetBlock = document.getElementById('liveFeedbackFeed');
             if(!outputTargetBlock) return;
             
-            let loadedFeedbackRecords = JSON.parse(localStorage.getItem('ayartFeedbacks'));
-            if (!loadedFeedbackRecords || loadedFeedbackRecords.length === 0) {
-                localStorage.setItem('ayartFeedbacks', JSON.stringify(dynamicFallbackFeedbacks));
-                loadedFeedbackRecords = dynamicFallbackFeedbacks;
+            let loadedFeedbackRecords = JSON.parse(localStorage.getItem('ayartFeedbacks')) || [];
+            outputTargetBlock.innerHTML = '';
+            
+            if(loadedFeedbackRecords.length === 0) {
+                outputTargetBlock.innerHTML = `<p style="color: #DFB6B2; opacity: 0.5; font-size: 0.85rem; font-style: italic; margin: 0;">No comments available yet. Be the first to drop honest feedback above!</p>`;
+                return;
             }
 
-            outputTargetBlock.innerHTML = '';
             loadedFeedbackRecords.forEach(function(item) {
                 const templateFeedBlock = `
                     <div style="background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(223, 182, 178, 0.1); border-radius: 8px; padding: 15px; font-family: sans-serif;">
@@ -575,9 +671,7 @@
             return textString.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
         }
 
-        // Initialize user comments rendering setup map configuration logs
         document.addEventListener('DOMContentLoaded', initialFeedbackSystemLoader);
-        initialFeedbackSystemLoader();
     </script>
     </div>
     </div>

@@ -549,6 +549,14 @@
         }
         function closePortal(portalId) {
             document.getElementById(portalId).classList.remove('portal-active');
+                <script>
+        // === AAPKI ORIGINAL SCRIPT LINES (100% UNTOUCHED) ===
+        function openPortal(portalId) {
+            document.getElementById(portalId).classList.add('portal-active');
+            document.body.style.overflow = 'hidden';
+        }
+        function closePortal(portalId) {
+            document.getElementById(portalId).classList.remove('portal-active');
             document.body.style.overflow = 'auto';
         }
         function openSystemModal(modalId) {

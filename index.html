@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <title>AYARTSTUDIO - Free Drawing Practice & Grid Maker</title>
+
+<meta name="description" content="Practice drawing online with free Grid Maker, drawing exercises, anime sketch practice, perspective training and artist tools.">
+
+<meta name="keywords" content="drawing, drawing practice, grid maker, anime drawing, sketch practice, artist tools, free drawing website, drawing grid, online drawing">
+
+<meta name="robots" content="index, follow">
+
+<link rel="canonical" href="https://dreamplays-official.github.io/ayartstudio01/">
     <link rel="canonical" href="https://dreamplays-official.github.io/ayartstudio01/" />
     
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-PRKLVYNM53"></script>
@@ -695,6 +704,25 @@ gridColor.addEventListener("input", () => {
     link.download = "AYARTSTUDIO-Grid.png";
     link.href = canvas.toDataURL("image/png");
     link.click();
+
+});
+        document.getElementById("downloadGrid").addEventListener("click", () => {
+
+    if (!uploadedImage.src) {
+        alert("Please upload an image first!");
+        return;
+    }
+
+    drawGridImage();
+
+    const image = canvas.toDataURL("image/png");
+
+    const link = document.createElement("a");
+    link.href = image;
+    link.download = "AYARTSTUDIO-Grid.png";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
 
 });
     </script>

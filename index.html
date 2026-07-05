@@ -123,7 +123,16 @@
                 </div>
             </div>
         </section>
+        <section class="practice-box">
+    <h2>🎯 15 Second Drawing Practice</h2>
+    <p id="practiceText">Click Start and practice your drawing strokes for 15 seconds.</p>
 
+    <div id="timer">15</div>
+
+    <button id="startPractice">▶ Start Practice</button>
+
+    <canvas id="confettiCanvas"></canvas>
+        </section>
         <footer class="footer-section">
             <div class="footer-grid">
                 <div class="footer-block main-brand-block">
@@ -365,5 +374,108 @@
     </script> 
     </div>
     </div>
+    <script>
+const startBtn = document.getElementById("startPractice");
+const timer = document.getElementById("timer");
+const text = document.getElementById("practiceText");
+
+const challenges = [
+"Draw Straight Lines",
+"Draw Circles",
+"Draw Curved Lines",
+"Draw Zig-Zag Lines",
+"Draw Small Boxes",
+"Draw Fast Strokes",
+"Draw Spiral Lines"
+];
+
+startBtn.onclick = () => {
+
+const random = challenges[Math.floor(Math.random()*challenges.length)];
+text.innerHTML = "✏ " + random;
+
+let time = 15;
+timer.innerHTML = time;
+startBtn.disabled = true;
+
+const interval = setInterval(()=>{
+
+time--;
+timer.innerHTML = time;
+
+if(time<=0){
+
+clearInterval(interval);
+
+text.innerHTML="🎉 Practice Complete!";
+timer.innerHTML="✔";
+
+startBtn.disabled=false;
+
+confetti();
+
+}
+
+},1000);
+
+};
+
+function confetti(){
+
+const canvas=document.getElementById("confettiCanvas");
+const ctx=canvas.getContext("2d");
+
+canvas.width=window.innerWidth;
+canvas.height=220;
+
+let pieces=[];
+
+for(let i=0;i<150;i++){
+
+pieces.push({
+
+x:Math.random()*canvas.width,
+y:-20,
+r:Math.random()*8+3,
+vy:Math.random()*5+2
+
+});
+
+}
+
+let frame=0;
+
+function draw(){
+
+ctx.clearRect(0,0,canvas.width,canvas.height);
+
+pieces.forEach(p=>{
+
+ctx.beginPath();
+
+ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+
+ctx.fillStyle=`hsl(${Math.random()*360},100%,50%)`;
+
+ctx.fill();
+
+p.y+=p.vy;
+
+});
+
+frame++;
+
+if(frame<120){
+
+requestAnimationFrame(draw);
+
+}
+
+}
+
+draw();
+
+}
+    </script>
 </body>
 </html>

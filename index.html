@@ -683,6 +683,21 @@ thickness.addEventListener("input", () => {
 gridColor.addEventListener("input", () => {
     if (uploadedImage.src) drawGridImage();
 });
+        document.getElementById("downloadGrid").addEventListener("click", function () {
+
+    if (!uploadedImage.src) {
+        alert("Please upload an image first.");
+        return;
+    }
+
+    drawGridImage();
+
+    const link = document.createElement("a");
+    link.download = "AYARTSTUDIO-Grid.png";
+    link.href = canvas.toDataURL("image/png");
+    link.click();
+
+});
     </script>
 </body>
 </html>

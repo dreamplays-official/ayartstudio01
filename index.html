@@ -133,6 +133,79 @@
 
     <canvas id="confettiCanvas"></canvas>
         </section>
+        <!-- ================= GRID MAKER START ================= -->
+
+<section class="grid-maker-section">
+
+<h2>🎨 Grid Maker</h2>
+<p class="grid-subtitle">
+Upload any drawing or photo and create a custom drawing grid.
+</p>
+
+<div class="grid-card">
+
+<div class="grid-preview">
+
+<canvas id="gridCanvas"></canvas>
+
+<div id="gridPlaceholder">
+📷 Upload an Image
+</div>
+
+</div>
+
+<div class="grid-controls">
+
+<label>Select Image</label>
+<input type="file"
+id="imageUpload"
+accept="image/*">
+
+<label>Rows</label>
+<input type="range"
+id="rows"
+min="2"
+max="40"
+value="8">
+
+<span id="rowsValue">8</span>
+
+<label>Columns</label>
+<input type="range"
+id="columns"
+min="2"
+max="40"
+value="8">
+
+<span id="columnsValue">8</span>
+
+<label>Grid Thickness</label>
+<input type="range"
+id="thickness"
+min="1"
+max="8"
+value="2">
+
+<span id="thicknessValue">2px</span>
+
+<label>Grid Color</label>
+
+<input
+type="color"
+id="gridColor"
+value="#ffb300">
+
+<button id="downloadGrid">
+⬇ Download Grid
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ================= GRID MAKER END ================= -->
         <footer class="footer-section">
             <div class="footer-grid">
                 <div class="footer-block main-brand-block">

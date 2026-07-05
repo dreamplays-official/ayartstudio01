@@ -549,6 +549,24 @@ requestAnimationFrame(draw);
 draw();
 
 }
+        rows.addEventListener("input", () => {
+    rowsValue.textContent = rows.value;
+    if (uploadedImage.src) drawGridImage();
+});
+
+columns.addEventListener("input", () => {
+    columnsValue.textContent = columns.value;
+    if (uploadedImage.src) drawGridImage();
+});
+
+thickness.addEventListener("input", () => {
+    thicknessValue.textContent = thickness.value + "px";
+    if (uploadedImage.src) drawGridImage();
+});
+
+gridColor.addEventListener("input", () => {
+    if (uploadedImage.src) drawGridImage();
+});
     </script>
 </body>
 </html>

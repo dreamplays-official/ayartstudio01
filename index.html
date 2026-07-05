@@ -448,6 +448,122 @@ value="#ffb300">
     </div>
     </div>
     <script>
+        const upload = document.getElementById("imageUpload");
+const canvas = document.getElementById("gridCanvas");
+const ctx = canvas.getContext("2d");
+
+const rows = document.getElementById("rows");
+const columns = document.getElementById("columns");
+const thickness = document.getElementById("thickness");
+const gridColor = document.getElementById("gridColor");
+
+const rowsValue = document.getElementById("rowsValue");
+const columnsValue = document.getElementById("columnsValue");
+const thicknessValue = document.getElementById("thicknessValue");
+
+const placeholder = document.getElementById("gridPlaceholder");
+
+let uploadedImage = new Image();
+        upload.addEventListener("change", function(e){
+
+const file = e.target.files[0];
+
+if(!file) return;
+
+const reader = new FileReader();
+
+reader.onload = function(event){
+
+uploadedImage.onload = function(){
+
+placeholder.style.display = "none";
+
+canvas.width = uploadedImage.width;
+
+canvas.height = uploadedImage.height;
+
+drawGridImage();
+
+};
+
+uploadedImage.src = event.target.result;
+
+};
+
+reader.readAsDataURL(file);
+
+});
+
+function drawGridImage(){
+
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+
+    ctx.drawImage(uploadedImage,0,0);
+
+    }
+        function drawGridImage(){
+
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+
+    ctx.drawImage(uploadedImage,0,0);
+
+    const rowCount = parseInt(rows.value);
+    const columnCount = parseInt(columns.value);
+
+    const cellWidth = canvas.width / columnCount;
+    const cellHeight = canvas.height / rowCount;
+
+    ctx.strokeStyle = gridColor.value;
+    ctx.lineWidth = parseInt(thickness.value);
+
+    for(let i=1;i<columnCount;i++){
+
+        ctx.beginPath();
+        ctx.moveTo(i*cellWidth,0);
+        ctx.lineTo(i*cellWidth,canvas.height);
+        ctx.stroke();
+
+    }
+
+    for(let i=1;i<rowCount;i++){
+
+        ctx.beginPath();
+        ctx.moveTo(0,i*cellHeight);
+        ctx.lineTo(canvas.width,i*cellHeight);
+        ctx.stroke();
+
+    }
+
+        }
+        rows.addEventListener("input",()=>{
+
+rowsValue.textContent=rows.value;
+
+if(uploadedImage.src) drawGridImage();
+
+});
+
+columns.addEventListener("input",()=>{
+
+columnsValue.textContent=columns.value;
+
+if(uploadedImage.src) drawGridImage();
+
+});
+
+thickness.addEventListener("input",()=>{
+
+thicknessValue.textContent=thickness.value+"px";
+
+if(uploadedImage.src) drawGridImage();
+
+});
+
+gridColor.addEventListener("input",()=>{
+
+if(uploadedImage.src) drawGridImage();
+
+});
 const startBtn = document.getElementById("startPractice");
 const timer = document.getElementById("timer");
 const text = document.getElementById("practiceText");

@@ -1,0 +1,1906 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AYARTSTUDIO - Free Drawing Practice & Grid Maker</title>
+    <meta name="description" content="Practice drawing online with free Grid Maker, drawing exercises, anime sketch practice, perspective training and artist tools.">
+    <meta name="keywords" content="drawing, drawing practice, grid maker, anime drawing, sketch practice, artist tools, free drawing website, drawing grid, online drawing">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://dreamplays-official.github.io/ayartstudio01/">
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PRKLVYNM53"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-PRKLVYNM53');
+    </script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7245992753977832" crossorigin="anonymous"></script>
+    
+    <meta name="google-site-verification" content="qDFHq96CBi3ZOsoICWLmNDME-kRANb4ZDdo2kTcjMjA" />
+    <link rel="icon" type="image/png" href="favicon.png">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+
+    <style>
+        /* ===== COMPLETE CSS ===== */
+        :root {
+            --purple-darkest: #190019;
+            --purple-midnight: #2B124C;
+            --purple-plum: #522B5B;
+            --rose-dust: #854F6C;
+            --pink-cream: #DFB6B2;
+            --pearl-white: #FBE4D8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, var(--purple-darkest) 0%, var(--purple-midnight) 45%, var(--purple-plum) 80%, var(--rose-dust) 100%);
+            background-attachment: fixed;
+            color: var(--pearl-white);
+            overflow-x: hidden;
+        }
+
+        .wrapper {
+            width: 100%;
+        }
+
+        /* === NAVBAR === */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 8%;
+            background: transparent;
+            border-bottom: 1px solid rgba(223, 182, 178, 0.08);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .nav-favicon-logo {
+            width: 36px;
+            height: 36px;
+            object-fit: contain;
+            border-radius: 8px;
+            border: 1px solid rgba(223, 182, 178, 0.2);
+        }
+
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 900;
+            letter-spacing: 3px;
+            color: #fff;
+        }
+        .logo span {
+            color: var(--pink-cream);
+            margin-left: 4px;
+        }
+
+        /* === AUTH AREA === */
+        .auth-area {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .auth-btn {
+            background: transparent;
+            border: 1px solid rgba(223, 182, 178, 0.3);
+            color: var(--pearl-white);
+            padding: 8px 20px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 13px;
+            transition: 0.3s;
+        }
+        .auth-btn:hover {
+            border-color: var(--pink-cream);
+            background: rgba(223, 182, 178, 0.1);
+        }
+        .auth-btn-primary {
+            background: var(--pink-cream);
+            color: var(--purple-darkest);
+            border-color: var(--pink-cream);
+        }
+        .auth-btn-primary:hover {
+            background: var(--pearl-white);
+            transform: translateY(-2px);
+        }
+
+        #userProfile {
+            display: none;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            padding: 6px 16px;
+            border-radius: 30px;
+            border: 1px solid rgba(223, 182, 178, 0.2);
+            transition: 0.3s;
+        }
+        #userProfile:hover {
+            border-color: var(--pink-cream);
+            background: rgba(223, 182, 178, 0.05);
+        }
+        #userProfile i {
+            font-size: 26px;
+            color: var(--pink-cream);
+        }
+        #userDisplayName {
+            font-weight: 600;
+            color: #fff;
+            font-size: 15px;
+            max-width: 120px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .menu-icon {
+            display: none;
+            flex-direction: column;
+            gap: 4px;
+            cursor: pointer;
+        }
+        .menu-icon span {
+            width: 25px;
+            height: 3px;
+            background: #fff;
+            border-radius: 2px;
+        }
+
+        /* === HERO === */
+        .hero-section {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 80px 8% 60px;
+            min-height: 60vh;
+        }
+        .hero-content {
+            max-width: 52%;
+        }
+        .tagline {
+            color: var(--purple-midnight);
+            background: var(--pink-cream);
+            display: inline-block;
+            padding: 4px 15px;
+            font-weight: 900;
+            letter-spacing: 4px;
+            font-size: 0.8rem;
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            line-height: 1.15;
+            margin: 0 0 20px 0;
+            color: #fff;
+        }
+        .gradient-text {
+            background: linear-gradient(90deg, var(--pink-cream), var(--pearl-white));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .hero-thought {
+            color: var(--pink-cream);
+            opacity: 0.8;
+            font-size: 1.05rem;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            font-style: italic;
+        }
+        .cta-group {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        .btn-primary {
+            background: var(--purple-midnight);
+            border: 1px solid var(--purple-plum);
+            color: var(--pearl-white);
+            padding: 16px 35px;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0 10px 25px rgba(25, 0, 25, 0.5);
+        }
+        .btn-primary:hover {
+            background: var(--purple-plum);
+            border-color: var(--pink-cream);
+            transform: translateY(-2px);
+        }
+        .btn-app {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, #a855f7, #6366f1);
+            color: #ffffff !important;
+            padding: 16px 28px;
+            border-radius: 12px;
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 4px 15px rgba(168, 85, 247, 0.4);
+        }
+        .btn-app:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(99, 102, 241, 0.6);
+        }
+
+        /* === 3D CUBE === */
+        .scene3d {
+            width: 260px;
+            height: 260px;
+            perspective: 1000px;
+        }
+        .cube3d {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            animation: stableSpin 14s infinite linear;
+        }
+        .cube-face {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background: rgba(43, 18, 76, 0.45);
+            border: 1px solid rgba(223, 182, 178, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            color: var(--pearl-white);
+            box-shadow: inset 0 0 30px rgba(82, 43, 91, 0.6);
+        }
+        .front  { transform: rotateY(0deg) translateZ(100px); }
+        .back   { transform: rotateY(180deg) translateZ(100px); }
+        .left   { transform: rotateY(-90deg) translateZ(100px); }
+        .right  { transform: rotateY(90deg) translateZ(100px); }
+        .top    { transform: rotateX(90deg) translateZ(100px); }
+        .bottom { transform: rotateX(-90deg) translateZ(100px); }
+
+        @keyframes stableSpin {
+            0% { transform: rotateX(0deg) rotateY(0deg); }
+            100% { transform: rotateX(360deg) rotateY(360deg); }
+        }
+
+        /* === MODULES === */
+        .modules-section {
+            padding: 80px 8%;
+            background: rgba(25, 0, 25, 0.25);
+            border-top: 1px solid rgba(223, 182, 178, 0.05);
+        }
+        .section-header-box {
+            margin-bottom: 50px;
+        }
+        .section-main-title {
+            font-size: 2rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            color: var(--pink-cream);
+            margin: 0 0 8px 0;
+        }
+        .section-sub-tag {
+            color: var(--rose-dust);
+            margin: 0;
+            font-size: 1rem;
+        }
+        .modules-grid-deck {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 25px;
+        }
+        .module-card {
+            background: rgba(43, 18, 76, 0.35);
+            border: 1px solid rgba(82, 43, 91, 0.5);
+            padding: 35px 25px;
+            border-radius: 28px;
+            cursor: pointer;
+            transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .module-card:hover {
+            border-color: var(--pink-cream);
+            background: rgba(82, 43, 91, 0.5);
+            transform: translateY(-8px);
+        }
+        .card-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .card-icon {
+            font-size: 1.5rem;
+            color: var(--pink-cream);
+        }
+        .card-index {
+            font-size: 0.8rem;
+            background: rgba(223, 182, 178, 0.15);
+            color: var(--pink-cream);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-weight: 700;
+        }
+        .module-card h3 {
+            margin: 0 0 12px 0;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #fff;
+        }
+        .module-card p {
+            margin: 0 0 25px 0;
+            font-size: 0.9rem;
+            color: var(--pearl-white);
+            opacity: 0.85;
+            line-height: 1.7;
+        }
+        .portal-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--pink-cream);
+            font-weight: 700;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+        }
+
+        /* === PORTALS === */
+        .portal-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: var(--purple-darkest);
+            z-index: 5000;
+            display: none;
+            overflow-y: auto;
+        }
+        .portal-active {
+            display: block;
+        }
+        .portal-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 4%;
+        }
+        .portal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+            border-bottom: 1px solid rgba(223, 182, 178, 0.15);
+            padding-bottom: 18px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        .portal-header h2 {
+            color: #fff;
+            font-size: 1.8rem;
+            margin: 0;
+        }
+        .close-portal-btn {
+            background: rgba(223, 182, 178, 0.1);
+            border: 1px solid var(--pink-cream);
+            color: var(--pink-cream);
+            padding: 8px 20px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 700;
+            transition: 0.2s;
+        }
+        .close-portal-btn:hover {
+            background: var(--pink-cream);
+            color: var(--purple-darkest);
+        }
+        .portal-body-layout {
+            display: grid;
+            grid-template-columns: 1.3fr 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+        .portal-steps-list {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+        .step-item {
+            background: rgba(43, 18, 76, 0.4);
+            border-left: 4px solid var(--pink-cream);
+            padding: 20px 22px;
+            border-radius: 0 16px 16px 0;
+        }
+        .step-item h5 {
+            margin: 0 0 8px 0;
+            font-size: 1.1rem;
+            color: var(--pink-cream);
+        }
+        .step-item p {
+            margin: 0;
+            font-size: 0.95rem;
+            line-height: 1.7;
+            color: var(--pearl-white);
+            opacity: 0.9;
+        }
+        .portal-media-frame {
+            width: 100%;
+            border-radius: 24px;
+            overflow: hidden;
+            border: 1px solid rgba(223, 182, 178, 0.15);
+        }
+        .portal-media-frame img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* === PRACTICE BOX === */
+        .practice-box {
+            margin: 40px auto;
+            max-width: 900px;
+            padding: 30px;
+            text-align: center;
+            border-radius: 20px;
+            background: rgba(255,255,255,.05);
+            backdrop-filter: blur(12px);
+        }
+        #timer {
+            font-size: 60px;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+        #startPractice {
+            padding: 14px 30px;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 18px;
+            background: var(--pink-cream);
+            color: var(--purple-darkest);
+            font-weight: 700;
+        }
+        #startPractice:hover {
+            transform: scale(1.05);
+        }
+        #confettiCanvas {
+            width: 100%;
+            height: 220px;
+            pointer-events: none;
+            display: block;
+        }
+
+        /* === GRID MAKER === */
+        .grid-maker-section {
+            width: 100%;
+            max-width: 1200px;
+            margin: 60px auto;
+            padding: 30px 20px;
+            text-align: center;
+        }
+        .grid-maker-section h2 {
+            font-size: 34px;
+            margin-bottom: 8px;
+        }
+        .grid-subtitle {
+            opacity: .8;
+            margin-bottom: 30px;
+        }
+        .grid-card {
+            display: flex;
+            gap: 25px;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: flex-start;
+        }
+        .grid-preview {
+            width: 600px;
+            max-width: 100%;
+            aspect-ratio: 1;
+            border-radius: 18px;
+            overflow: hidden;
+            position: relative;
+            background: #111;
+        }
+        #gridCanvas {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+        #gridPlaceholder {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            opacity: .6;
+        }
+        .grid-controls {
+            width: 300px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            text-align: left;
+        }
+        .grid-controls input[type=range] {
+            width: 100%;
+        }
+        .grid-controls input[type=file] {
+            width: 100%;
+        }
+        .grid-controls button {
+            padding: 14px;
+            font-size: 17px;
+            cursor: pointer;
+            border: none;
+            border-radius: 12px;
+            margin-top: 10px;
+            background: var(--pink-cream);
+            color: var(--purple-darkest);
+            font-weight: 700;
+        }
+        .grid-controls button:hover {
+            transform: scale(1.02);
+        }
+        .grid-controls label {
+            font-weight: 600;
+            margin-top: 5px;
+        }
+        .grid-controls span {
+            font-weight: 600;
+        }
+
+        /* === MODAL (Auth + Dashboard) === */
+        .modal-wrapper {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(25, 0, 25, 0.85);
+            z-index: 9000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .modal-box {
+            background: var(--purple-midnight);
+            border: 1px solid var(--purple-plum);
+            padding: 35px;
+            border-radius: 24px;
+            max-width: 440px;
+            width: 100%;
+            position: relative;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.6);
+        }
+        .modal-box h3 {
+            color: #fff;
+            margin-top: 0;
+            font-size: 1.5rem;
+            border-bottom: 1px solid rgba(223, 182, 178, 0.2);
+            padding-bottom: 12px;
+            font-weight: 800;
+        }
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: var(--pink-cream);
+            transition: 0.2s;
+        }
+        .modal-close:hover {
+            color: #fff;
+        }
+
+        .form-group {
+            margin-bottom: 16px;
+        }
+        .form-group label {
+            display: block;
+            color: var(--pearl-white);
+            font-weight: 600;
+            font-size: 13px;
+            margin-bottom: 5px;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 11px 15px;
+            border-radius: 10px;
+            border: 1px solid rgba(223, 182, 178, 0.2);
+            background: rgba(25, 0, 25, 0.4);
+            color: #fff;
+            font-size: 14px;
+            box-sizing: border-box;
+        }
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--pink-cream);
+        }
+        .auth-submit-btn {
+            width: 100%;
+            padding: 13px;
+            background: linear-gradient(135deg, var(--pink-cream), var(--rose-dust));
+            border: none;
+            border-radius: 10px;
+            color: var(--purple-darkest);
+            font-weight: 700;
+            font-size: 15px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .auth-submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(223, 182, 178, 0.3);
+        }
+
+        /* Dashboard */
+        .dashboard-box {
+            max-width: 480px !important;
+        }
+        .dashboard-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 12px;
+            margin: 20px 0;
+        }
+        .stat-card {
+            background: rgba(25, 0, 25, 0.3);
+            border: 1px solid rgba(223, 182, 178, 0.1);
+            border-radius: 14px;
+            padding: 15px 10px;
+            text-align: center;
+        }
+        .stat-card i {
+            font-size: 24px;
+            color: var(--pink-cream);
+            margin-bottom: 6px;
+            display: block;
+        }
+        .stat-card h4 {
+            margin: 0;
+            font-size: 11px;
+            color: var(--rose-dust);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .stat-card p {
+            margin: 4px 0 0 0;
+            font-size: 17px;
+            font-weight: 700;
+            color: #fff;
+        }
+        .logout-btn {
+            width: 100%;
+            padding: 12px;
+            background: rgba(255, 0, 0, 0.15);
+            border: 1px solid rgba(255, 0, 0, 0.3);
+            border-radius: 10px;
+            color: #ff6b6b;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+            font-size: 15px;
+        }
+        .logout-btn:hover {
+            background: rgba(255, 0, 0, 0.25);
+        }
+
+        /* === FAQ SECTION (NEW) === */
+        .faq-section {
+            padding: 60px 8%;
+            background: rgba(25, 0, 25, 0.15);
+            border-top: 1px solid rgba(223, 182, 178, 0.05);
+            border-bottom: 1px solid rgba(223, 182, 178, 0.05);
+        }
+        .faq-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            max-width: 1100px;
+            margin: 40px auto 0;
+        }
+        .faq-item {
+            background: rgba(43, 18, 76, 0.3);
+            border: 1px solid rgba(82, 43, 91, 0.3);
+            border-radius: 16px;
+            padding: 22px 25px;
+            transition: 0.3s;
+        }
+        .faq-item:hover {
+            border-color: var(--pink-cream);
+            background: rgba(82, 43, 91, 0.25);
+        }
+        .faq-item h4 {
+            color: var(--pink-cream);
+            font-size: 1.05rem;
+            margin: 0 0 8px 0;
+        }
+        .faq-item p {
+            color: var(--pearl-white);
+            opacity: 0.85;
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin: 0;
+        }
+
+        /* === FEEDBACK SECTION (NEW) === */
+        .feedback-section {
+            padding: 60px 8%;
+            background: rgba(25, 0, 25, 0.1);
+            border-bottom: 1px solid rgba(223, 182, 178, 0.05);
+        }
+        .feedback-container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        .feedback-form-box {
+            background: rgba(43, 18, 76, 0.25);
+            border: 1px solid rgba(82, 43, 91, 0.3);
+            border-radius: 20px;
+            padding: 35px;
+            margin-bottom: 40px;
+        }
+        .feedback-form-box textarea {
+            width: 100%;
+            padding: 14px 18px;
+            border-radius: 12px;
+            border: 1px solid rgba(223, 182, 178, 0.2);
+            background: rgba(25, 0, 25, 0.4);
+            color: #fff;
+            font-size: 15px;
+            resize: vertical;
+            min-height: 100px;
+            font-family: inherit;
+            box-sizing: border-box;
+        }
+        .feedback-form-box textarea:focus {
+            outline: none;
+            border-color: var(--pink-cream);
+        }
+        .feedback-form-box .form-row {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 15px;
+        }
+        .feedback-form-box .form-row input {
+            flex: 1;
+            min-width: 200px;
+            padding: 12px 16px;
+            border-radius: 10px;
+            border: 1px solid rgba(223, 182, 178, 0.2);
+            background: rgba(25, 0, 25, 0.4);
+            color: #fff;
+            font-size: 14px;
+        }
+        .feedback-form-box .form-row input:focus {
+            outline: none;
+            border-color: var(--pink-cream);
+        }
+        .feedback-submit-btn {
+            padding: 12px 35px;
+            background: var(--pink-cream);
+            color: var(--purple-darkest);
+            border: none;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 15px;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-top: 15px;
+        }
+        .feedback-submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(223, 182, 178, 0.3);
+        }
+
+        /* === FEEDBACK LIST === */
+        .feedback-list {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+        .feedback-card {
+            background: rgba(43, 18, 76, 0.2);
+            border: 1px solid rgba(82, 43, 91, 0.2);
+            border-radius: 14px;
+            padding: 20px 25px;
+            transition: 0.3s;
+        }
+        .feedback-card:hover {
+            border-color: var(--pink-cream);
+        }
+        .feedback-card .fb-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .feedback-card .fb-name {
+            color: var(--pink-cream);
+            font-weight: 700;
+            font-size: 1rem;
+        }
+        .feedback-card .fb-date {
+            color: var(--rose-dust);
+            font-size: 0.8rem;
+        }
+        .feedback-card .fb-text {
+            color: var(--pearl-white);
+            opacity: 0.85;
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin: 0;
+        }
+        .feedback-card .fb-rating {
+            color: #ffb300;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+        }
+
+        /* === FOOTER === */
+        .footer-section {
+            background: #0f000f;
+            padding: 60px 8% 30px 8%;
+            border-top: 1px solid rgba(223, 182, 178, 0.05);
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 35px;
+        }
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: 900;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+        .footer-logo span { color: var(--pink-cream); }
+        .footer-about-text { color: var(--pearl-white); opacity: 0.6; line-height: 1.7; font-size: 0.9rem; }
+        .footer-block h4 {
+            color: #fff;
+            font-size: 0.95rem;
+            letter-spacing: 2px;
+            margin: 0 0 20px 0;
+            border-bottom: 2px solid var(--rose-dust);
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+        .footer-block ul { list-style: none; padding: 0; margin: 0; }
+        .footer-block ul li { margin-bottom: 12px; }
+        .footer-block ul li a { color: var(--pearl-white); opacity: 0.7; text-decoration: none; font-size: 0.9rem; transition: 0.2s; }
+        .footer-block ul li a:hover { opacity: 1; color: var(--pink-cream); }
+        .contact-email { color: var(--pink-cream); font-size: 0.9rem; margin-bottom: 15px; }
+        .yt-link-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: #FF0000;
+            color: #fff !important;
+            padding: 10px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.9rem !important;
+            opacity: 1 !important;
+            transition: 0.2s ease;
+            box-shadow: 0 5px 15px rgba(255, 0, 0, 0.3);
+        }
+        .yt-link-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(255, 0, 0, 0.5);
+        }
+        .footer-bottom {
+            text-align: center;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255,255,255,0.02);
+            margin-top: 30px;
+            color: var(--rose-dust);
+            font-size: 0.85rem;
+        }
+
+        /* === RESPONSIVE === */
+        @media (max-width: 992px) {
+            .hero-section {
+                flex-direction: column;
+                text-align: center;
+                padding: 50px 5%;
+            }
+            .hero-content {
+                max-width: 100%;
+                margin-bottom: 40px;
+            }
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            .portal-body-layout {
+                grid-template-columns: 1fr;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+            .faq-grid {
+                grid-template-columns: 1fr;
+            }
+            .scene3d {
+                width: 200px;
+                height: 200px;
+            }
+            .cube-face {
+                width: 150px;
+                height: 150px;
+                font-size: 0.9rem;
+            }
+            .front  { transform: rotateY(0deg) translateZ(75px); }
+            .back   { transform: rotateY(180deg) translateZ(75px); }
+            .left   { transform: rotateY(-90deg) translateZ(75px); }
+            .right  { transform: rotateY(90deg) translateZ(75px); }
+            .top    { transform: rotateX(90deg) translateZ(75px); }
+            .bottom { transform: rotateX(-90deg) translateZ(75px); }
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 15px 5%;
+            }
+            .auth-area {
+                gap: 8px;
+            }
+            .auth-btn {
+                padding: 5px 12px;
+                font-size: 11px;
+            }
+            #userDisplayName {
+                font-size: 13px;
+                max-width: 80px;
+            }
+            .menu-icon {
+                display: flex;
+            }
+            .modules-grid-deck {
+                grid-template-columns: 1fr 1fr;
+            }
+            .dashboard-stats {
+                grid-template-columns: 1fr 1fr;
+            }
+            .grid-card {
+                flex-direction: column;
+                align-items: center;
+            }
+            .grid-controls {
+                width: 100%;
+                max-width: 500px;
+            }
+            .portal-header h2 {
+                font-size: 1.3rem;
+            }
+            .feedback-form-box .form-row {
+                flex-direction: column;
+            }
+            .feedback-form-box .form-row input {
+                min-width: unset;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .modules-grid-deck {
+                grid-template-columns: 1fr;
+            }
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+            .cta-group {
+                flex-direction: column;
+                align-items: center;
+            }
+            .btn-primary, .btn-app {
+                width: 100%;
+                text-align: center;
+                justify-content: center;
+            }
+            .faq-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <!-- ===== NAVBAR ===== -->
+        <nav class="navbar">
+            <div class="logo-container">
+                <img src="favicon.png" alt="AYART STUDIO Logo" class="nav-favicon-logo">
+                <div class="logo">AYART<span>STUDIO</span></div>
+            </div>
+
+            <!-- Auth Area -->
+            <div id="authArea" class="auth-area">
+                <div id="authButtons" style="display: flex; gap: 8px; align-items: center;">
+                    <button class="auth-btn" onclick="openAuthModal('login')">Login</button>
+                    <button class="auth-btn auth-btn-primary" onclick="openAuthModal('register')">Sign Up</button>
+                </div>
+                <div id="userProfile" onclick="openDashboard()">
+                    <i class="fa-solid fa-user-circle"></i>
+                    <span id="userDisplayName">Username</span>
+                    <i class="fa-solid fa-chevron-down" style="color: var(--pink-cream); font-size: 10px;"></i>
+                </div>
+            </div>
+
+            <div class="menu-icon">
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+
+        <!-- ===== AUTH MODAL ===== -->
+        <div id="authModal" class="modal-wrapper">
+            <div class="modal-box">
+                <span class="modal-close" onclick="closeAuthModal()">&times;</span>
+                <h3 id="authModalTitle">Login to AYARTSTUDIO</h3>
+                
+                <form id="loginForm" onsubmit="handleLogin(event)">
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" id="loginEmail" placeholder="your@email.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" id="loginPassword" placeholder="••••••••" required>
+                    </div>
+                    <button type="submit" class="auth-submit-btn">Login</button>
+                    <p style="text-align: center; margin-top: 12px; color: var(--pearl-white); opacity: 0.7; font-size: 14px;">
+                        Don't have an account? <span style="color: var(--pink-cream); cursor: pointer; font-weight: 600;" onclick="switchAuthMode('register')">Sign Up</span>
+                    </p>
+                </form>
+
+                <form id="registerForm" onsubmit="handleRegister(event)" style="display: none;">
+                    <div class="form-group">
+                        <label>Artist Name / Username</label>
+                        <input type="text" id="registerName" placeholder="Your Artist Name" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" id="registerEmail" placeholder="your@email.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Password (min 6 characters)</label>
+                        <input type="password" id="registerPassword" placeholder="••••••••" required minlength="6">
+                    </div>
+                    <button type="submit" class="auth-submit-btn">Create Account</button>
+                    <p style="text-align: center; margin-top: 12px; color: var(--pearl-white); opacity: 0.7; font-size: 14px;">
+                        Already have an account? <span style="color: var(--pink-cream); cursor: pointer; font-weight: 600;" onclick="switchAuthMode('login')">Login</span>
+                    </p>
+                </form>
+            </div>
+        </div>
+
+        <!-- ===== DASHBOARD MODAL ===== -->
+        <div id="dashboardModal" class="modal-wrapper">
+            <div class="modal-box dashboard-box">
+                <span class="modal-close" onclick="closeDashboard()">&times;</span>
+                <h3>👤 <span id="dashboardUserName">User</span>'s Dashboard</h3>
+                <div class="dashboard-stats">
+                    <div class="stat-card">
+                        <i class="fa-solid fa-certificate"></i>
+                        <div>
+                            <h4>Certificates</h4>
+                            <p id="certCount">0</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fa-solid fa-fire"></i>
+                        <div>
+                            <h4>Streak</h4>
+                            <p id="streakCount">0 days</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fa-solid fa-trophy"></i>
+                        <div>
+                            <h4>Artworks</h4>
+                            <p id="artworkCount">0</p>
+                        </div>
+                    </div>
+                </div>
+                <button class="logout-btn" onclick="handleLogout()"><i class="fa-solid fa-sign-out-alt"></i> Logout</button>
+                <p style="text-align: center; margin-top: 15px; font-size: 13px; color: var(--rose-dust);">
+                    More features coming soon! 🚀
+                </p>
+            </div>
+        </div>
+
+        <!-- ===== HERO ===== -->
+        <header class="hero-section">
+            <div class="hero-content">
+                <p class="tagline">DRAW • CREATE • LEARN</p>
+                <h1>Where Art Meets <br><span class="gradient-text">Pure Passion</span></h1>
+                <p class="hero-thought">
+                    "Every line you draw is a step toward finding your own voice. Art isn't just about perfection; it's about translating your imagination into reality, one stroke at a time."
+                </p>
+                <div class="cta-group">
+                    <button class="btn-primary" onclick="document.getElementById('modules').scrollIntoView({behavior: 'smooth'})">
+                        EXPLORE MASTERCLASS <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                    <a href="https://appsgeyser.io/19965695/AyartStudio01" target="_blank" class="btn-app">
+                        <i class="fa-brands fa-android"></i> DOWNLOAD APP
+                    </a>
+                </div>
+            </div>
+            <div class="scene3d">
+                <div class="cube3d">
+                    <div class="cube-face front">AYART</div>
+                    <div class="cube-face back">STUDIO</div>
+                    <div class="cube-face left">DRAW</div>
+                    <div class="cube-face right">LEARN</div>
+                    <div class="cube-face top">CREATE</div>
+                    <div class="cube-face bottom">SYSTEMS</div>
+                </div>
+            </div>
+        </header>
+
+        <!-- ===== MODULES ===== -->
+        <section id="modules" class="modules-section">
+            <div class="section-header-box">
+                <h2 class="section-main-title">FEATURED ART MODULES</h2>
+                <p class="section-sub-tag">Click any card to enter the learning portal</p>
+            </div>
+            <div class="modules-grid-deck">
+                <!-- Card 1: Beginner Drawing -->
+                <div class="module-card" onclick="openPortal('portal-beginner')">
+                    <div class="card-meta">
+                        <i class="fa-solid fa-pencil card-icon"></i>
+                        <span class="card-index">01</span>
+                    </div>
+                    <h3>Beginner Drawing</h3>
+                    <p>Master fundamental line metrics, baseline structural symmetry, and standard geometric form maps. Learn essential pencil gripping techniques, basic shape construction, and how to build confidence in your first strokes. This module covers everything from holding the pencil correctly to creating your first complete sketch with proper proportions and balanced compositions.</p>
+                    <span class="portal-link">OPEN PORTAL <i class="fa-solid fa-chevron-right"></i></span>
+                </div>
+
+                <!-- Card 2: Daily Practice -->
+                <div class="module-card" onclick="openPortal('portal-daily')">
+                    <div class="card-meta">
+                        <i class="fa-solid fa-user card-icon"></i>
+                        <span class="card-index">02</span>
+                    </div>
+                    <h3>Daily Practice</h3>
+                    <p>Learn core bone alignments, dynamic gesture rendering, and kinetic profile proportions. Develop a daily sketching routine that builds muscle memory and improves hand-eye coordination. This module includes timed exercises, gesture drawing techniques, and structured practice sessions to accelerate your artistic growth and track your improvement over time.</p>
+                    <span class="portal-link">OPEN PORTAL <i class="fa-solid fa-chevron-right"></i></span>
+                </div>
+
+                <!-- Card 3: Shading Master -->
+                <div class="module-card" onclick="openPortal('portal-shading')">
+                    <div class="card-meta">
+                        <i class="fa-solid fa-graduation-cap card-icon"></i>
+                        <span class="card-index">03</span>
+                    </div>
+                    <h3>Shading Master</h3>
+                    <p>Master lights, depth, and smooth continuous gradient shading mechanics under ambient matrices. Learn the secrets of realistic shading including hatching, cross-hatching, stippling, and blending techniques. Understand how light interacts with different surfaces, create dramatic contrasts, and bring your drawings to life with professional-level shading that adds depth and dimension.</p>
+                    <span class="portal-link">OPEN PORTAL <i class="fa-solid fa-chevron-right"></i></span>
+                </div>
+
+                <!-- Card 4: Colour Pencil -->
+                <div class="module-card" onclick="openPortal('portal-colour')">
+                    <div class="card-meta">
+                        <i class="fa-solid fa-palette card-icon"></i>
+                        <span class="card-index">04</span>
+                    </div>
+                    <h3>Colour Pencil</h3>
+                    <p>Blend vibrant layout pigments, micro tonal changes, and rich hyper-realistic artwork depths. Master color theory, layering techniques, burnishing, and creating smooth transitions between hues. This module teaches you how to choose the right color combinations, create realistic textures, and produce stunning colored pencil artworks that look like paintings.</p>
+                    <span class="portal-link">OPEN PORTAL <i class="fa-solid fa-chevron-right"></i></span>
+                </div>
+
+                <!-- Card 5: Fight Anime Art -->
+                <div class="module-card" onclick="openPortal('portal-anime')">
+                    <div class="card-meta">
+                        <i class="fa-solid fa-fire card-icon"></i>
+                        <span class="card-index">05</span>
+                    </div>
+                    <h3>Fight Anime Art</h3>
+                    <p>Design extreme battle poses, energetic perspective angles, and dynamic manga action lines. Learn how to create explosive action sequences, dramatic impact frames, and powerful character expressions. This module covers dynamic anatomy, speed lines, impact effects, and all the techniques needed to draw professional-quality anime fight scenes.</p>
+                    <span class="portal-link">OPEN PORTAL <i class="fa-solid fa-chevron-right"></i></span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== PRACTICE BOX ===== -->
+        <section class="practice-box">
+            <h2>🎯 15 Second Drawing Practice</h2>
+            <p id="practiceText">Click Start and practice your drawing strokes for 15 seconds.</p>
+            <div id="timer">15</div>
+            <button id="startPractice">▶ Start Practice</button>
+            <canvas id="confettiCanvas"></canvas>
+        </section>
+
+        <!-- ===== GRID MAKER ===== -->
+        <section class="grid-maker-section">
+            <h2>🎨 Grid Maker</h2>
+            <p class="grid-subtitle">Upload any drawing or photo and create a custom drawing grid.</p>
+            <div class="grid-card">
+                <div class="grid-preview">
+                    <canvas id="gridCanvas"></canvas>
+                    <div id="gridPlaceholder">📷 Upload an Image</div>
+                </div>
+                <div class="grid-controls">
+                    <label>Select Image</label>
+                    <input type="file" id="imageUpload" accept="image/*">
+                    <label>Rows</label>
+                    <input type="range" id="rows" min="2" max="40" value="8">
+                    <span id="rowsValue">8</span>
+                    <label>Columns</label>
+                    <input type="range" id="columns" min="2" max="40" value="8">
+                    <span id="columnsValue">8</span>
+                    <label>Grid Thickness</label>
+                    <input type="range" id="thickness" min="1" max="8" value="2">
+                    <span id="thicknessValue">2px</span>
+                    <label>Grid Color</label>
+                    <input type="color" id="gridColor" value="#ffb300">
+                    <button id="downloadGrid">⬇ Download Grid</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- ===== FAQ SECTION (Footer ke upar) ===== -->
+        <!-- ============================================================ -->
+        <section class="faq-section">
+            <div class="section-header-box" style="text-align: center;">
+                <h2 class="section-main-title">❓ FREQUENTLY ASKED <span style="color: var(--pearl-white);">QUESTIONS</span></h2>
+                <p class="section-sub-tag">Everything you need to know about AYARTSTUDIO</p>
+            </div>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <h4>🎨 Is AYARTSTUDIO completely free to use?</h4>
+                    <p>Yes, AYARTSTUDIO is 100% free for all users. We believe that quality art education should be accessible to everyone, regardless of their financial situation. There are no hidden charges, premium tiers, or subscription fees. All our modules, tools, and resources are available at no cost.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>✏️ Do I need any prior drawing experience?</h4>
+                    <p>Not at all! AYARTSTUDIO is designed for artists at every skill level. Beginners can start with our foundational modules that cover basic techniques, while intermediate and advanced artists can explore specialized topics like shading, color theory, and dynamic anime art. Everyone learns at their own pace.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>📐 How does the Grid Maker tool work?</h4>
+                    <p>The Grid Maker is a powerful tool that helps you break down any image into a customizable grid. Simply upload your reference image, adjust the number of rows and columns, choose your preferred grid color and thickness, and download the grid. This technique is widely used by professional artists to achieve accurate proportions and perfect compositions.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>🔥 Can I share my artwork created here?</h4>
+                    <p>Absolutely! We love seeing what our community creates. Share your artwork on social media and tag us using the hashtag #AYARTSTUDIO. We feature the best artworks on our platform and social channels. It's a great way to showcase your progress and inspire other artists.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>📱 Is there a mobile app available?</h4>
+                    <p>Yes, we have an Android app available for download! You can access all our modules, tools, and resources on your mobile device. Click the "DOWNLOAD APP" button on our homepage to get the app from the official app store. The iOS version is coming soon.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>💡 How do I track my progress as an artist?</h4>
+                    <p>Creating a free account allows you to track your journey. Your dashboard automatically records your certificates earned, daily practice streaks, and the number of artworks you've completed. This helps you stay motivated and see how far you've come. Every day you practice, your streak grows!</p>
+                </div>
+                <div class="faq-item">
+                    <h4>🖌️ What makes AYARTSTUDIO different from other art platforms?</h4>
+                    <p>AYARTSTUDIO combines structured learning with practical tools. Unlike other platforms that only offer tutorials, we provide interactive tools like the Grid Maker, timed practice sessions, and a community feedback system. Our content is designed by professional artists who understand the learning process and create content that truly helps you improve.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>🌍 Can I use AYARTSTUDIO on any device?</h4>
+                    <p>Yes! AYARTSTUDIO is a responsive web platform that works on desktop computers, tablets, and smartphones. We've optimized our interface for all screen sizes, ensuring you get the same great experience whether you're practicing on a large monitor or a small phone screen.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- ===== FEEDBACK SECTION (Footer ke upar) ===== -->
+        <!-- ============================================================ -->
+        <section class="feedback-section" id="feedbackSection">
+            <div class="feedback-container">
+                <div class="section-header-box" style="text-align: center;">
+                    <h2 class="section-main-title">💬 USER <span style="color: var(--pearl-white);">FEEDBACK</span></h2>
+                    <p class="section-sub-tag">Share your experience and help us improve AYARTSTUDIO</p>
+                </div>
+
+                <!-- Feedback Form -->
+                <div class="feedback-form-box">
+                    <h4 style="color: var(--pink-cream); margin-bottom: 15px;">📝 Leave Your Review</h4>
+                    <p style="color: var(--pearl-white); opacity: 0.7; font-size: 0.9rem; margin-bottom: 15px;">Your feedback helps us make AYARTSTUDIO better for everyone. Share what you love and what we can improve!</p>
+                    <textarea id="feedbackText" placeholder="Share your experience with AYARTSTUDIO... What do you like? What can we improve? How has this platform helped you grow as an artist?"></textarea>
+                    <div class="form-row">
+                        <input type="text" id="feedbackName" placeholder="Your Name (optional)" style="flex: 2;">
+                        <input type="number" id="feedbackRating" placeholder="Rating (1-5)" min="1" max="5" style="flex: 1; max-width: 150px;">
+                        <button class="feedback-submit-btn" onclick="submitFeedback()">⭐ Submit Feedback</button>
+                    </div>
+                    <p style="color: var(--rose-dust); font-size: 0.8rem; margin-top: 10px; text-align: center;">* You must be logged in to leave feedback</p>
+                </div>
+
+                <!-- Feedback List -->
+                <h4 style="color: var(--pink-cream); margin-bottom: 15px;">📋 Recent Reviews</h4>
+                <div id="feedbackList" class="feedback-list">
+                    <p style="text-align: center; color: var(--rose-dust); font-size: 0.95rem;">No feedback yet. Be the first to share your experience! 🌟</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== FOOTER ===== -->
+        <footer class="footer-section">
+            <div class="footer-grid">
+                <div class="footer-block main-brand-block">
+                    <div class="footer-logo">AYART<span>STUDIO</span></div>
+                    <p class="footer-about-text">
+                        An elite platform carefully crafted for creators, sketch artists, and digital visionaries. We shape imagination into systematic mastery through structured learning modules, powerful tools, and a supportive community.
+                    </p>
+                </div>
+                <div class="footer-block">
+                    <h4>EXPLORE</h4>
+                    <ul>
+                        <li><a href="#modules">Our Classes</a></li>
+                        <li><a href="#" onclick="openAuthModal('login')">Login</a></li>
+                        <li><a href="#feedbackSection">Give Feedback</a></li>
+                    </ul>
+                </div>
+                <div class="footer-block">
+                    <h4>LEGAL</h4>
+                    <ul>
+                        <li><a href="terms.html">Terms of Service</a></li>
+                        <li><a href="about.html">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-block">
+                    <h4>CONNECT</h4>
+                    <p class="contact-email">dreamplaysoffficial01@gmail.com</p>
+                    <p class="contact-email">yugankvishnoi@gmail.com</p>
+                    <div class="social-links">
+                        <a href="https://youtube.com/@artarnav-a77?si=zpRnr5szbd_wOOmT" target="_blank" class="yt-link-btn"><i class="fa-brands fa-youtube"></i> YouTube Channel</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 AYART STUDIO. Engineered by Arnav & Yuvank. All Rights Reserved.</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- ===== PORTALS ===== -->
+    <div id="portal-beginner" class="portal-overlay">
+        <div class="portal-container">
+            <div class="portal-header">
+                <h2>🎨 Kids Beginner Drawing Guide ✏️</h2>
+                <button class="close-portal-btn" onclick="closePortal('portal-beginner')">&times; Close Masterclass</button>
+            </div>
+            <div class="portal-body-layout">
+                <div class="portal-steps-list">
+                    <div class="step-item"><h5>🚀 1. Choose Your Magic Tools!</h5><p>Start with a lightweight HB or 2B graphite pencil. Do not use dark pencils like 4B or 6B in the beginning. Hold your pencil further back from the tip to maintain flexible pressure controls. This prevents harsh, permanent paper marks that are difficult to erase later. Practice holding your pencil in different ways to discover what feels most comfortable for you.</p></div>
+                    <div class="step-item"><h5>⭕ 2. The Shape Spy Game</h5><p>Analyze organic objects around you and isolate their base patterns. Look at a cup or an apple and break down these complex visual items into simple geometric shapes like spheres, ovals, triangles, and rectangular bounding frames before adding any realistic detailing. This technique helps you understand the underlying structure of everything you draw.</p></div>
+                    <div class="step-item"><h5>✏️ 3. Draw Loose & Free Lines</h5><p>Initiate strokes from your elbow and shoulder joints instead of locking your fingers or wrist tight. This gives your hand more freedom. Practice sweeping ghost strokes over the paper surface without touching it first to build smooth muscle memory curves. This technique is essential for creating fluid, confident lines in all your artwork.</p></div>
+                    <div class="step-item"><h5>📐 4. Connecting Structural Nodes</h5><p>Gradually unify your initial layout circles and foundational primitives with structured contour lines. Connect the light shapes together to form a solid, proportionate physical skeleton layout of your drawing before moving to shading. This step ensures that your final artwork has accurate proportions and a strong visual foundation.</p></div>
+                    <div class="step-item"><h5>✨ 5. Add Advanced Details</h5><p>Incorporate final features, surface textures, and scenic elements to bring your artwork to life. Once you are done, cleanly erase your primary temporary construction guidelines with a soft eraser to reveal your clean, finished artwork overlay. This is where your drawing transforms from a sketch into a complete piece of art.</p></div>
+                </div>
+                <div class="portal-media-frame">
+                    <img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=600" alt="Beginner Art">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="portal-daily" class="portal-overlay">
+        <div class="portal-container">
+            <div class="portal-header">
+                <h2>📊 Daily Practice Tracker Framework ⏱️</h2>
+                <button class="close-portal-btn" onclick="closePortal('portal-daily')">&times; Close Masterclass</button>
+            </div>
+            <div class="portal-body-layout">
+                <div class="portal-steps-list">
+                    <div class="step-item"><h5>🧠 1. Muscle Memory Warmup</h5><p>Spend 10 minutes drawing fast, continuous parallel lines and freehand ellipses on a rough sheet. This activates your wrist and shoulder muscles, improves line confidence, and removes stiffness before you start your main drawing project. Consistent warmup is the secret to consistent improvement in your art.</p></div>
+                    <div class="step-item"><h5>📐 2. Gesture & Axis Mapping</h5><p>Execute rapid 30-second quick sketches of real objects to establish organic weight distributions, action lines, and basic balance. Do not focus on details here; just capture the overall flow, direction, and posture of the subject. This practice trains your eye to see the essential movement and energy in everything you observe.</p></div>
+                    <div class="step-item"><h5>👁️ 3. Blind Contour Calibration</h5><p>Trace the outer limits and edges of local items around you without looking down at your paper canvas. This specialized hand-eye coordination exercise trains your brain to draw what you actually see, rather than what you imagine. It's one of the most effective exercises for improving observational drawing skills.</p></div>
+                    <div class="step-item"><h5>📦 4. 3D Volumetric Extrusion</h5><p>Transform uniform 2D boxes, circles, and flat planes into deep 3D dimensional projections using clear perspective guidelines. Practice turning a simple square into a cube, and a circle into a sphere to master depth control. Understanding form and volume is essential for creating artwork that feels three-dimensional and realistic.</p></div>
+                    <div class="step-item"><h5>📝 5. Daily Progress Review</h5><p>Document and save each practice sheet inside an organized archive folder to track your line density transitions and structural growth over time. Comparing your day 1 sketch with day 30 will give you a massive boost of confidence and motivation. Small daily improvements add up to significant progress over weeks and months.</p></div>
+                </div>
+                <div class="portal-media-frame">
+                    <img src="https://images.unsplash.com/photo-1544273677-c433136021d4?w=600" alt="Sketch Practice">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="portal-shading" class="portal-overlay">
+        <div class="portal-container">
+            <div class="portal-header">
+                <h2>✏️ Shading Master Matrix Data 🌟</h2>
+                <button class="close-portal-btn" onclick="closePortal('portal-shading')">&times; Close Masterclass</button>
+            </div>
+            <div class="portal-body-layout">
+                <div class="portal-steps-list">
+                    <div class="step-item"><h5>📉 1. Smooth Tone Gradients</h5><p>Practice controlling pressure to create a seamless transition from deep dark tones to bright highlights. Use a soft 4B or 6B pencil and apply minimal pressure as you move outward to create a flawless 3D realistic gradient effect. Mastering gradients is the foundation of all professional shading techniques.</p></div>
+                    <div class="step-item"><h5>✍️ 2. Hatching and Cross-Hatching</h5><p>Master the art of drawing parallel lines (hatching) and criss-cross patterns (cross-hatching) to build texture and value. Keeping lines closer creates dense shadow fields, while wider spacing represents bright surfaces reflecting ambient light. These techniques are essential for adding depth and texture to your artwork.</p></div>
+                    <div class="step-item"><h5>🌪️ 3. Smudging & Blending Tools</h5><p>Learn the correct way to use paper blending stumps or tortillons to smooth out rough graphite grains. Avoid using your bare fingers, as natural skin oils can leave permanent smudges and stains that ruin your finished drawing surface. Professional artists use specialized tools to achieve smooth, polished results.</p></div>
+                    <div class="step-item"><h5>💡 4. Cast Shadows vs Form Shadows</h5><p>Understand the critical difference between the soft shadow on the object itself (form shadow) and the sharp dark profile it drops on the ground (cast shadow). Mastering this logic brings depth and professional realism into your artwork sketches. Light and shadow are what make drawings feel three-dimensional and alive.</p></div>
+                    <div class="step-item"><h5>✨ 5. Highlight Extraction</h5><p>Utilize a precise kneaded eraser or a battery-operated eraser pen to carve out bright light reflections from dark shaded areas. Adding these crisp specular highlights to eyes, wet lips, or metallic objects makes them instantly pop out and catch the viewer's attention. Highlights are the finishing touch that brings your artwork to life.</p></div>
+                </div>
+                <div class="portal-media-frame">
+                    <img src="https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?w=600" alt="Shading Techniques">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="portal-colour" class="portal-overlay">
+        <div class="portal-container">
+            <div class="portal-header">
+                <h2>🎨 Colour Pencil Pigment Matrix</h2>
+                <button class="close-portal-btn" onclick="closePortal('portal-colour')">&times; Close Masterclass</button>
+            </div>
+            <div class="portal-body-layout">
+                <div class="portal-steps-list">
+                    <div class="step-item"><h5>🥚 1. Primary Underpainting Layer</h5><p>Master the foundational techniques of wax-based and oil-based colored pencils. Learn how to select the right paper tooth and density to ensure your pigments grip the surface perfectly, allowing for multiple layers of professional blending without any tearing. The right paper makes a significant difference in your final results.</p></div>
+                    <div class="step-item"><h5>🍷 2. Analogous Tonal Shading</h5><p>Dive deep into advanced color theory and dynamic values. This section teaches you how to map out complementary undertones, manage highlights, and use cool shadow shades like dark indigos and deep violets to make your portraits look incredibly realistic. Understanding color relationships is essential for creating harmonious artwork.</p></div>
+                    <div class="step-item"><h5>🌡️ 3. Temperature Balance Shift</h5><p>Learn the secret industrial method of heavy pigment burnishing. Discover how to use a specialized colorless blender pencil or a pure white pigment core to fuse all your individual sketch layers together, leaving a smooth, paint-like premium satin texture. Burnishing is what gives colored pencil art its professional, polished appearance.</p></div>
+                    <div class="step-item"><h5>💡 4. Burnishing Solidification</h5><p>Understand directional stroke mechanics for organic textures. Practice micro-circular continuous movements and cross-contour lines to draw realistic human skin tones, animal fur, glossy fruits, and metallic reflections without creating distracting rough scratches. The direction of your strokes dramatically affects the final texture of your artwork.</p></div>
+                    <div class="step-item"><h5>🔪 5. Sharp Detail Definition</h5><p>Discover professional preservation and clean-up workflows. Learn how to apply a final fixative spray to protect your colored pencil artwork from wax bloom, moisture damage, and UV fading, keeping your portfolio clean and safe for years to come. Proper preservation ensures your artwork remains beautiful for decades.</p></div>
+                </div>
+                <div class="portal-media-frame">
+                    <img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=600" alt="Colors">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="portal-anime" class="portal-overlay">
+        <div class="portal-container">
+            <div class="portal-header">
+                <h2>💥 Fight Anime Action Sequence Engine</h2>
+                <button class="close-portal-btn" onclick="closePortal('portal-anime')">&times; Close Masterclass</button>
+            </div>
+            <div class="portal-body-layout">
+                <div class="portal-steps-list">
+                    <div class="step-item"><h5>⚡ 1. Extreme Action Lines</h5><p>Establish the primary dynamic line of action to map out the intense energy flow between both characters. Sketch rough stick-figure skeletons to capture high-speed martial arts poses, explosive mid-air kicks, and tactical body tilts before focusing on any character anatomy. The line of action is the backbone of every dynamic anime pose.</p></div>
+                    <div class="step-item"><h5>🎥 2. Forced Perspective Maps</h5><p>Implement extreme fish-eye lens perspective lines and dramatic low-angle bounding frames to make the action look highly cinematic. Exaggerate the size of the forward fist or extended weapon to create an authentic shonen-style depth perception that breaks the canvas grid. Perspective is what makes fight scenes feel intense and immersive.</p></div>
+                    <div class="step-item"><h5>💨 3. Kinetic Speed Vectors</h5><p>Draw intense impact debris, exploding concrete fragments, and jagged energy shockwaves radiating outward from the main clash zone. This structural environmental damage is critical to visually communicating the immense, supernatural power behind each fighter's strike. Environmental effects add excitement and drama to action scenes.</p></div>
+                    <div class="step-item"><h5>🎭 4. High-Stall Expression Cuts</h5><p>Incorporate sharp, continuous motion lines and sweeping wind friction streaks behind the characters to simulate unbelievable speed. Ensure these background tracking vectors converge directly toward the focal point of impact to guide the viewer's eye seamlessly through the frame. Speed lines are essential for conveying motion in static images.</p></div>
+                    <div class="step-item"><h5>🌌 5. Composition Framing Borders</h5><p>Incorporate off-axis debris shapes and dynamic environment breaks to build depth across your action layout scene panels. Learn how to use panel composition and framing to control the pacing and intensity of your action sequences. Good composition makes the difference between a good fight scene and an unforgettable one.</p></div>
+                </div>
+                <div class="portal-media-frame">
+                    <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?w=600" alt="Manga Layout">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- =============================== -->
+    <!-- ===== JAVASCRIPT ===== -->
+    <!-- =============================== -->
+    <script>
+        // ===============================
+        // PORTAL FUNCTIONS
+        // ===============================
+        function openPortal(portalId) {
+            document.getElementById(portalId).classList.add('portal-active');
+            document.body.style.overflow = 'hidden';
+        }
+        function closePortal(portalId) {
+            document.getElementById(portalId).classList.remove('portal-active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // ===============================
+        // FIREBASE CONFIG (Updated)
+        // ===============================
+        const firebaseConfig = {
+            apiKey: "AIzaSyBmc6BWP4p01e2SXuQkPo7kiSTXYQg3484",
+            authDomain: "ayartstudio01.firebaseapp.com",
+            projectId: "ayartstudio01",
+            storageBucket: "ayartstudio01.firebasestorage.app",
+            messagingSenderId: "577603708554",
+            appId: "1:577603708554:web:b2df611968255252326f73",
+            measurementId: "G-YK8X2NQKW4"
+        };
+
+        firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+        const db = firebase.firestore();
+
+        // ===============================
+        // AUTH FUNCTIONS
+        // ===============================
+        const authButtons = document.getElementById('authButtons');
+        const userProfile = document.getElementById('userProfile');
+        const userDisplayName = document.getElementById('userDisplayName');
+        const authModal = document.getElementById('authModal');
+        const loginForm = document.getElementById('loginForm');
+        const registerForm = document.getElementById('registerForm');
+        const authModalTitle = document.getElementById('authModalTitle');
+
+        function openAuthModal(mode) {
+            switchAuthMode(mode);
+            authModal.style.display = 'flex';
+        }
+
+        function closeAuthModal() {
+            authModal.style.display = 'none';
+        }
+
+        function switchAuthMode(mode) {
+            if (mode === 'login') {
+                loginForm.style.display = 'block';
+                registerForm.style.display = 'none';
+                authModalTitle.textContent = 'Login to AYARTSTUDIO';
+            } else {
+                loginForm.style.display = 'none';
+                registerForm.style.display = 'block';
+                authModalTitle.textContent = 'Create Your Artist Account';
+            }
+        }
+
+        function handleLogin(e) {
+            e.preventDefault();
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+
+            auth.signInWithEmailAndPassword(email, password)
+                .then(() => {
+                    closeAuthModal();
+                })
+                .catch((error) => {
+                    alert('Login Failed: ' + error.message);
+                });
+        }
+
+        function handleRegister(e) {
+            e.preventDefault();
+            const name = document.getElementById('registerName').value.trim();
+            const email = document.getElementById('registerEmail').value;
+            const password = document.getElementById('registerPassword').value;
+
+            if (name.length < 2) {
+                alert('Please enter a valid username (min 2 characters)');
+                return;
+            }
+
+            auth.createUserWithEmailAndPassword(email, password)
+                .then((userCredential) => {
+                    const user = userCredential.user;
+                    return db.collection('users').doc(user.uid).set({
+                        name: name,
+                        email: email,
+                        createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+                        certificates: 0,
+                        streak: 0,
+                        artworks: 0
+                    }).then(() => {
+                        return user.updateProfile({ displayName: name });
+                    });
+                })
+                .then(() => {
+                    closeAuthModal();
+                })
+                .catch((error) => {
+                    alert('Registration Failed: ' + error.message);
+                });
+        }
+
+        function handleLogout() {
+            auth.signOut().then(() => {
+                closeDashboard();
+            });
+        }
+
+        function updateUI(user) {
+            if (user) {
+                authButtons.style.display = 'none';
+                userProfile.style.display = 'flex';
+                userDisplayName.textContent = user.displayName || user.email;
+                loadFeedbacks();
+            } else {
+                authButtons.style.display = 'flex';
+                userProfile.style.display = 'none';
+            }
+        }
+
+        // ===============================
+        // DASHBOARD
+        // ===============================
+        function openDashboard() {
+            const user = auth.currentUser;
+            if (!user) {
+                openAuthModal('login');
+                return;
+            }
+
+            const dashboardModal = document.getElementById('dashboardModal');
+            document.getElementById('dashboardUserName').textContent = user.displayName || user.email;
+
+            db.collection('users').doc(user.uid).get()
+                .then((doc) => {
+                    if (doc.exists) {
+                        const data = doc.data();
+                        document.getElementById('certCount').textContent = data.certificates || 0;
+                        document.getElementById('streakCount').textContent = (data.streak || 0) + ' days';
+                        document.getElementById('artworkCount').textContent = data.artworks || 0;
+                    }
+                })
+                .catch(() => {});
+
+            dashboardModal.style.display = 'flex';
+        }
+
+        function closeDashboard() {
+            document.getElementById('dashboardModal').style.display = 'none';
+        }
+
+        // ===============================
+        // AUTH STATE LISTENER
+        // ===============================
+        auth.onAuthStateChanged((user) => {
+            updateUI(user);
+        });
+
+        // Click outside to close modals
+        window.onclick = function(event) {
+            if (event.target === authModal) closeAuthModal();
+            if (event.target === document.getElementById('dashboardModal')) closeDashboard();
+        }
+
+        // ===============================
+        // GRID MAKER
+        // ===============================
+        const upload = document.getElementById("imageUpload");
+        const canvas = document.getElementById("gridCanvas");
+        const ctx = canvas.getContext("2d");
+        const rows = document.getElementById("rows");
+        const columns = document.getElementById("columns");
+        const thickness = document.getElementById("thickness");
+        const gridColor = document.getElementById("gridColor");
+        const rowsValue = document.getElementById("rowsValue");
+        const columnsValue = document.getElementById("columnsValue");
+        const thicknessValue = document.getElementById("thicknessValue");
+        const placeholder = document.getElementById("gridPlaceholder");
+        let uploadedImage = new Image();
+
+        upload.addEventListener("change", function(e) {
+            const file = e.target.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = function(event) {
+                uploadedImage.onload = function() {
+                    placeholder.style.display = "none";
+                    canvas.width = uploadedImage.width;
+                    canvas.height = uploadedImage.height;
+                    drawGridImage();
+                };
+                uploadedImage.src = event.target.result;
+            };
+            reader.readAsDataURL(file);
+        });
+
+        function drawGridImage() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.drawImage(uploadedImage, 0, 0);
+            const rowCount = parseInt(rows.value);
+            const columnCount = parseInt(columns.value);
+            const cellWidth = canvas.width / columnCount;
+            const cellHeight = canvas.height / rowCount;
+            ctx.strokeStyle = gridColor.value;
+            ctx.lineWidth = parseInt(thickness.value);
+            for (let i = 1; i < columnCount; i++) {
+                ctx.beginPath();
+                ctx.moveTo(i * cellWidth, 0);
+                ctx.lineTo(i * cellWidth, canvas.height);
+                ctx.stroke();
+            }
+            for (let i = 1; i < rowCount; i++) {
+                ctx.beginPath();
+                ctx.moveTo(0, i * cellHeight);
+                ctx.lineTo(canvas.width, i * cellHeight);
+                ctx.stroke();
+            }
+        }
+
+        rows.addEventListener("input", () => {
+            rowsValue.textContent = rows.value;
+            if (uploadedImage.src) drawGridImage();
+        });
+        columns.addEventListener("input", () => {
+            columnsValue.textContent = columns.value;
+            if (uploadedImage.src) drawGridImage();
+        });
+        thickness.addEventListener("input", () => {
+            thicknessValue.textContent = thickness.value + "px";
+            if (uploadedImage.src) drawGridImage();
+        });
+        gridColor.addEventListener("input", () => {
+            if (uploadedImage.src) drawGridImage();
+        });
+
+        document.getElementById("downloadGrid").addEventListener("click", function() {
+            if (!uploadedImage.src) {
+                alert("Please upload an image first.");
+                return;
+            }
+            drawGridImage();
+            const link = document.createElement("a");
+            link.download = "AYARTSTUDIO-Grid.png";
+            link.href = canvas.toDataURL("image/png");
+            link.click();
+        });
+
+        // ===============================
+        // PRACTICE BOX
+        // ===============================
+        const startBtn = document.getElementById("startPractice");
+        const timer = document.getElementById("timer");
+        const text = document.getElementById("practiceText");
+        const challenges = [
+            "Draw Straight Lines", "Draw Circles", "Draw Curved Lines",
+            "Draw Zig-Zag Lines", "Draw Small Boxes", "Draw Fast Strokes", "Draw Spiral Lines"
+        ];
+
+        startBtn.onclick = () => {
+            const random = challenges[Math.floor(Math.random() * challenges.length)];
+            text.innerHTML = "✏ " + random;
+            let time = 15;
+            timer.innerHTML = time;
+            startBtn.disabled = true;
+            const interval = setInterval(() => {
+                time--;
+                timer.innerHTML = time;
+                if (time <= 0) {
+                    clearInterval(interval);
+                    text.innerHTML = "🎉 Practice Complete!";
+                    timer.innerHTML = "✔";
+                    startBtn.disabled = false;
+                    confetti();
+                }
+            }, 1000);
+        };
+
+        function confetti() {
+            const canvas = document.getElementById("confettiCanvas");
+            const ctx = canvas.getContext("2d");
+            canvas.width = window.innerWidth;
+            canvas.height = 220;
+            let pieces = [];
+            for (let i = 0; i < 150; i++) {
+                pieces.push({
+                    x: Math.random() * canvas.width,
+                    y: -20,
+                    r: Math.random() * 8 + 3,
+                    vy: Math.random() * 5 + 2
+                });
+            }
+            let frame = 0;
+
+            function draw() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                pieces.forEach(p => {
+                    ctx.beginPath();
+                    ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+                    ctx.fillStyle = `hsl(${Math.random() * 360},100%,50%)`;
+                    ctx.fill();
+                    p.y += p.vy;
+                });
+                frame++;
+                if (frame < 120) requestAnimationFrame(draw);
+            }
+            draw();
+        }
+
+        // ===============================
+        // FEEDBACK FUNCTIONS (FIXED)
+        // ===============================
+        function submitFeedback() {
+            const user = auth.currentUser;
+            if (!user) {
+                alert('Please login first to leave feedback!');
+                openAuthModal('login');
+                return;
+            }
+
+            const text = document.getElementById('feedbackText').value.trim();
+            const name = document.getElementById('feedbackName').value.trim() || user.displayName || 'Anonymous';
+            const rating = parseInt(document.getElementById('feedbackRating').value) || 0;
+
+            if (!text) {
+                alert('Please write your feedback!');
+                return;
+            }
+
+            if (text.length < 10) {
+                alert('Please write at least 10 characters of feedback.');
+                return;
+            }
+
+            if (rating < 1 || rating > 5) {
+                alert('Please enter a rating between 1 and 5');
+                return;
+            }
+
+            db.collection('feedbacks').add({
+                name: name,
+                text: text,
+                rating: rating,
+                userId: user.uid,
+                userEmail: user.email,
+                createdAt: firebase.firestore.FieldValue.serverTimestamp()
+            })
+            .then(() => {
+                alert('✅ Thank you for your valuable feedback!');
+                document.getElementById('feedbackText').value = '';
+                document.getElementById('feedbackName').value = '';
+                document.getElementById('feedbackRating').value = '';
+                loadFeedbacks();
+            })
+            .catch((error) => {
+                alert('Error submitting feedback: ' + error.message);
+            });
+        }
+
+        function loadFeedbacks() {
+            const feedbackList = document.getElementById('feedbackList');
+            
+            db.collection('feedbacks')
+                .orderBy('createdAt', 'desc')
+                .limit(20)
+                .get()
+                .then((snapshot) => {
+                    if (snapshot.empty) {
+                        feedbackList.innerHTML = '<p style="text-align: center; color: var(--rose-dust); font-size: 0.95rem;">No feedback yet. Be the first to share your experience! 🌟</p>';
+                        return;
+                    }
+
+                    let html = '';
+                    snapshot.forEach((doc) => {
+                        const data = doc.data();
+                        const date = data.createdAt ? data.createdAt.toDate().toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' }) : 'Recently';
+                        const stars = '⭐'.repeat(Math.min(data.rating, 5)) + '☆'.repeat(Math.max(0, 5 - Math.min(data.rating, 5)));
+                        html += `
+                            <div class="feedback-card">
+                                <div class="fb-header">
+                                    <span class="fb-name">${data.name || 'Anonymous'}</span>
+                                    <span class="fb-date">${date}</span>
+                                </div>
+                                <div class="fb-rating">${stars}</div>
+                                <p class="fb-text">${data.text}</p>
+                            </div>
+                        `;
+                    });
+                    feedbackList.innerHTML = html;
+                })
+                .catch((error) => {
+                    console.log('Error loading feedbacks:', error);
+                    feedbackList.innerHTML = '<p style="text-align: center; color: var(--rose-dust); font-size: 0.95rem;">Unable to load feedbacks. Please try again later.</p>';
+                });
+        }
+
+        // Load feedbacks on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            loadFeedbacks();
+        });
+
+        // Reload feedbacks when user logs in/out
+        auth.onAuthStateChanged((user) => {
+            loadFeedbacks();
+        });
+    </script>
+</body>
+</html>

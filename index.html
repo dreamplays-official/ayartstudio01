@@ -709,7 +709,7 @@
             background: rgba(255, 0, 0, 0.25);
         }
 
-        /* === FAQ SECTION (NEW) === */
+        /* === FAQ SECTION === */
         .faq-section {
             padding: 60px 8%;
             background: rgba(25, 0, 25, 0.15);
@@ -747,7 +747,7 @@
             margin: 0;
         }
 
-        /* === FEEDBACK SECTION (NEW) === */
+        /* === FEEDBACK SECTION === */
         .feedback-section {
             padding: 60px 8%;
             background: rgba(25, 0, 25, 0.1);
@@ -862,6 +862,145 @@
             color: #ffb300;
             font-size: 0.9rem;
             letter-spacing: 2px;
+        }
+
+        /* ===== ARTWORK SUBMISSION + COMPETITION + VIDEO GALLERY ===== */
+        .artwork-submission-section {
+            padding: 60px 8%;
+            background: rgba(25, 0, 25, 0.2);
+            border-top: 1px solid rgba(223, 182, 178, 0.05);
+            border-bottom: 1px solid rgba(223, 182, 178, 0.05);
+        }
+        .artwork-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+        .artwork-card {
+            background: rgba(43, 18, 76, 0.35);
+            border: 1px solid rgba(82, 43, 91, 0.4);
+            border-radius: 18px;
+            overflow: hidden;
+            transition: 0.3s;
+        }
+        .artwork-card:hover {
+            border-color: var(--pink-cream);
+            transform: translateY(-6px);
+        }
+        .artwork-card img {
+            width: 100%;
+            aspect-ratio: 1/1;
+            object-fit: cover;
+            display: block;
+            background: #1a1a2e;
+        }
+        .artwork-card .artwork-info {
+            padding: 14px 16px;
+        }
+        .artwork-card .artwork-info h4 {
+            color: var(--pink-cream);
+            font-size: 1rem;
+            margin: 0 0 4px 0;
+        }
+        .artwork-card .artwork-info p {
+            color: var(--pearl-white);
+            opacity: 0.7;
+            font-size: 0.8rem;
+            margin: 0 0 8px 0;
+            word-wrap: break-word;
+        }
+        .artwork-card .artwork-info .artwork-author {
+            color: var(--rose-dust);
+            font-size: 0.75rem;
+        }
+        .artwork-card .comment-section {
+            padding: 10px 16px 16px;
+            border-top: 1px solid rgba(223, 182, 178, 0.08);
+        }
+        .artwork-card .comment-section input {
+            width: 100%;
+            padding: 6px 10px;
+            border-radius: 20px;
+            border: 1px solid rgba(223, 182, 178, 0.2);
+            background: rgba(0,0,0,0.3);
+            color: #fff;
+            font-size: 0.8rem;
+        }
+        .artwork-card .comment-section input::placeholder {
+            color: rgba(255,255,255,0.4);
+        }
+        .artwork-card .comment-section .comment-list {
+            margin-top: 8px;
+            max-height: 80px;
+            overflow-y: auto;
+            font-size: 0.75rem;
+            color: var(--pearl-white);
+            opacity: 0.8;
+        }
+        .artwork-card .comment-section .comment-list div {
+            padding: 4px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.03);
+        }
+
+        .competition-card {
+            background: linear-gradient(135deg, rgba(43, 18, 76, 0.5), rgba(133, 79, 108, 0.3));
+            border: 2px dashed var(--pink-cream);
+            border-radius: 24px;
+            padding: 40px 30px;
+            text-align: center;
+            margin: 30px 0;
+        }
+        .competition-card h3 {
+            color: var(--pink-cream);
+            font-size: 2rem;
+            margin: 0 0 8px 0;
+        }
+        .competition-card .coming-soon-badge {
+            display: inline-block;
+            background: var(--pink-cream);
+            color: var(--purple-darkest);
+            padding: 6px 25px;
+            border-radius: 30px;
+            font-weight: 800;
+            letter-spacing: 3px;
+            font-size: 1.2rem;
+        }
+
+        .video-gallery-section {
+            padding: 60px 8%;
+            background: rgba(25, 0, 25, 0.1);
+            border-bottom: 1px solid rgba(223, 182, 178, 0.05);
+        }
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+        .video-card {
+            background: rgba(43, 18, 76, 0.3);
+            border: 1px solid rgba(82, 43, 91, 0.3);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: 0.3s;
+        }
+        .video-card:hover {
+            border-color: var(--pink-cream);
+            transform: scale(1.02);
+        }
+        .video-card iframe {
+            width: 100%;
+            aspect-ratio: 16/9;
+            border: none;
+        }
+        .video-card .video-info {
+            padding: 12px 16px;
+        }
+        .video-card .video-info h4 {
+            color: #fff;
+            font-size: 0.95rem;
+            margin: 0;
         }
 
         /* === FOOTER === */
@@ -1008,6 +1147,12 @@
             .feedback-form-box .form-row input {
                 min-width: unset;
             }
+            .artwork-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .video-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
         @media (max-width: 480px) {
@@ -1029,6 +1174,27 @@
             .faq-grid {
                 grid-template-columns: 1fr;
             }
+            .artwork-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Loading spinner */
+        .loading-spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            border-top-color: #fff;
+            animation: spin 0.8s ease infinite;
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        .btn-loading {
+            opacity: 0.7;
+            pointer-events: none;
         }
     </style>
 </head>
@@ -1173,7 +1339,6 @@
                 <p class="section-sub-tag">Click any card to enter the learning portal</p>
             </div>
             <div class="modules-grid-deck">
-                <!-- Card 1: Beginner Drawing -->
                 <div class="module-card" onclick="openPortal('portal-beginner')">
                     <div class="card-meta">
                         <i class="fa-solid fa-pencil card-icon"></i>
@@ -1184,7 +1349,6 @@
                     <span class="portal-link">OPEN PORTAL <i class="fa-solid fa-chevron-right"></i></span>
                 </div>
 
-                <!-- Card 2: Daily Practice -->
                 <div class="module-card" onclick="openPortal('portal-daily')">
                     <div class="card-meta">
                         <i class="fa-solid fa-user card-icon"></i>
@@ -1195,7 +1359,6 @@
                     <span class="portal-link">OPEN PORTAL <i class="fa-solid fa-chevron-right"></i></span>
                 </div>
 
-                <!-- Card 3: Shading Master -->
                 <div class="module-card" onclick="openPortal('portal-shading')">
                     <div class="card-meta">
                         <i class="fa-solid fa-graduation-cap card-icon"></i>
@@ -1206,7 +1369,6 @@
                     <span class="portal-link">OPEN PORTAL <i class="fa-solid fa-chevron-right"></i></span>
                 </div>
 
-                <!-- Card 4: Colour Pencil -->
                 <div class="module-card" onclick="openPortal('portal-colour')">
                     <div class="card-meta">
                         <i class="fa-solid fa-palette card-icon"></i>
@@ -1217,7 +1379,6 @@
                     <span class="portal-link">OPEN PORTAL <i class="fa-solid fa-chevron-right"></i></span>
                 </div>
 
-                <!-- Card 5: Fight Anime Art -->
                 <div class="module-card" onclick="openPortal('portal-anime')">
                     <div class="card-meta">
                         <i class="fa-solid fa-fire card-icon"></i>
@@ -1267,9 +1428,67 @@
             </div>
         </section>
 
-        <!-- ============================================================ -->
-        <!-- ===== FAQ SECTION (Footer ke upar) ===== -->
-        <!-- ============================================================ -->
+        <!-- ===== ARTWORK SUBMISSION SECTION ===== -->
+        <section class="artwork-submission-section" id="artworkSection">
+            <div class="section-header-box" style="text-align: center;">
+                <h2 class="section-main-title">🖼️ ARTWORK <span style="color: var(--pearl-white);">GALLERY</span></h2>
+                <p class="section-sub-tag">Submit your artwork with a description and get feedback from the community</p>
+            </div>
+
+            <div style="max-width: 700px; margin: 0 auto 40px; background: rgba(43,18,76,0.3); padding: 30px; border-radius: 20px; border:1px solid rgba(82,43,91,0.3);">
+                <h4 style="color: var(--pink-cream); margin-bottom: 12px;">✍️ Submit Your Artwork</h4>
+                <input type="text" id="artworkTitle" placeholder="Artwork Title" style="width:100%; padding:12px 16px; border-radius:10px; border:1px solid rgba(223,182,178,0.2); background:rgba(0,0,0,0.3); color:#fff; font-size:14px; margin-bottom:12px;">
+                <textarea id="artworkDesc" placeholder="Describe your artwork (materials, inspiration, etc.)" style="width:100%; padding:12px 16px; border-radius:10px; border:1px solid rgba(223,182,178,0.2); background:rgba(0,0,0,0.3); color:#fff; font-size:14px; min-height:80px; margin-bottom:12px; resize:vertical;"></textarea>
+                <input type="file" id="artworkImage" accept="image/*" style="width:100%; padding:8px; border-radius:10px; border:1px solid rgba(223,182,178,0.2); background:rgba(0,0,0,0.3); color:#fff; margin-bottom:12px;">
+                <button onclick="submitArtwork()" class="feedback-submit-btn" style="width:100%;" id="submitArtworkBtn">🚀 Submit Artwork</button>
+                <p style="color: var(--rose-dust); font-size:0.8rem; margin-top:10px; text-align:center;">* You must be logged in to submit | Image auto-compressed for storage</p>
+            </div>
+
+            <div id="artworkGrid" class="artwork-grid">
+                <p style="grid-column:1/-1; text-align:center; color:var(--rose-dust);">No artworks submitted yet. Be the first! 🌟</p>
+            </div>
+        </section>
+
+        <!-- ===== COMPETITION SECTION ===== -->
+        <section class="artwork-submission-section" style="background: rgba(25, 0, 25, 0.15); border-top: none;">
+            <div class="competition-card">
+                <h3>🏆 ART COMPETITION</h3>
+                <div class="coming-soon-badge">COMING SOON</div>
+                <p style="color: var(--pearl-white); opacity:0.8; margin-top: 15px; font-size:1.1rem;">
+                    🗓️ <strong>Oct 5, 2026</strong> — Get ready to showcase your talent!
+                </p>
+                <p style="color: var(--rose-dust); font-size:0.9rem;">Stay tuned for more details. Theme, prizes, and submission guidelines will be announced soon.</p>
+                <div style="margin-top:20px; font-size:2.5rem;">🎨✨</div>
+            </div>
+        </section>
+
+        <!-- ===== VIDEO GALLERY SECTION ===== -->
+        <section class="video-gallery-section" id="videoGallery">
+            <div class="section-header-box" style="text-align: center;">
+                <h2 class="section-main-title">🎬 VIDEO <span style="color: var(--pearl-white);">TUTORIALS</span></h2>
+                <p class="section-sub-tag">Learn from our curated video collection</p>
+            </div>
+            <div id="videoGrid" class="video-grid">
+                <div class="video-card">
+                    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
+                    <div class="video-info"><h4>🎨 Basic Drawing Techniques</h4></div>
+                </div>
+                <div class="video-card">
+                    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
+                    <div class="video-info"><h4>✏️ Shading & Texture</h4></div>
+                </div>
+                <div class="video-card">
+                    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
+                    <div class="video-info"><h4>🔥 Anime Action Poses</h4></div>
+                </div>
+                <div class="video-card">
+                    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
+                    <div class="video-info"><h4>🌈 Color Pencil Mastery</h4></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== FAQ SECTION ===== -->
         <section class="faq-section">
             <div class="section-header-box" style="text-align: center;">
                 <h2 class="section-main-title">❓ FREQUENTLY ASKED <span style="color: var(--pearl-white);">QUESTIONS</span></h2>
@@ -1311,9 +1530,7 @@
             </div>
         </section>
 
-        <!-- ============================================================ -->
-        <!-- ===== FEEDBACK SECTION (Footer ke upar) ===== -->
-        <!-- ============================================================ -->
+        <!-- ===== FEEDBACK SECTION ===== -->
         <section class="feedback-section" id="feedbackSection">
             <div class="feedback-container">
                 <div class="section-header-box" style="text-align: center;">
@@ -1321,7 +1538,6 @@
                     <p class="section-sub-tag">Share your experience and help us improve AYARTSTUDIO</p>
                 </div>
 
-                <!-- Feedback Form -->
                 <div class="feedback-form-box">
                     <h4 style="color: var(--pink-cream); margin-bottom: 15px;">📝 Leave Your Review</h4>
                     <p style="color: var(--pearl-white); opacity: 0.7; font-size: 0.9rem; margin-bottom: 15px;">Your feedback helps us make AYARTSTUDIO better for everyone. Share what you love and what we can improve!</p>
@@ -1334,7 +1550,6 @@
                     <p style="color: var(--rose-dust); font-size: 0.8rem; margin-top: 10px; text-align: center;">* You must be logged in to leave feedback</p>
                 </div>
 
-                <!-- Feedback List -->
                 <h4 style="color: var(--pink-cream); margin-bottom: 15px;">📋 Recent Reviews</h4>
                 <div id="feedbackList" class="feedback-list">
                     <p style="text-align: center; color: var(--rose-dust); font-size: 0.95rem;">No feedback yet. Be the first to share your experience! 🌟</p>
@@ -1504,7 +1719,7 @@
         }
 
         // ===============================
-        // FIREBASE CONFIG (Updated)
+        // FIREBASE CONFIG
         // ===============================
         const firebaseConfig = {
             apiKey: "AIzaSyBmc6BWP4p01e2SXuQkPo7kiSTXYQg3484",
@@ -1611,6 +1826,7 @@
                 userProfile.style.display = 'flex';
                 userDisplayName.textContent = user.displayName || user.email;
                 loadFeedbacks();
+                loadArtworks();
             } else {
                 authButtons.style.display = 'flex';
                 userProfile.style.display = 'none';
@@ -1806,7 +2022,7 @@
         }
 
         // ===============================
-        // FEEDBACK FUNCTIONS (FIXED)
+        // FEEDBACK FUNCTIONS
         // ===============================
         function submitFeedback() {
             const user = auth.currentUser;
@@ -1892,13 +2108,194 @@
                 });
         }
 
-        // Load feedbacks on page load
+        // ===============================
+        // ARTWORK SUBMISSION (Pure Base64 - No Storage)
+        // ===============================
+        function compressImage(file) {
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.readAsDataURL(file);
+                reader.onload = function(e) {
+                    const img = new Image();
+                    img.src = e.target.result;
+                    img.onload = function() {
+                        let width = img.width;
+                        let height = img.height;
+                        // Max dimension 800px for better compression
+                        const maxDim = 800;
+                        if (width > maxDim || height > maxDim) {
+                            if (width > height) {
+                                height = Math.round(height * (maxDim / width));
+                                width = maxDim;
+                            } else {
+                                width = Math.round(width * (maxDim / height));
+                                height = maxDim;
+                            }
+                        }
+                        const canvas = document.createElement('canvas');
+                        canvas.width = width;
+                        canvas.height = height;
+                        const ctx = canvas.getContext('2d');
+                        ctx.drawImage(img, 0, 0, width, height);
+                        // Use quality 0.6 for smaller size
+                        const dataUrl = canvas.toDataURL('image/jpeg', 0.6);
+                        resolve(dataUrl);
+                    };
+                    img.onerror = reject;
+                };
+                reader.onerror = reject;
+            });
+        }
+
+        function submitArtwork() {
+            const user = auth.currentUser;
+            if (!user) {
+                alert('Please login first to submit artwork!');
+                openAuthModal('login');
+                return;
+            }
+
+            const title = document.getElementById('artworkTitle').value.trim();
+            const desc = document.getElementById('artworkDesc').value.trim();
+            const fileInput = document.getElementById('artworkImage');
+            const file = fileInput.files[0];
+            const btn = document.getElementById('submitArtworkBtn');
+
+            if (!title) {
+                alert('Please enter a title for your artwork.');
+                return;
+            }
+            if (!desc) {
+                alert('Please describe your artwork.');
+                return;
+            }
+            if (!file) {
+                alert('Please select an image of your artwork.');
+                return;
+            }
+
+            // Check file size (max 50MB)
+            if (file.size > 50 * 1024 * 1024) {
+                alert('Image size should be less than 50MB.');
+                return;
+            }
+
+            // Show loading state
+            btn.innerHTML = '<span class="loading-spinner"></span> Compressing & Uploading...';
+            btn.disabled = true;
+
+            // Compress and store as base64 in Firestore
+            compressImage(file)
+                .then((compressedDataUrl) => {
+                    return db.collection('artworks').add({
+                        title: title,
+                        description: desc,
+                        image: compressedDataUrl,
+                        userId: user.uid,
+                        userName: user.displayName || user.email,
+                        createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+                        comments: []
+                    });
+                })
+                .then(() => {
+                    alert('✅ Artwork submitted successfully!');
+                    document.getElementById('artworkTitle').value = '';
+                    document.getElementById('artworkDesc').value = '';
+                    fileInput.value = '';
+                    loadArtworks();
+                })
+                .catch((error) => {
+                    alert('Error submitting artwork: ' + error.message);
+                })
+                .finally(() => {
+                    btn.innerHTML = '🚀 Submit Artwork';
+                    btn.disabled = false;
+                });
+        }
+
+        function loadArtworks() {
+            const grid = document.getElementById('artworkGrid');
+            
+            db.collection('artworks')
+                .orderBy('createdAt', 'desc')
+                .limit(30)
+                .get()
+                .then((snapshot) => {
+                    if (snapshot.empty) {
+                        grid.innerHTML = '<p style="grid-column:1/-1; text-align:center; color:var(--rose-dust);">No artworks submitted yet. Be the first! 🌟</p>';
+                        return;
+                    }
+
+                    let html = '';
+                    snapshot.forEach((doc) => {
+                        const data = doc.data();
+                        const date = data.createdAt ? data.createdAt.toDate().toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' }) : 'Recently';
+                        const comments = data.comments || [];
+                        const imageSrc = data.image || 'https://via.placeholder.com/300?text=No+Image';
+                        html += `
+                            <div class="artwork-card" data-id="${doc.id}">
+                                <img src="${imageSrc}" alt="${data.title}" onerror="this.src='https://via.placeholder.com/300?text=Image+Error'">
+                                <div class="artwork-info">
+                                    <h4>${data.title}</h4>
+                                    <p>${data.description}</p>
+                                    <span class="artwork-author">👤 ${data.userName || 'Anonymous'} • ${date}</span>
+                                </div>
+                                <div class="comment-section">
+                                    <input type="text" placeholder="Write a comment..." onkeypress="if(event.key==='Enter') addComment('${doc.id}', this)">
+                                    <div class="comment-list" id="comments-${doc.id}">
+                                        ${comments.map(c => `<div><strong>${c.name}:</strong> ${c.text}</div>`).join('')}
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+                    });
+                    grid.innerHTML = html;
+                })
+                .catch((error) => {
+                    console.log('Error loading artworks:', error);
+                    grid.innerHTML = '<p style="grid-column:1/-1; text-align:center; color:var(--rose-dust);">Unable to load artworks. Please try again later.</p>';
+                });
+        }
+
+        function addComment(artworkId, input) {
+            const user = auth.currentUser;
+            if (!user) {
+                alert('Please login to comment!');
+                openAuthModal('login');
+                return;
+            }
+
+            const text = input.value.trim();
+            if (!text) return;
+
+            const comment = {
+                name: user.displayName || user.email,
+                text: text,
+                timestamp: firebase.firestore.FieldValue.serverTimestamp()
+            };
+
+            db.collection('artworks').doc(artworkId).update({
+                comments: firebase.firestore.FieldValue.arrayUnion(comment)
+            })
+            .then(() => {
+                input.value = '';
+                loadArtworks();
+            })
+            .catch((error) => {
+                alert('Error adding comment: ' + error.message);
+            });
+        }
+
+        // ===============================
+        // LOAD DATA ON PAGE LOAD
+        // ===============================
         document.addEventListener('DOMContentLoaded', function() {
+            loadArtworks();
             loadFeedbacks();
         });
 
-        // Reload feedbacks when user logs in/out
         auth.onAuthStateChanged((user) => {
+            loadArtworks();
             loadFeedbacks();
         });
     </script>

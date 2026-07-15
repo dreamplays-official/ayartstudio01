@@ -1,6 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <style>
+    .lang-toggle-container {
+        position: fixed;
+        top: 20px;
+        right: 80px; /* Adjust according to your hamburger/menu icon position */
+        z-index: 10000;
+    }
+    .lang-btn {
+        background: linear-gradient(135deg, #00ffcc, #00cca3);
+        color: #0b0f19;
+        border: none;
+        padding: 8px 16px;
+        font-size: 0.9rem;
+        font-weight: bold;
+        border-radius: 30px;
+        cursor: pointer;
+        box-shadow: 0 4px 15px rgba(0, 255, 204, 0.3);
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+    }
+    .lang-btn:hover {
+        transform: scale(1.05);
+        box-shadow: 0 6px 20px rgba(0, 255, 204, 0.5);
+    }
+    /* Dynamic Hindi Hide/Show Control */
+    [lang-data="hi"] {
+        display: none;
+    }
+    .hindi-active [lang-data="en"] {
+        display: none;
+    }
+    .hindi-active [lang-data="hi"] {
+        display: display-effect-match; /* Automatically matches block/inline */
+    }
+    </style>
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AYARTSTUDIO - Free Drawing Practice & Grid Maker</title>
@@ -1669,7 +1707,42 @@
                 </div>
             </div>
         </section>
+        <div class="lang-toggle-container">
+    <button class="lang-btn" id="langToggleBtn" onclick="toggleLanguage()">
+        🌐 <span lang-data="en">Translate to Hindi</span><span lang-data="hi">Translate to English</span>
+    </button>
+</div>
 
+<script>
+    // Language Switcher Function
+    function toggleLanguage() {
+        const bodyElement = document.body;
+        bodyElement.classList.toggle('hindi-active');
+        
+        // Save user preference in local storage
+        if(bodyElement.classList.contains('hindi-active')) {
+            localStorage.setItem('ayart_lang', 'hi');
+            // Trigger dynamic elements inside the page if any
+            document.querySelectorAll('[lang-data="hi"]').forEach(el => el.style.display = 'inline-block');
+            document.querySelectorAll('[lang-data="en"]').forEach(el => el.style.display = 'none');
+        } else {
+            localStorage.setItem('ayart_lang', 'en');
+            document.querySelectorAll('[lang-data="en"]').forEach(el => el.style.display = 'inline-block');
+            document.querySelectorAll('[lang-data="hi"]').forEach(el => el.style.display = 'none');
+        }
+    }
+
+    // Check language preference on page load
+    document.addEventListener("DOMContentLoaded", function() {
+        const savedLang = localStorage.getItem('ayart_lang');
+        if(savedLang === 'hi') {
+            document.body.classList.add('hindi-active');
+            document.querySelectorAll('[lang-data="hi"]').forEach(el => el.style.display = 'inline-block');
+            document.querySelectorAll('[lang-data="en"]').forEach(el => el.style.display = 'none');
+        }
+    });
+</script>
+        
         <!-- ===== FOOTER ===== -->
         <footer class="footer-section">
             <div class="footer-grid">
@@ -1697,14 +1770,14 @@
                 <div class="footer-block">
                     <h4>CONNECT</h4>
                     <p class="contact-email">dreamplaysoffficial01@gmail.com</p>
-                    <p class="contact-email">yugankvishnoi@gmail.com</p>
+                    <p class="contact-email">dreamplaysofficial02@gmail.com</p>
                     <div class="social-links">
                         <a href="https://youtube.com/@artarnav-a77?si=zpRnr5szbd_wOOmT" target="_blank" class="yt-link-btn"><i class="fa-brands fa-youtube"></i> YouTube Channel</a>
                     </div>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2026 AYART STUDIO. Engineered by Arnav & Yuvank. All Rights Reserved.</p>
+                <p>&copy; 2026 AYART STUDIO. Engineered by Arnav & Yugank. All Rights Reserved.</p>
             </div>
         </footer>
     </div>

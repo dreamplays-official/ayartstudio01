@@ -1524,7 +1524,7 @@
                         Your browser does not support the video tag.
                     </video>
                     <div class="video-info">
-                        <h4>🎨 Basic Drawing Techniques</h4>
+                        <h4> How to use grid tool </h4>
                         <p>Learn the fundamentals of drawing with simple exercises.</p>
                     </div>
                 </div>
@@ -1714,35 +1714,129 @@
 </div>
 
 <script>
-    // Language Switcher Function
-    function toggleLanguage() {
-        const bodyElement = document.body;
-        bodyElement.classList.toggle('hindi-active');
+    <style>
+    .lang-toggle-container {
+        position: fixed;
+        bottom: 90px; /* Video button ke upar set kiya hai taaki mix na ho */
+        right: 20px;
+        z-index: 9999;
+    }
+    .lang-btn {
+        background: linear-gradient(135deg, #00ffcc, #00cca3);
+        color: #0b0f19;
+        border: none;
+        padding: 12px 20px;
+        font-size: 0.95rem;
+        font-weight: bold;
+        border-radius: 30px;
+        cursor: pointer;
+        box-shadow: 0 4px 15px rgba(0, 255, 204, 0.4);
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+    .lang-btn:hover {
+        transform: scale(1.05);
+        box-shadow: 0 6px 20px rgba(0, 255, 204, 0.6);
+    }
+</style>
+
+<div class="lang-toggle-container">
+    <button class="lang-btn" id="langToggleBtn" onclick="toggleLanguageSystem()">
+        🌐 <span id="lang-btn-text">Translate to Hindi</span>
+    </button>
+</div>
+
+<script>
+    // Dictionary setup for instant replacement without breaking layouts
+    const translationDictionary = {
+        // Main Headings & Navbar Elements
+        "Free Drawing Practice & Grid Maker": "फ्री ड्राइंग प्रैक्टिस और ग्रिड मेकर",
+        "Premium Video Lessons": "प्रीमियम वीडियो लेसन्स",
+        "Video Lessons & Steps": "वीडियो लेसन्स और स्टेप्स",
+        "Drawing Competition": "ड्राइंग कॉम्पिटिशन",
+        "Dream ID Dashboard": "ड्रीम आईडी डैशबोर्ड",
+        "Submit Your Artwork": "अपनी आर्टवर्क सबमिट करें",
+        "India Live Student Gallery": "इंडिया लाइव स्टूडेंट गैलरी",
+        "Your Daily Art Streak Tracker": "आपका डेली आर्ट स्ट्रीक ट्रैकर",
+        "Professional Art Color Palettes": "प्रोफेशनल आर्ट कलर पैलेट्स",
         
-        // Save user preference in local storage
-        if(bodyElement.classList.contains('hindi-active')) {
-            localStorage.setItem('ayart_lang', 'hi');
-            // Trigger dynamic elements inside the page if any
-            document.querySelectorAll('[lang-data="hi"]').forEach(el => el.style.display = 'inline-block');
-            document.querySelectorAll('[lang-data="en"]').forEach(el => el.style.display = 'none');
+        // Descriptions & Steps
+        "Mastering Shading": "शेडिंग में मास्टर बनें",
+        "Learn core fundamentals of light orientation and pencil gradients.": "प्रकाश की दिशा और पेंसिल ग्रेडिएंट्स के बुनियादी नियम सीखें।",
+        "Anime Face Mapping": "एनीमे फेस मैपिंग",
+        "Structural mapping guides for perfect proportions and head axis scales.": "परफेक्ट अनुपात और हेड एक्सिस स्केल के लिए स्ट्रक्चरल मैपिंग गाइड्स।",
+        "Advanced Grid Method": "एडवांस्ड ग्रिड मेथड",
+        "Scale and translate complex visual references with mathematical grid boxes.": "मैथमेटिकल ग्रिड बॉक्स के साथ कठिन विज़ुअल रेफरेन्स को स्केल और ड्रा करें।",
+        "Watch Full Tutorial Video": "▶ पूरी ट्यूटोरियल वीडियो देखें",
+        
+        // Buttons & Placeholders
+        "Initialize Dashboard": "डैशबोर्ड चालू करें",
+        "Save Settings": "सेटिंग्स सेव करें",
+        "Exit Account": "अकाउंट से बाहर निकलें",
+        "Submit Live to Web Feed": "वेब फीड पर लाइव सबमिट करें",
+        "Access Student Dashboard via Dream ID": "ड्रीम आईडी के माध्यम से स्टूडेंट डैशबोर्ड खोलें",
+        
+        // Alerts
+        "Daily Drawing Challenge": "🎯 डेली ड्राइंग चैलेंज"
+    };
+
+    // Reverse Dictionary for switching back to English
+    const englishDictionary = {};
+    for (let key in translationDictionary) {
+        englishDictionary[translationDictionary[key]] = key;
+    }
+
+    let currentLanguage = localStorage.getItem('ayart_lang') || 'en';
+
+    function applyTranslation(dict) {
+        // Function to traverse text nodes safely without destroying event listeners or structures
+        function walkElements(node) {
+            if (node.nodeType === Node.TEXT_NODE) {
+                let trimmed = node.nodeValue.trim();
+                if (dict[trimmed]) {
+                    node.nodeValue = node.nodeValue.replace(trimmed, dict[trimmed]);
+                }
+            }
+            for (let i = 0; i < node.childNodes.length; i++) {
+                walkElements(node.childNodes[i]);
+            }
+        }
+        walkElements(document.body);
+    }
+
+    function updateButtonText() {
+        const btnText = document.getElementById('lang-btn-text');
+        if (currentLanguage === 'hi') {
+            btnText.innerText = "Translate to English";
         } else {
-            localStorage.setItem('ayart_lang', 'en');
-            document.querySelectorAll('[lang-data="en"]').forEach(el => el.style.display = 'inline-block');
-            document.querySelectorAll('[lang-data="hi"]').forEach(el => el.style.display = 'none');
+            btnText.innerText = "Translate to Hindi";
         }
     }
 
-    // Check language preference on page load
+    function toggleLanguageSystem() {
+        if (currentLanguage === 'en') {
+            applyTranslation(translationDictionary);
+            currentLanguage = 'hi';
+        } else {
+            applyTranslation(englishDictionary);
+            currentLanguage = 'en';
+        }
+        localStorage.setItem('ayart_lang', currentLanguage);
+        updateButtonText();
+    }
+
+    // Load user preference on refresh smoothly
     document.addEventListener("DOMContentLoaded", function() {
-        const savedLang = localStorage.getItem('ayart_lang');
-        if(savedLang === 'hi') {
-            document.body.classList.add('hindi-active');
-            document.querySelectorAll('[lang-data="hi"]').forEach(el => el.style.display = 'inline-block');
-            document.querySelectorAll('[lang-data="en"]').forEach(el => el.style.display = 'none');
+        if (localStorage.getItem('ayart_lang') === 'hi') {
+            // Apply translation if language was previously set to Hindi
+            applyTranslation(translationDictionary);
+            currentLanguage = 'hi';
+            updateButtonText();
         }
     });
 </script>
-        
         <!-- ===== FOOTER ===== -->
         <footer class="footer-section">
             <div class="footer-grid">

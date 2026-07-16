@@ -1,49 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <style>
-    .lang-toggle-container {
-        position: fixed;
-        top: 20px;
-        right: 80px; /* Adjust according to your hamburger/menu icon position */
-        z-index: 10000;
-    }
-    .lang-btn {
-        background: linear-gradient(135deg, #00ffcc, #00cca3);
-        color: #0b0f19;
-        border: none;
-        padding: 8px 16px;
-        font-size: 0.9rem;
-        font-weight: bold;
-        border-radius: 30px;
-        cursor: pointer;
-        box-shadow: 0 4px 15px rgba(0, 255, 204, 0.3);
-        transition: all 0.3s ease;
-        display: flex;
-        align-items: center;
-        gap: 6px;
-    }
-    .lang-btn:hover {
-        transform: scale(1.05);
-        box-shadow: 0 6px 20px rgba(0, 255, 204, 0.5);
-    }
-    /* Dynamic Hindi Hide/Show Control */
-    [lang-data="hi"] {
-        display: none;
-    }
-    .hindi-active [lang-data="en"] {
-        display: none;
-    }
-    .hindi-active [lang-data="hi"] {
-        display: display-effect-match; /* Automatically matches block/inline */
-    }
-    </style>
-    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AYARTSTUDIO - Free Drawing Practice & Grid Maker</title>
-    <meta name="description" content="Practice drawing online with free Grid Maker, drawing exercises, anime sketch practice, perspective training and artist tools.">
-    <meta name="keywords" content="drawing, drawing practice, grid maker, anime drawing, sketch practice, artist tools, free drawing website, drawing grid, online drawing">
+    <title>AYARTSTUDIO - India's #1 Free Drawing Learning Platform</title>
+    <meta name="description" content="India's top free drawing learning platform. Practice drawing online with Grid Maker, anime sketch practice, perspective training & professional artist tools.">
+    <meta name="keywords" content="drawing, drawing practice, grid maker, anime drawing, sketch practice, artist tools, free drawing website, India drawing platform, online drawing classes">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://dreamplays-official.github.io/ayartstudio01/">
     
@@ -67,7 +29,6 @@
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
 
     <style>
-        /* ===== COMPLETE CSS ===== */
         :root {
             --purple-darkest: #190019;
             --purple-midnight: #2B124C;
@@ -95,7 +56,6 @@
             width: 100%;
         }
 
-        /* === NAVBAR === */
         .navbar {
             display: flex;
             justify-content: space-between;
@@ -132,7 +92,6 @@
             margin-left: 4px;
         }
 
-        /* === AUTH AREA === */
         .auth-area {
             display: flex;
             align-items: center;
@@ -205,7 +164,6 @@
             border-radius: 2px;
         }
 
-        /* === HERO === */
         .hero-section {
             display: flex;
             align-items: center;
@@ -289,7 +247,27 @@
             box-shadow: 0 6px 20px rgba(99, 102, 241, 0.6);
         }
 
-        /* === 3D CUBE === */
+        .google-form-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, #4285F4, #34A853);
+            color: #fff !important;
+            padding: 14px 30px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.95rem;
+            transition: 0.3s;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(66, 133, 244, 0.4);
+        }
+        .google-form-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(66, 133, 244, 0.6);
+        }
+
         .scene3d {
             width: 260px;
             height: 260px;
@@ -329,7 +307,6 @@
             100% { transform: rotateX(360deg) rotateY(360deg); }
         }
 
-        /* === MODULES === */
         .modules-section {
             padding: 80px 8%;
             background: rgba(25, 0, 25, 0.25);
@@ -339,11 +316,14 @@
             margin-bottom: 50px;
         }
         .section-main-title {
-            font-size: 2rem;
+            font-size: 2.2rem;
             font-weight: 800;
             letter-spacing: 2px;
             color: var(--pink-cream);
             margin: 0 0 8px 0;
+        }
+        .section-main-title .highlight {
+            color: var(--pearl-white);
         }
         .section-sub-tag {
             color: var(--rose-dust);
@@ -352,13 +332,13 @@
         }
         .modules-grid-deck {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 25px;
         }
         .module-card {
             background: rgba(43, 18, 76, 0.35);
             border: 1px solid rgba(82, 43, 91, 0.5);
-            padding: 35px 25px;
+            padding: 30px 25px;
             border-radius: 28px;
             cursor: pointer;
             transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -372,10 +352,10 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
         .card-icon {
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             color: var(--pink-cream);
         }
         .card-index {
@@ -387,13 +367,13 @@
             font-weight: 700;
         }
         .module-card h3 {
-            margin: 0 0 12px 0;
+            margin: 0 0 10px 0;
             font-size: 1.3rem;
             font-weight: 700;
             color: #fff;
         }
         .module-card p {
-            margin: 0 0 25px 0;
+            margin: 0 0 20px 0;
             font-size: 0.9rem;
             color: var(--pearl-white);
             opacity: 0.85;
@@ -409,7 +389,6 @@
             letter-spacing: 1px;
         }
 
-        /* === PORTALS === */
         .portal-overlay {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -457,23 +436,23 @@
         }
         .portal-body-layout {
             display: grid;
-            grid-template-columns: 1.3fr 1fr;
+            grid-template-columns: 1.5fr 1fr;
             gap: 40px;
             align-items: start;
         }
         .portal-steps-list {
             display: flex;
             flex-direction: column;
-            gap: 25px;
+            gap: 20px;
         }
         .step-item {
             background: rgba(43, 18, 76, 0.4);
             border-left: 4px solid var(--pink-cream);
-            padding: 20px 22px;
+            padding: 18px 22px;
             border-radius: 0 16px 16px 0;
         }
         .step-item h5 {
-            margin: 0 0 8px 0;
+            margin: 0 0 6px 0;
             font-size: 1.1rem;
             color: var(--pink-cream);
         }
@@ -486,7 +465,7 @@
         }
         .portal-media-frame {
             width: 100%;
-            border-radius: 24px;
+            border-radius: 20px;
             overflow: hidden;
             border: 1px solid rgba(223, 182, 178, 0.15);
         }
@@ -494,9 +473,9 @@
             width: 100%;
             height: auto;
             display: block;
+            margin-bottom: 15px;
         }
 
-        /* === PRACTICE BOX === */
         .practice-box {
             margin: 40px auto;
             max-width: 900px;
@@ -531,7 +510,6 @@
             display: block;
         }
 
-        /* === GRID MAKER === */
         .grid-maker-section {
             width: 100%;
             max-width: 1200px;
@@ -612,7 +590,6 @@
             font-weight: 600;
         }
 
-        /* === MODAL (Auth + Dashboard) === */
         .modal-wrapper {
             display: none;
             position: fixed;
@@ -695,59 +672,78 @@
             box-shadow: 0 6px 20px rgba(223, 182, 178, 0.3);
         }
 
-        /* Dashboard */
-        .dashboard-box {
-            max-width: 480px !important;
+        .syllabus-section {
+            padding: 60px 8%;
+            background: rgba(25, 0, 25, 0.15);
+            border-bottom: 1px solid rgba(223, 182, 178, 0.05);
         }
-        .dashboard-stats {
+        .syllabus-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            gap: 12px;
-            margin: 20px 0;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 30px auto 0;
         }
-        .stat-card {
-            background: rgba(25, 0, 25, 0.3);
-            border: 1px solid rgba(223, 182, 178, 0.1);
-            border-radius: 14px;
-            padding: 15px 10px;
+        .syllabus-card {
+            background: rgba(43, 18, 76, 0.3);
+            border: 1px solid rgba(82, 43, 91, 0.3);
+            border-radius: 16px;
+            padding: 20px;
             text-align: center;
+            transition: 0.3s;
+            cursor: pointer;
+            overflow: hidden;
         }
-        .stat-card i {
-            font-size: 24px;
+        .syllabus-card:hover {
+            border-color: var(--pink-cream);
+            transform: translateY(-4px);
+        }
+        .syllabus-card .syllabus-img {
+            width: 100%;
+            height: 140px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 12px;
+            background: #1a1a2e;
+        }
+        .syllabus-card .class-number {
+            font-size: 2rem;
+            font-weight: 900;
             color: var(--pink-cream);
-            margin-bottom: 6px;
             display: block;
         }
-        .stat-card h4 {
-            margin: 0;
-            font-size: 11px;
-            color: var(--rose-dust);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        .stat-card p {
-            margin: 4px 0 0 0;
-            font-size: 17px;
-            font-weight: 700;
+        .syllabus-card h4 {
             color: #fff;
+            margin: 8px 0 4px;
+            font-size: 1rem;
         }
-        .logout-btn {
-            width: 100%;
-            padding: 12px;
-            background: rgba(255, 0, 0, 0.15);
-            border: 1px solid rgba(255, 0, 0, 0.3);
-            border-radius: 10px;
-            color: #ff6b6b;
-            font-weight: 600;
-            cursor: pointer;
-            transition: 0.3s;
-            font-size: 15px;
+        .syllabus-card p {
+            color: var(--pearl-white);
+            opacity: 0.7;
+            font-size: 0.82rem;
+            margin: 0 0 8px;
+            line-height: 1.5;
         }
-        .logout-btn:hover {
-            background: rgba(255, 0, 0, 0.25);
+        .syllabus-card .status-badge {
+            display: inline-block;
+            padding: 3px 12px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 700;
+        }
+        .status-badge.completed {
+            background: #00ff88;
+            color: #0b0f19;
+        }
+        .status-badge.in-progress {
+            background: #ffb300;
+            color: #0b0f19;
+        }
+        .status-badge.locked {
+            background: rgba(255,255,255,0.1);
+            color: var(--rose-dust);
         }
 
-        /* === FAQ SECTION === */
         .faq-section {
             padding: 60px 8%;
             background: rgba(25, 0, 25, 0.15);
@@ -785,7 +781,6 @@
             margin: 0;
         }
 
-        /* === FEEDBACK SECTION === */
         .feedback-section {
             padding: 60px 8%;
             background: rgba(25, 0, 25, 0.1);
@@ -856,7 +851,6 @@
             box-shadow: 0 6px 20px rgba(223, 182, 178, 0.3);
         }
 
-        /* === FEEDBACK LIST === */
         .feedback-list {
             display: flex;
             flex-direction: column;
@@ -902,7 +896,6 @@
             letter-spacing: 2px;
         }
 
-        /* ===== ARTWORK SUBMISSION + COMPETITION ===== */
         .artwork-submission-section {
             padding: 60px 8%;
             background: rgba(25, 0, 25, 0.2);
@@ -1005,7 +998,6 @@
             font-size: 1.2rem;
         }
 
-        /* ===== VIDEO GALLERY SECTION ===== */
         .video-gallery-section {
             padding: 60px 8%;
             background: rgba(25, 0, 25, 0.1);
@@ -1051,7 +1043,6 @@
             margin-top: 4px;
         }
 
-        /* === FOOTER === */
         .footer-section {
             background: #0f000f;
             padding: 60px 8% 30px 8%;
@@ -1113,7 +1104,248 @@
             font-size: 0.85rem;
         }
 
-        /* === RESPONSIVE === */
+        .dashboard-page {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--purple-darkest) 0%, var(--purple-midnight) 45%, var(--purple-plum) 80%, var(--rose-dust) 100%);
+            z-index: 99999;
+            overflow-y: auto;
+            padding: 30px 5%;
+        }
+        .dashboard-page.active {
+            display: block;
+        }
+        .dashboard-page .dash-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            border-bottom: 1px solid rgba(223, 182, 178, 0.1);
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        .dashboard-page .dash-header h1 {
+            color: #fff;
+            font-size: 2rem;
+            margin: 0;
+        }
+        .dashboard-page .dash-header h1 span {
+            color: var(--pink-cream);
+        }
+        .dashboard-page .dash-close-btn {
+            background: rgba(223, 182, 178, 0.1);
+            border: 1px solid var(--pink-cream);
+            color: var(--pink-cream);
+            padding: 10px 25px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 700;
+            transition: 0.3s;
+        }
+        .dashboard-page .dash-close-btn:hover {
+            background: var(--pink-cream);
+            color: var(--purple-darkest);
+        }
+        .dash-stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        .dash-stat-card {
+            background: rgba(43, 18, 76, 0.4);
+            border: 1px solid rgba(82, 43, 91, 0.3);
+            border-radius: 16px;
+            padding: 25px 20px;
+            text-align: center;
+            transition: 0.3s;
+        }
+        .dash-stat-card:hover {
+            border-color: var(--pink-cream);
+            transform: translateY(-4px);
+        }
+        .dash-stat-card i {
+            font-size: 2.5rem;
+            color: var(--pink-cream);
+            margin-bottom: 10px;
+            display: block;
+        }
+        .dash-stat-card .stat-number {
+            font-size: 2.2rem;
+            font-weight: 900;
+            color: #fff;
+            display: block;
+        }
+        .dash-stat-card .stat-label {
+            font-size: 0.85rem;
+            color: var(--rose-dust);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 4px;
+            display: block;
+        }
+        .dash-artworks-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .dash-artwork-item {
+            background: rgba(43, 18, 76, 0.3);
+            border: 1px solid rgba(82, 43, 91, 0.3);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: 0.3s;
+        }
+        .dash-artwork-item:hover {
+            border-color: var(--pink-cream);
+        }
+        .dash-artwork-item img {
+            width: 100%;
+            aspect-ratio: 1/1;
+            object-fit: cover;
+            display: block;
+        }
+        .dash-artwork-item .info {
+            padding: 10px 12px;
+        }
+        .dash-artwork-item .info h5 {
+            color: var(--pink-cream);
+            font-size: 0.9rem;
+            margin: 0;
+        }
+        .dash-artwork-item .info p {
+            color: var(--pearl-white);
+            opacity: 0.6;
+            font-size: 0.75rem;
+            margin: 4px 0 0;
+        }
+
+        .level-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #ffd700, #ff6b00);
+            color: #fff;
+            padding: 4px 16px;
+            border-radius: 20px;
+            font-weight: 800;
+            font-size: 0.85rem;
+        }
+
+        .xp-bar-container {
+            background: rgba(43, 18, 76, 0.3);
+            border-radius: 30px;
+            padding: 4px;
+            margin: 20px 0;
+            border: 1px solid rgba(82, 43, 91, 0.3);
+        }
+        .xp-bar-fill {
+            height: 20px;
+            border-radius: 30px;
+            background: linear-gradient(90deg, #00ffcc, #6366f1, #a855f7);
+            transition: width 0.8s ease;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 10px;
+            color: #fff;
+            font-weight: 700;
+            font-size: 0.75rem;
+            min-width: 30px;
+        }
+
+        .certificate-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.85);
+            z-index: 999999;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .certificate-modal.active {
+            display: flex;
+        }
+        .certificate-box {
+            background: #fff;
+            padding: 40px;
+            border-radius: 20px;
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 30px 80px rgba(0,0,0,0.8);
+        }
+        .certificate-box h2 {
+            color: #2B124C;
+            font-size: 2rem;
+            margin: 0 0 10px;
+        }
+        .certificate-box .cert-badge {
+            font-size: 4rem;
+            margin: 10px 0;
+        }
+        .certificate-box p {
+            color: #333;
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+        .certificate-box .cert-name {
+            color: #854F6C;
+            font-weight: 900;
+            font-size: 1.4rem;
+        }
+        .certificate-box .cert-date {
+            color: #888;
+            font-size: 0.9rem;
+        }
+        .certificate-box .download-cert-btn {
+            background: linear-gradient(135deg, #2B124C, #854F6C);
+            color: #fff;
+            border: none;
+            padding: 14px 35px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: 0.3s;
+        }
+        .certificate-box .download-cert-btn:hover {
+            transform: scale(1.05);
+        }
+        .certificate-box .close-cert-btn {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 2rem;
+            cursor: pointer;
+            color: #888;
+            background: none;
+            border: none;
+        }
+
+        .loading-spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            border-top-color: #fff;
+            animation: spin 0.8s ease infinite;
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
         @media (max-width: 992px) {
             .hero-section {
                 flex-direction: column;
@@ -1175,9 +1407,6 @@
             .modules-grid-deck {
                 grid-template-columns: 1fr 1fr;
             }
-            .dashboard-stats {
-                grid-template-columns: 1fr 1fr;
-            }
             .grid-card {
                 flex-direction: column;
                 align-items: center;
@@ -1200,6 +1429,12 @@
             }
             .video-grid {
                 grid-template-columns: 1fr;
+            }
+            .dash-stats-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .syllabus-grid {
+                grid-template-columns: 1fr 1fr;
             }
         }
 
@@ -1225,24 +1460,15 @@
             .artwork-grid {
                 grid-template-columns: 1fr;
             }
-        }
-
-        /* Loading spinner */
-        .loading-spinner {
-            display: inline-block;
-            width: 20px;
-            height: 20px;
-            border: 3px solid rgba(255,255,255,0.3);
-            border-radius: 50%;
-            border-top-color: #fff;
-            animation: spin 0.8s ease infinite;
-        }
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-        .btn-loading {
-            opacity: 0.7;
-            pointer-events: none;
+            .dash-stats-grid {
+                grid-template-columns: 1fr;
+            }
+            .dash-artworks-grid {
+                grid-template-columns: 1fr;
+            }
+            .syllabus-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -1255,13 +1481,12 @@
                 <div class="logo">AYART<span>STUDIO</span></div>
             </div>
 
-            <!-- Auth Area -->
             <div id="authArea" class="auth-area">
                 <div id="authButtons" style="display: flex; gap: 8px; align-items: center;">
                     <button class="auth-btn" onclick="openAuthModal('login')">Login</button>
                     <button class="auth-btn auth-btn-primary" onclick="openAuthModal('register')">Sign Up</button>
                 </div>
-                <div id="userProfile" onclick="openDashboard()">
+                <div id="userProfile" onclick="openDashboardPage()">
                     <i class="fa-solid fa-user-circle"></i>
                     <span id="userDisplayName">Username</span>
                     <i class="fa-solid fa-chevron-down" style="color: var(--pink-cream); font-size: 10px;"></i>
@@ -1316,48 +1541,13 @@
             </div>
         </div>
 
-        <!-- ===== DASHBOARD MODAL ===== -->
-        <div id="dashboardModal" class="modal-wrapper">
-            <div class="modal-box dashboard-box">
-                <span class="modal-close" onclick="closeDashboard()">&times;</span>
-                <h3>👤 <span id="dashboardUserName">User</span>'s Dashboard</h3>
-                <div class="dashboard-stats">
-                    <div class="stat-card">
-                        <i class="fa-solid fa-certificate"></i>
-                        <div>
-                            <h4>Certificates</h4>
-                            <p id="certCount">0</p>
-                        </div>
-                    </div>
-                    <div class="stat-card">
-                        <i class="fa-solid fa-fire"></i>
-                        <div>
-                            <h4>Streak</h4>
-                            <p id="streakCount">0 days</p>
-                        </div>
-                    </div>
-                    <div class="stat-card">
-                        <i class="fa-solid fa-trophy"></i>
-                        <div>
-                            <h4>Artworks</h4>
-                            <p id="artworkCount">0</p>
-                        </div>
-                    </div>
-                </div>
-                <button class="logout-btn" onclick="handleLogout()"><i class="fa-solid fa-sign-out-alt"></i> Logout</button>
-                <p style="text-align: center; margin-top: 15px; font-size: 13px; color: var(--rose-dust);">
-                    More features coming soon! 🚀
-                </p>
-            </div>
-        </div>
-
         <!-- ===== HERO ===== -->
         <header class="hero-section">
             <div class="hero-content">
-                <p class="tagline">DRAW • CREATE • LEARN</p>
+                <p class="tagline">🇮🇳 INDIA'S #1 DRAWING PLATFORM</p>
                 <h1>Where Art Meets <br><span class="gradient-text">Pure Passion</span></h1>
                 <p class="hero-thought">
-                    "Every line you draw is a step toward finding your own voice. Art isn't just about perfection; it's about translating your imagination into reality, one stroke at a time."
+                    "Every line you draw is a step toward finding your own voice. Art isn't just about perfection; it's about translating your imagination into reality, one stroke at a time. At AYARTSTUDIO, we believe that every Indian has an artist hidden inside them waiting to be discovered."
                 </p>
                 <div class="cta-group">
                     <button class="btn-primary" onclick="document.getElementById('modules').scrollIntoView({behavior: 'smooth'})">
@@ -1366,6 +1556,9 @@
                     <a href="https://appsgeyser.io/19965695/AyartStudio01" target="_blank" class="btn-app">
                         <i class="fa-brands fa-android"></i> DOWNLOAD APP
                     </a>
+                    <button class="google-form-btn" onclick="openGoogleForm()">
+                        <i class="fa-solid fa-google"></i> Submit Artwork
+                    </button>
                 </div>
             </div>
             <div class="scene3d">
@@ -1375,7 +1568,7 @@
                     <div class="cube-face left">DRAW</div>
                     <div class="cube-face right">LEARN</div>
                     <div class="cube-face top">CREATE</div>
-                    <div class="cube-face bottom">SYSTEMS</div>
+                    <div class="cube-face bottom">INDIA</div>
                 </div>
             </div>
         </header>
@@ -1383,8 +1576,8 @@
         <!-- ===== MODULES ===== -->
         <section id="modules" class="modules-section">
             <div class="section-header-box">
-                <h2 class="section-main-title">FEATURED ART MODULES</h2>
-                <p class="section-sub-tag">Click any card to enter the learning portal</p>
+                <h2 class="section-main-title">🎨 FEATURED <span class="highlight">ART MODULES</span></h2>
+                <p class="section-sub-tag">Click any card to enter the learning portal - 500+ words of expert content inside</p>
             </div>
             <div class="modules-grid-deck">
                 <div class="module-card" onclick="openPortal('portal-beginner')">
@@ -1393,7 +1586,7 @@
                         <span class="card-index">01</span>
                     </div>
                     <h3>Beginner Drawing</h3>
-                    <p>Master fundamental line metrics, baseline structural symmetry, and standard geometric form maps. Learn essential pencil gripping techniques, basic shape construction, and how to build confidence in your first strokes. This module covers everything from holding the pencil correctly to creating your first complete sketch with proper proportions and balanced compositions.</p>
+                    <p>Master fundamental line metrics, baseline structural symmetry, and standard geometric form maps. Learn essential pencil gripping techniques and basic shape construction.</p>
                     <span class="portal-link">OPEN PORTAL <i class="fa-solid fa-chevron-right"></i></span>
                 </div>
 
@@ -1403,7 +1596,7 @@
                         <span class="card-index">02</span>
                     </div>
                     <h3>Daily Practice</h3>
-                    <p>Learn core bone alignments, dynamic gesture rendering, and kinetic profile proportions. Develop a daily sketching routine that builds muscle memory and improves hand-eye coordination. This module includes timed exercises, gesture drawing techniques, and structured practice sessions to accelerate your artistic growth and track your improvement over time.</p>
+                    <p>Learn core bone alignments, dynamic gesture rendering, and kinetic profile proportions. Develop a daily sketching routine that builds muscle memory.</p>
                     <span class="portal-link">OPEN PORTAL <i class="fa-solid fa-chevron-right"></i></span>
                 </div>
 
@@ -1413,7 +1606,7 @@
                         <span class="card-index">03</span>
                     </div>
                     <h3>Shading Master</h3>
-                    <p>Master lights, depth, and smooth continuous gradient shading mechanics under ambient matrices. Learn the secrets of realistic shading including hatching, cross-hatching, stippling, and blending techniques. Understand how light interacts with different surfaces, create dramatic contrasts, and bring your drawings to life with professional-level shading that adds depth and dimension.</p>
+                    <p>Master lights, depth, and smooth continuous gradient shading mechanics. Learn hatching, cross-hatching, stippling, and professional blending techniques.</p>
                     <span class="portal-link">OPEN PORTAL <i class="fa-solid fa-chevron-right"></i></span>
                 </div>
 
@@ -1423,7 +1616,7 @@
                         <span class="card-index">04</span>
                     </div>
                     <h3>Colour Pencil</h3>
-                    <p>Blend vibrant layout pigments, micro tonal changes, and rich hyper-realistic artwork depths. Master color theory, layering techniques, burnishing, and creating smooth transitions between hues. This module teaches you how to choose the right color combinations, create realistic textures, and produce stunning colored pencil artworks that look like paintings.</p>
+                    <p>Blend vibrant layout pigments, micro tonal changes, and rich hyper-realistic artwork depths. Master color theory, layering, and burnishing techniques.</p>
                     <span class="portal-link">OPEN PORTAL <i class="fa-solid fa-chevron-right"></i></span>
                 </div>
 
@@ -1433,7 +1626,7 @@
                         <span class="card-index">05</span>
                     </div>
                     <h3>Fight Anime Art</h3>
-                    <p>Design extreme battle poses, energetic perspective angles, and dynamic manga action lines. Learn how to create explosive action sequences, dramatic impact frames, and powerful character expressions. This module covers dynamic anatomy, speed lines, impact effects, and all the techniques needed to draw professional-quality anime fight scenes.</p>
+                    <p>Design extreme battle poses, energetic perspective angles, and dynamic manga action lines. Learn to create explosive action sequences like a pro.</p>
                     <span class="portal-link">OPEN PORTAL <i class="fa-solid fa-chevron-right"></i></span>
                 </div>
             </div>
@@ -1476,10 +1669,19 @@
             </div>
         </section>
 
+        <!-- ===== SYLLABUS SECTION ===== -->
+        <section class="syllabus-section" id="syllabusSection">
+            <div class="section-header-box" style="text-align: center;">
+                <h2 class="section-main-title">📚 ART SYLLABUS <span class="highlight">(Class 1 to 12)</span></h2>
+                <p class="section-sub-tag">Structured curriculum for every skill level - Click to learn more</p>
+            </div>
+            <div class="syllabus-grid" id="syllabusGrid"></div>
+        </section>
+
         <!-- ===== ARTWORK SUBMISSION SECTION ===== -->
         <section class="artwork-submission-section" id="artworkSection">
             <div class="section-header-box" style="text-align: center;">
-                <h2 class="section-main-title">🖼️ ARTWORK <span style="color: var(--pearl-white);">GALLERY</span></h2>
+                <h2 class="section-main-title">🖼️ ARTWORK <span class="highlight">GALLERY</span></h2>
                 <p class="section-sub-tag">Submit your artwork with a description and get feedback from the community</p>
             </div>
 
@@ -1510,26 +1712,23 @@
             </div>
         </section>
 
-        <!-- ===== VIDEO GALLERY SECTION (DIRECT 10 VIDEOS) ===== -->
+        <!-- ===== VIDEO GALLERY SECTION ===== -->
         <section class="video-gallery-section" id="videoGallery">
             <div class="section-header-box" style="text-align: center;">
-                <h2 class="section-main-title">🎬 VIDEO <span style="color: var(--pearl-white);">TUTORIALS</span></h2>
+                <h2 class="section-main-title">🎬 VIDEO <span class="highlight">TUTORIALS</span></h2>
                 <p class="section-sub-tag">Learn from our curated video collection</p>
             </div>
             <div class="video-grid">
-                <!-- Video 1 -->
                 <div class="video-card">
                     <video controls preload="metadata">
                         <source src="video1.mp4" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
                     <div class="video-info">
-                        <h4> How to use grid tool </h4>
+                        <h4>How to use grid tool</h4>
                         <p>Learn the fundamentals of drawing with simple exercises.</p>
                     </div>
                 </div>
-
-                <!-- Video 2 -->
                 <div class="video-card">
                     <video controls preload="metadata">
                         <source src="video2.mp4" type="video/mp4">
@@ -1540,8 +1739,6 @@
                         <p>Master shading techniques to bring your drawings to life.</p>
                     </div>
                 </div>
-
-                <!-- Video 3 -->
                 <div class="video-card">
                     <video controls preload="metadata">
                         <source src="video3.mp4" type="video/mp4">
@@ -1552,8 +1749,6 @@
                         <p>Learn dynamic poses and action sequences for anime art.</p>
                     </div>
                 </div>
-
-                <!-- Video 4 -->
                 <div class="video-card">
                     <video controls preload="metadata">
                         <source src="video4.mp4" type="video/mp4">
@@ -1564,8 +1759,6 @@
                         <p>Blend colors like a pro with these colored pencil techniques.</p>
                     </div>
                 </div>
-
-                <!-- Video 5 -->
                 <div class="video-card">
                     <video controls preload="metadata">
                         <source src="video5.mp4" type="video/mp4">
@@ -1576,8 +1769,6 @@
                         <p>Step-by-step guide to drawing realistic portraits.</p>
                     </div>
                 </div>
-
-                <!-- Video 6 -->
                 <div class="video-card">
                     <video controls preload="metadata">
                         <source src="video6.mp4" type="video/mp4">
@@ -1588,8 +1779,6 @@
                         <p>Create stunning landscapes with easy-to-follow techniques.</p>
                     </div>
                 </div>
-
-                <!-- Video 7 -->
                 <div class="video-card">
                     <video controls preload="metadata">
                         <source src="video7.mp4" type="video/mp4">
@@ -1600,8 +1789,6 @@
                         <p>Learn human anatomy for better figure drawing.</p>
                     </div>
                 </div>
-
-                <!-- Video 8 -->
                 <div class="video-card">
                     <video controls preload="metadata">
                         <source src="video8.mp4" type="video/mp4">
@@ -1612,8 +1799,6 @@
                         <p>Master 1-point, 2-point and 3-point perspective.</p>
                     </div>
                 </div>
-
-                <!-- Video 9 -->
                 <div class="video-card">
                     <video controls preload="metadata">
                         <source src="video9.mp4" type="video/mp4">
@@ -1624,8 +1809,6 @@
                         <p>Get started with digital drawing and painting.</p>
                     </div>
                 </div>
-
-                <!-- Video 10 -->
                 <div class="video-card">
                     <video controls preload="metadata">
                         <source src="video10.mp4" type="video/mp4">
@@ -1642,7 +1825,7 @@
         <!-- ===== FAQ SECTION ===== -->
         <section class="faq-section">
             <div class="section-header-box" style="text-align: center;">
-                <h2 class="section-main-title">❓ FREQUENTLY ASKED <span style="color: var(--pearl-white);">QUESTIONS</span></h2>
+                <h2 class="section-main-title">❓ FREQUENTLY ASKED <span class="highlight">QUESTIONS</span></h2>
                 <p class="section-sub-tag">Everything you need to know about AYARTSTUDIO</p>
             </div>
             <div class="faq-grid">
@@ -1685,14 +1868,14 @@
         <section class="feedback-section" id="feedbackSection">
             <div class="feedback-container">
                 <div class="section-header-box" style="text-align: center;">
-                    <h2 class="section-main-title">💬 USER <span style="color: var(--pearl-white);">FEEDBACK</span></h2>
+                    <h2 class="section-main-title">💬 USER <span class="highlight">FEEDBACK</span></h2>
                     <p class="section-sub-tag">Share your experience and help us improve AYARTSTUDIO</p>
                 </div>
 
                 <div class="feedback-form-box">
                     <h4 style="color: var(--pink-cream); margin-bottom: 15px;">📝 Leave Your Review</h4>
-                    <p style="color: var(--pearl-white); opacity: 0.7; font-size: 0.9rem; margin-bottom: 15px;">Your feedback helps us make AYARTSTUDIO better for everyone. Share what you love and what we can improve!</p>
-                    <textarea id="feedbackText" placeholder="Share your experience with AYARTSTUDIO... What do you like? What can we improve? How has this platform helped you grow as an artist?"></textarea>
+                    <p style="color: var(--pearl-white); opacity: 0.7; font-size: 0.9rem; margin-bottom: 15px;">Your feedback helps us make AYARTSTUDIO better for everyone.</p>
+                    <textarea id="feedbackText" placeholder="Share your experience with AYARTSTUDIO..."></textarea>
                     <div class="form-row">
                         <input type="text" id="feedbackName" placeholder="Your Name (optional)" style="flex: 2;">
                         <input type="number" id="feedbackRating" placeholder="Rating (1-5)" min="1" max="5" style="flex: 1; max-width: 150px;">
@@ -1707,143 +1890,14 @@
                 </div>
             </div>
         </section>
-        <div class="lang-toggle-container">
-    <button class="lang-btn" id="langToggleBtn" onclick="toggleLanguage()">
-        🌐 <span lang-data="en">Translate to Hindi</span><span lang-data="hi">Translate to English</span>
-    </button>
-</div>
 
-<script>
-    <style>
-    .lang-toggle-container {
-        position: fixed;
-        bottom: 90px; /* Video button ke upar set kiya hai taaki mix na ho */
-        right: 20px;
-        z-index: 9999;
-    }
-    .lang-btn {
-        background: linear-gradient(135deg, #00ffcc, #00cca3);
-        color: #0b0f19;
-        border: none;
-        padding: 12px 20px;
-        font-size: 0.95rem;
-        font-weight: bold;
-        border-radius: 30px;
-        cursor: pointer;
-        box-shadow: 0 4px 15px rgba(0, 255, 204, 0.4);
-        transition: all 0.3s ease;
-        display: flex;
-        align-items: center;
-        gap: 8px;
-    }
-    .lang-btn:hover {
-        transform: scale(1.05);
-        box-shadow: 0 6px 20px rgba(0, 255, 204, 0.6);
-    }
-</style>
-
-<div class="lang-toggle-container">
-    <button class="lang-btn" id="langToggleBtn" onclick="toggleLanguageSystem()">
-        🌐 <span id="lang-btn-text">Translate to Hindi</span>
-    </button>
-</div>
-
-<script>
-    // Dictionary setup for instant replacement without breaking layouts
-    const translationDictionary = {
-        // Main Headings & Navbar Elements
-        "Free Drawing Practice & Grid Maker": "फ्री ड्राइंग प्रैक्टिस और ग्रिड मेकर",
-        "Premium Video Lessons": "प्रीमियम वीडियो लेसन्स",
-        "Video Lessons & Steps": "वीडियो लेसन्स और स्टेप्स",
-        "Drawing Competition": "ड्राइंग कॉम्पिटिशन",
-        "Dream ID Dashboard": "ड्रीम आईडी डैशबोर्ड",
-        "Submit Your Artwork": "अपनी आर्टवर्क सबमिट करें",
-        "India Live Student Gallery": "इंडिया लाइव स्टूडेंट गैलरी",
-        "Your Daily Art Streak Tracker": "आपका डेली आर्ट स्ट्रीक ट्रैकर",
-        "Professional Art Color Palettes": "प्रोफेशनल आर्ट कलर पैलेट्स",
-        
-        // Descriptions & Steps
-        "Mastering Shading": "शेडिंग में मास्टर बनें",
-        "Learn core fundamentals of light orientation and pencil gradients.": "प्रकाश की दिशा और पेंसिल ग्रेडिएंट्स के बुनियादी नियम सीखें।",
-        "Anime Face Mapping": "एनीमे फेस मैपिंग",
-        "Structural mapping guides for perfect proportions and head axis scales.": "परफेक्ट अनुपात और हेड एक्सिस स्केल के लिए स्ट्रक्चरल मैपिंग गाइड्स।",
-        "Advanced Grid Method": "एडवांस्ड ग्रिड मेथड",
-        "Scale and translate complex visual references with mathematical grid boxes.": "मैथमेटिकल ग्रिड बॉक्स के साथ कठिन विज़ुअल रेफरेन्स को स्केल और ड्रा करें।",
-        "Watch Full Tutorial Video": "▶ पूरी ट्यूटोरियल वीडियो देखें",
-        
-        // Buttons & Placeholders
-        "Initialize Dashboard": "डैशबोर्ड चालू करें",
-        "Save Settings": "सेटिंग्स सेव करें",
-        "Exit Account": "अकाउंट से बाहर निकलें",
-        "Submit Live to Web Feed": "वेब फीड पर लाइव सबमिट करें",
-        "Access Student Dashboard via Dream ID": "ड्रीम आईडी के माध्यम से स्टूडेंट डैशबोर्ड खोलें",
-        
-        // Alerts
-        "Daily Drawing Challenge": "🎯 डेली ड्राइंग चैलेंज"
-    };
-
-    // Reverse Dictionary for switching back to English
-    const englishDictionary = {};
-    for (let key in translationDictionary) {
-        englishDictionary[translationDictionary[key]] = key;
-    }
-
-    let currentLanguage = localStorage.getItem('ayart_lang') || 'en';
-
-    function applyTranslation(dict) {
-        // Function to traverse text nodes safely without destroying event listeners or structures
-        function walkElements(node) {
-            if (node.nodeType === Node.TEXT_NODE) {
-                let trimmed = node.nodeValue.trim();
-                if (dict[trimmed]) {
-                    node.nodeValue = node.nodeValue.replace(trimmed, dict[trimmed]);
-                }
-            }
-            for (let i = 0; i < node.childNodes.length; i++) {
-                walkElements(node.childNodes[i]);
-            }
-        }
-        walkElements(document.body);
-    }
-
-    function updateButtonText() {
-        const btnText = document.getElementById('lang-btn-text');
-        if (currentLanguage === 'hi') {
-            btnText.innerText = "Translate to English";
-        } else {
-            btnText.innerText = "Translate to Hindi";
-        }
-    }
-
-    function toggleLanguageSystem() {
-        if (currentLanguage === 'en') {
-            applyTranslation(translationDictionary);
-            currentLanguage = 'hi';
-        } else {
-            applyTranslation(englishDictionary);
-            currentLanguage = 'en';
-        }
-        localStorage.setItem('ayart_lang', currentLanguage);
-        updateButtonText();
-    }
-
-    // Load user preference on refresh smoothly
-    document.addEventListener("DOMContentLoaded", function() {
-        if (localStorage.getItem('ayart_lang') === 'hi') {
-            // Apply translation if language was previously set to Hindi
-            applyTranslation(translationDictionary);
-            currentLanguage = 'hi';
-            updateButtonText();
-        }
-    });
-</script>
         <!-- ===== FOOTER ===== -->
         <footer class="footer-section">
             <div class="footer-grid">
                 <div class="footer-block main-brand-block">
                     <div class="footer-logo">AYART<span>STUDIO</span></div>
                     <p class="footer-about-text">
-                        An elite platform carefully crafted for creators, sketch artists, and digital visionaries. We shape imagination into systematic mastery through structured learning modules, powerful tools, and a supportive community.
+                        India's premier free drawing learning platform. We shape imagination into systematic mastery through structured learning modules, powerful tools, and a supportive community of over 10,000+ artists across the country. Join us and start your artistic journey today!
                     </p>
                 </div>
                 <div class="footer-block">
@@ -1871,28 +1925,30 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2026 AYART STUDIO. Engineered by Arnav & Yugank. All Rights Reserved.</p>
+                <p>&copy; 2026 AYART STUDIO. India's #1 Drawing Learning Platform. All Rights Reserved.</p>
             </div>
         </footer>
     </div>
 
-    <!-- ===== PORTALS ===== -->
+    <!-- ===== PORTALS WITH RICH CONTENT ===== -->
     <div id="portal-beginner" class="portal-overlay">
         <div class="portal-container">
             <div class="portal-header">
-                <h2>🎨 Kids Beginner Drawing Guide ✏️</h2>
+                <h2>🎨 Complete Beginner Drawing Guide (500+ Words)</h2>
                 <button class="close-portal-btn" onclick="closePortal('portal-beginner')">&times; Close Masterclass</button>
             </div>
             <div class="portal-body-layout">
                 <div class="portal-steps-list">
-                    <div class="step-item"><h5>🚀 1. Choose Your Magic Tools!</h5><p>Start with a lightweight HB or 2B graphite pencil. Do not use dark pencils like 4B or 6B in the beginning. Hold your pencil further back from the tip to maintain flexible pressure controls. This prevents harsh, permanent paper marks that are difficult to erase later. Practice holding your pencil in different ways to discover what feels most comfortable for you.</p></div>
-                    <div class="step-item"><h5>⭕ 2. The Shape Spy Game</h5><p>Analyze organic objects around you and isolate their base patterns. Look at a cup or an apple and break down these complex visual items into simple geometric shapes like spheres, ovals, triangles, and rectangular bounding frames before adding any realistic detailing. This technique helps you understand the underlying structure of everything you draw.</p></div>
-                    <div class="step-item"><h5>✏️ 3. Draw Loose & Free Lines</h5><p>Initiate strokes from your elbow and shoulder joints instead of locking your fingers or wrist tight. This gives your hand more freedom. Practice sweeping ghost strokes over the paper surface without touching it first to build smooth muscle memory curves. This technique is essential for creating fluid, confident lines in all your artwork.</p></div>
-                    <div class="step-item"><h5>📐 4. Connecting Structural Nodes</h5><p>Gradually unify your initial layout circles and foundational primitives with structured contour lines. Connect the light shapes together to form a solid, proportionate physical skeleton layout of your drawing before moving to shading. This step ensures that your final artwork has accurate proportions and a strong visual foundation.</p></div>
-                    <div class="step-item"><h5>✨ 5. Add Advanced Details</h5><p>Incorporate final features, surface textures, and scenic elements to bring your artwork to life. Once you are done, cleanly erase your primary temporary construction guidelines with a soft eraser to reveal your clean, finished artwork overlay. This is where your drawing transforms from a sketch into a complete piece of art.</p></div>
+                    <div class="step-item"><h5>🚀 Step 1: Choose Your Magic Tools</h5><p>Start your artistic journey with the right equipment. A lightweight HB or 2B graphite pencil is ideal for beginners as it provides the perfect balance between hardness and darkness. Hold your pencil further back from the tip to maintain flexible pressure controls - this prevents harsh, permanent paper marks that are difficult to erase later. Practice holding your pencil in different ways to discover what feels most comfortable for your unique drawing style. Many professional artists recommend the "overhand grip" for loose sketching and the "tripod grip" for detailed work. Experiment with both to find your natural preference.</p></div>
+                    <div class="step-item"><h5>⭕ Step 2: The Shape Spy Game</h5><p>Train your eye to see the world differently! Analyze organic objects around you and isolate their base patterns. Look at a cup, an apple, or a chair and break down these complex visual items into simple geometric shapes like spheres, ovals, triangles, and rectangular bounding frames. This fundamental technique, known as "construction drawing," is used by professional artists worldwide. By understanding the underlying structure of everything you draw, you'll develop the ability to sketch any object with accurate proportions and proper perspective, even without a reference image.</p></div>
+                    <div class="step-item"><h5>✏️ Step 3: Draw Loose & Free Lines</h5><p>One of the biggest mistakes beginners make is drawing with stiff, tight wrists. Instead, initiate strokes from your elbow and shoulder joints to free up your movement. Practice sweeping ghost strokes over the paper surface without touching it first to build smooth muscle memory curves. This technique, called "gesture drawing," is essential for creating fluid, confident lines in all your artwork. Spend at least 10 minutes daily practicing parallel lines, ellipses, and S-curves to develop your hand-eye coordination and line confidence.</p></div>
+                    <div class="step-item"><h5>📐 Step 4: Connecting Structural Nodes</h5><p>Now it's time to bring your shapes to life! Gradually unify your initial layout circles and foundational primitives with structured contour lines. Connect the light shapes together to form a solid, proportionate physical skeleton layout of your drawing before moving to shading. This step ensures that your final artwork has accurate proportions and a strong visual foundation. Professional artists often spend 70% of their time on this structural phase and only 30% on details - getting the structure right is the secret to great drawings.</p></div>
+                    <div class="step-item"><h5>✨ Step 5: Add Advanced Details</h5><p>Incorporate final features, surface textures, and scenic elements to bring your artwork to life. Once you are done, cleanly erase your primary temporary construction guidelines with a soft eraser to reveal your clean, finished artwork overlay. This is where your drawing transforms from a sketch into a complete piece of art. Add textures using different pencil strokes - use short, quick strokes for rough textures like tree bark, and smooth, long strokes for soft textures like fabric or skin. This is the stage where your unique artistic voice truly emerges.</p></div>
+                    <div class="step-item"><h5>🎯 Step 6: Pro Tips & Common Mistakes</h5><p>Avoid these common beginner mistakes: pressing too hard on the pencil (creates indents that ruin the paper), using too much eraser (damages paper texture), drawing with tight fingers (limits movement), and comparing your work to professionals (everyone starts somewhere). Always keep a sketchbook handy for daily practice, and don't be afraid to make mistakes - each "mistake" is a learning opportunity. Remember, the only way to improve is to draw regularly and enjoy the process!</p></div>
                 </div>
                 <div class="portal-media-frame">
                     <img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=600" alt="Beginner Art">
+                    <img src="https://images.unsplash.com/photo-1547891654-e66ed7ebb968?w=600" alt="Drawing Practice" style="margin-top:20px;">
                 </div>
             </div>
         </div>
@@ -1901,19 +1957,21 @@
     <div id="portal-daily" class="portal-overlay">
         <div class="portal-container">
             <div class="portal-header">
-                <h2>📊 Daily Practice Tracker Framework ⏱️</h2>
+                <h2>📊 Daily Practice Tracker Framework (500+ Words)</h2>
                 <button class="close-portal-btn" onclick="closePortal('portal-daily')">&times; Close Masterclass</button>
             </div>
             <div class="portal-body-layout">
                 <div class="portal-steps-list">
-                    <div class="step-item"><h5>🧠 1. Muscle Memory Warmup</h5><p>Spend 10 minutes drawing fast, continuous parallel lines and freehand ellipses on a rough sheet. This activates your wrist and shoulder muscles, improves line confidence, and removes stiffness before you start your main drawing project. Consistent warmup is the secret to consistent improvement in your art.</p></div>
-                    <div class="step-item"><h5>📐 2. Gesture & Axis Mapping</h5><p>Execute rapid 30-second quick sketches of real objects to establish organic weight distributions, action lines, and basic balance. Do not focus on details here; just capture the overall flow, direction, and posture of the subject. This practice trains your eye to see the essential movement and energy in everything you observe.</p></div>
-                    <div class="step-item"><h5>👁️ 3. Blind Contour Calibration</h5><p>Trace the outer limits and edges of local items around you without looking down at your paper canvas. This specialized hand-eye coordination exercise trains your brain to draw what you actually see, rather than what you imagine. It's one of the most effective exercises for improving observational drawing skills.</p></div>
-                    <div class="step-item"><h5>📦 4. 3D Volumetric Extrusion</h5><p>Transform uniform 2D boxes, circles, and flat planes into deep 3D dimensional projections using clear perspective guidelines. Practice turning a simple square into a cube, and a circle into a sphere to master depth control. Understanding form and volume is essential for creating artwork that feels three-dimensional and realistic.</p></div>
-                    <div class="step-item"><h5>📝 5. Daily Progress Review</h5><p>Document and save each practice sheet inside an organized archive folder to track your line density transitions and structural growth over time. Comparing your day 1 sketch with day 30 will give you a massive boost of confidence and motivation. Small daily improvements add up to significant progress over weeks and months.</p></div>
+                    <div class="step-item"><h5>🧠 Step 1: Muscle Memory Warmup</h5><p>Begin every drawing session with a proper warm-up routine. Spend 10 minutes drawing fast, continuous parallel lines and freehand ellipses on a rough sheet. This activates your wrist and shoulder muscles, improves line confidence, and removes stiffness before you start your main drawing project. Professional artists warm up just like athletes do - it's the secret to consistent improvement in your art. Include horizontal, vertical, and diagonal lines in your warm-up, as well as circles, spirals, and figure-eight patterns to cover all ranges of motion.</p></div>
+                    <div class="step-item"><h5>📐 Step 2: Gesture & Axis Mapping</h5><p>Execute rapid 30-second quick sketches of real objects to establish organic weight distributions, action lines, and basic balance. Do not focus on details here; just capture the overall flow, direction, and posture of the subject. This practice trains your eye to see the essential movement and energy in everything you observe. Gesture drawing is one of the most important skills for any artist - it teaches you to capture the "essence" of a subject in just a few lines. Practice drawing people, animals, and objects in motion to master this crucial skill.</p></div>
+                    <div class="step-item"><h5>👁️ Step 3: Blind Contour Calibration</h5><p>This advanced exercise will transform your observational skills! Trace the outer limits and edges of local items around you without looking down at your paper canvas. This specialized hand-eye coordination exercise trains your brain to draw what you actually see, rather than what you imagine. It's one of the most effective exercises for improving observational drawing skills. Start with simple objects like your own hand or a coffee mug, and gradually move to more complex subjects like plants or faces.</p></div>
+                    <div class="step-item"><h5>📦 Step 4: 3D Volumetric Extrusion</h5><p>Transform uniform 2D boxes, circles, and flat planes into deep 3D dimensional projections using clear perspective guidelines. Practice turning a simple square into a cube, and a circle into a sphere to master depth control. Understanding form and volume is essential for creating artwork that feels three-dimensional and realistic. Study how light interacts with different shapes and practice drawing shadows to enhance the 3D effect. This skill is fundamental for everything from still life to figure drawing.</p></div>
+                    <div class="step-item"><h5>📝 Step 5: Daily Progress Review</h5><p>Document and save each practice sheet inside an organized archive folder to track your line density transitions and structural growth over time. Comparing your day 1 sketch with day 30 will give you a massive boost of confidence and motivation. Small daily improvements add up to significant progress over weeks and months. Create a habit of reviewing your work at the end of each week and identifying areas for improvement. Celebrate your progress - every artist's journey is unique!</p></div>
+                    <div class="step-item"><h5>⏰ Step 6: Building a Sustainable Routine</h5><p>Consistency is more important than quantity. A 15-minute daily practice is far more effective than a 3-hour session once a week. Set a fixed time each day for your practice - morning sessions are often best as your mind is fresh and creative. Keep your sketchbook and pencils visible and accessible to remove any friction to starting. Use habit stacking: attach your drawing practice to an existing habit like morning tea or coffee. Remember, the goal is not perfection but progress. Every artist improves at their own pace.</p></div>
                 </div>
                 <div class="portal-media-frame">
                     <img src="https://images.unsplash.com/photo-1544273677-c433136021d4?w=600" alt="Sketch Practice">
+                    <img src="https://images.unsplash.com/photo-1580428180764-6644b7c01b37?w=600" alt="Daily Art" style="margin-top:20px;">
                 </div>
             </div>
         </div>
@@ -1922,19 +1980,21 @@
     <div id="portal-shading" class="portal-overlay">
         <div class="portal-container">
             <div class="portal-header">
-                <h2>✏️ Shading Master Matrix Data 🌟</h2>
+                <h2>✏️ Shading Mastery & Lighting Techniques (500+ Words)</h2>
                 <button class="close-portal-btn" onclick="closePortal('portal-shading')">&times; Close Masterclass</button>
             </div>
             <div class="portal-body-layout">
                 <div class="portal-steps-list">
-                    <div class="step-item"><h5>📉 1. Smooth Tone Gradients</h5><p>Practice controlling pressure to create a seamless transition from deep dark tones to bright highlights. Use a soft 4B or 6B pencil and apply minimal pressure as you move outward to create a flawless 3D realistic gradient effect. Mastering gradients is the foundation of all professional shading techniques.</p></div>
-                    <div class="step-item"><h5>✍️ 2. Hatching and Cross-Hatching</h5><p>Master the art of drawing parallel lines (hatching) and criss-cross patterns (cross-hatching) to build texture and value. Keeping lines closer creates dense shadow fields, while wider spacing represents bright surfaces reflecting ambient light. These techniques are essential for adding depth and texture to your artwork.</p></div>
-                    <div class="step-item"><h5>🌪️ 3. Smudging & Blending Tools</h5><p>Learn the correct way to use paper blending stumps or tortillons to smooth out rough graphite grains. Avoid using your bare fingers, as natural skin oils can leave permanent smudges and stains that ruin your finished drawing surface. Professional artists use specialized tools to achieve smooth, polished results.</p></div>
-                    <div class="step-item"><h5>💡 4. Cast Shadows vs Form Shadows</h5><p>Understand the critical difference between the soft shadow on the object itself (form shadow) and the sharp dark profile it drops on the ground (cast shadow). Mastering this logic brings depth and professional realism into your artwork sketches. Light and shadow are what make drawings feel three-dimensional and alive.</p></div>
-                    <div class="step-item"><h5>✨ 5. Highlight Extraction</h5><p>Utilize a precise kneaded eraser or a battery-operated eraser pen to carve out bright light reflections from dark shaded areas. Adding these crisp specular highlights to eyes, wet lips, or metallic objects makes them instantly pop out and catch the viewer's attention. Highlights are the finishing touch that brings your artwork to life.</p></div>
+                    <div class="step-item"><h5>📉 Step 1: Smooth Tone Gradients</h5><p>Practice controlling pressure to create a seamless transition from deep dark tones to bright highlights. Use a soft 4B or 6B pencil and apply minimal pressure as you move outward to create a flawless 3D realistic gradient effect. Mastering gradients is the foundation of all professional shading techniques. Spend time creating gradient charts with different pencil hardnesses - 2H for light values, HB for mid-tones, and 4B-6B for dark values. Understanding your tools is key to achieving professional results.</p></div>
+                    <div class="step-item"><h5>✍️ Step 2: Hatching and Cross-Hatching</h5><p>Master the art of drawing parallel lines (hatching) and criss-cross patterns (cross-hatching) to build texture and value. Keeping lines closer creates dense shadow fields, while wider spacing represents bright surfaces reflecting ambient light. These techniques are essential for adding depth and texture to your artwork. Practice with different line directions - horizontal, vertical, diagonal, and curved hatching can all create different textures and moods. The density and angle of your lines dramatically affect the final appearance of your drawing.</p></div>
+                    <div class="step-item"><h5>🌪️ Step 3: Smudging & Blending Tools</h5><p>Learn the correct way to use paper blending stumps or tortillons to smooth out rough graphite grains. Avoid using your bare fingers, as natural skin oils can leave permanent smudges and stains that ruin your finished drawing surface. Professional artists use specialized tools to achieve smooth, polished results. Experiment with different blending tools - cotton balls, paper towels, and even makeup applicators can create unique effects. Always use a separate piece of paper to clean your blending stump between uses to avoid muddying your values.</p></div>
+                    <div class="step-item"><h5>💡 Step 4: Cast Shadows vs Form Shadows</h5><p>Understand the critical difference between the soft shadow on the object itself (form shadow) and the sharp dark profile it drops on the ground (cast shadow). Mastering this logic brings depth and professional realism into your artwork sketches. Light and shadow are what make drawings feel three-dimensional and alive. Study how the angle and intensity of light affect both types of shadows. Practice drawing simple objects like spheres and cubes with a single light source to understand these concepts deeply.</p></div>
+                    <div class="step-item"><h5>✨ Step 5: Highlight Extraction</h5><p>Utilize a precise kneaded eraser or a battery-operated eraser pen to carve out bright light reflections from dark shaded areas. Adding these crisp specular highlights to eyes, wet lips, or metallic objects makes them instantly pop out and catch the viewer's attention. Highlights are the finishing touch that brings your artwork to life. Learn to identify the three key light areas: the bright highlight (catchlight), the mid-tone (base color), and the dark shadow (core shadow). The contrast between these areas creates the illusion of three-dimensional form.</p></div>
+                    <div class="step-item"><h5>🎯 Step 6: Advanced Shading Techniques</h5><p>Combine all these techniques to create stunning, professional-grade artwork. Practice shading on various surfaces - smooth paper for portraits, textured paper for landscapes. Each surface interacts differently with graphite and creates unique effects. Study the shading techniques of master artists and try to replicate them. Remember, great shading is not just about dark and light - it's about creating the illusion of form, texture, and atmosphere. Always consider the light source before you start shading and maintain consistent lighting throughout your drawing.</p></div>
                 </div>
                 <div class="portal-media-frame">
                     <img src="https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?w=600" alt="Shading Techniques">
+                    <img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=600" alt="Lighting Study" style="margin-top:20px;">
                 </div>
             </div>
         </div>
@@ -1943,19 +2003,21 @@
     <div id="portal-colour" class="portal-overlay">
         <div class="portal-container">
             <div class="portal-header">
-                <h2>🎨 Colour Pencil Pigment Matrix</h2>
+                <h2>🎨 Colour Pencil Mastery (500+ Words)</h2>
                 <button class="close-portal-btn" onclick="closePortal('portal-colour')">&times; Close Masterclass</button>
             </div>
             <div class="portal-body-layout">
                 <div class="portal-steps-list">
-                    <div class="step-item"><h5>🥚 1. Primary Underpainting Layer</h5><p>Master the foundational techniques of wax-based and oil-based colored pencils. Learn how to select the right paper tooth and density to ensure your pigments grip the surface perfectly, allowing for multiple layers of professional blending without any tearing. The right paper makes a significant difference in your final results.</p></div>
-                    <div class="step-item"><h5>🍷 2. Analogous Tonal Shading</h5><p>Dive deep into advanced color theory and dynamic values. This section teaches you how to map out complementary undertones, manage highlights, and use cool shadow shades like dark indigos and deep violets to make your portraits look incredibly realistic. Understanding color relationships is essential for creating harmonious artwork.</p></div>
-                    <div class="step-item"><h5>🌡️ 3. Temperature Balance Shift</h5><p>Learn the secret industrial method of heavy pigment burnishing. Discover how to use a specialized colorless blender pencil or a pure white pigment core to fuse all your individual sketch layers together, leaving a smooth, paint-like premium satin texture. Burnishing is what gives colored pencil art its professional, polished appearance.</p></div>
-                    <div class="step-item"><h5>💡 4. Burnishing Solidification</h5><p>Understand directional stroke mechanics for organic textures. Practice micro-circular continuous movements and cross-contour lines to draw realistic human skin tones, animal fur, glossy fruits, and metallic reflections without creating distracting rough scratches. The direction of your strokes dramatically affects the final texture of your artwork.</p></div>
-                    <div class="step-item"><h5>🔪 5. Sharp Detail Definition</h5><p>Discover professional preservation and clean-up workflows. Learn how to apply a final fixative spray to protect your colored pencil artwork from wax bloom, moisture damage, and UV fading, keeping your portfolio clean and safe for years to come. Proper preservation ensures your artwork remains beautiful for decades.</p></div>
+                    <div class="step-item"><h5>🥚 Step 1: Primary Underpainting Layer</h5><p>Master the foundational techniques of wax-based and oil-based colored pencils. Learn how to select the right paper tooth and density to ensure your pigments grip the surface perfectly, allowing for multiple layers of professional blending without any tearing. The right paper makes a significant difference in your final results. Hot-pressed paper is smooth and ideal for detailed work, while cold-pressed has more texture and is perfect for creating depth and texture in your artwork.</p></div>
+                    <div class="step-item"><h5>🍷 Step 2: Analogous Tonal Shading</h5><p>Dive deep into advanced color theory and dynamic values. This section teaches you how to map out complementary undertones, manage highlights, and use cool shadow shades like dark indigos and deep violets to make your portraits look incredibly realistic. Understanding color relationships is essential for creating harmonious artwork. Learn to see color in terms of temperature - warm colors advance, cool colors recede. This knowledge is crucial for creating depth and atmosphere in your artwork.</p></div>
+                    <div class="step-item"><h5>🌡️ Step 3: Temperature Balance Shift</h5><p>Learn the secret industrial method of heavy pigment burnishing. Discover how to use a specialized colorless blender pencil or a pure white pigment core to fuse all your individual sketch layers together, leaving a smooth, paint-like premium satin texture. Burnishing is what gives colored pencil art its professional, polished appearance. Practice layering light colors first, then adding darker shades, and finally burnishing to create seamless transitions.</p></div>
+                    <div class="step-item"><h5>💡 Step 4: Burnishing Solidification</h5><p>Understand directional stroke mechanics for organic textures. Practice micro-circular continuous movements and cross-contour lines to draw realistic human skin tones, animal fur, glossy fruits, and metallic reflections without creating distracting rough scratches. The direction of your strokes dramatically affects the final texture of your artwork. Study how the texture of different surfaces is created through specific stroke patterns - short strokes for fur, long smooth strokes for glass, and circular strokes for skin textures.</p></div>
+                    <div class="step-item"><h5>🔪 Step 5: Sharp Detail Definition</h5><p>Discover professional preservation and clean-up workflows. Learn how to apply a final fixative spray to protect your colored pencil artwork from wax bloom, moisture damage, and UV fading, keeping your portfolio clean and safe for years to come. Proper preservation ensures your artwork remains beautiful for decades. Always use a workable fixative between layers and a final fixative when your artwork is complete. Store your finished pieces in acid-free sleeves to prevent yellowing over time.</p></div>
+                    <div class="step-item"><h5>🎯 Step 6: Professional Color Mixing</h5><p>Develop your own color palette and learn to mix colors directly on paper through layering. Colored pencils work differently from paint - you can't physically mix colors, but you can achieve incredible results through optical mixing. Learn to create any color using just a limited palette of primary colors. Study how professional artists create vibrant, dynamic artwork using careful color planning and layering techniques. Remember, great colored pencil art is built layer by layer, with patience and precision.</p></div>
                 </div>
                 <div class="portal-media-frame">
                     <img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=600" alt="Colors">
+                    <img src="https://images.unsplash.com/photo-1547891654-e66ed7ebb968?w=600" alt="Color Art" style="margin-top:20px;">
                 </div>
             </div>
         </div>
@@ -1964,40 +2026,113 @@
     <div id="portal-anime" class="portal-overlay">
         <div class="portal-container">
             <div class="portal-header">
-                <h2>💥 Fight Anime Action Sequence Engine</h2>
+                <h2>💥 Fight Anime Art - Action Sequence Mastery (500+ Words)</h2>
                 <button class="close-portal-btn" onclick="closePortal('portal-anime')">&times; Close Masterclass</button>
             </div>
             <div class="portal-body-layout">
                 <div class="portal-steps-list">
-                    <div class="step-item"><h5>⚡ 1. Extreme Action Lines</h5><p>Establish the primary dynamic line of action to map out the intense energy flow between both characters. Sketch rough stick-figure skeletons to capture high-speed martial arts poses, explosive mid-air kicks, and tactical body tilts before focusing on any character anatomy. The line of action is the backbone of every dynamic anime pose.</p></div>
-                    <div class="step-item"><h5>🎥 2. Forced Perspective Maps</h5><p>Implement extreme fish-eye lens perspective lines and dramatic low-angle bounding frames to make the action look highly cinematic. Exaggerate the size of the forward fist or extended weapon to create an authentic shonen-style depth perception that breaks the canvas grid. Perspective is what makes fight scenes feel intense and immersive.</p></div>
-                    <div class="step-item"><h5>💨 3. Kinetic Speed Vectors</h5><p>Draw intense impact debris, exploding concrete fragments, and jagged energy shockwaves radiating outward from the main clash zone. This structural environmental damage is critical to visually communicating the immense, supernatural power behind each fighter's strike. Environmental effects add excitement and drama to action scenes.</p></div>
-                    <div class="step-item"><h5>🎭 4. High-Stall Expression Cuts</h5><p>Incorporate sharp, continuous motion lines and sweeping wind friction streaks behind the characters to simulate unbelievable speed. Ensure these background tracking vectors converge directly toward the focal point of impact to guide the viewer's eye seamlessly through the frame. Speed lines are essential for conveying motion in static images.</p></div>
-                    <div class="step-item"><h5>🌌 5. Composition Framing Borders</h5><p>Incorporate off-axis debris shapes and dynamic environment breaks to build depth across your action layout scene panels. Learn how to use panel composition and framing to control the pacing and intensity of your action sequences. Good composition makes the difference between a good fight scene and an unforgettable one.</p></div>
+                    <div class="step-item"><h5>⚡ Step 1: Extreme Action Lines</h5><p>Establish the primary dynamic line of action to map out the intense energy flow between both characters. Sketch rough stick-figure skeletons to capture high-speed martial arts poses, explosive mid-air kicks, and tactical body tilts before focusing on any character anatomy. The line of action is the backbone of every dynamic anime pose. Study how professional manga artists use exaggerated action lines to create a sense of speed and power in their fight scenes. Practice creating dynamic poses from different angles and perspectives.</p></div>
+                    <div class="step-item"><h5>🎥 Step 2: Forced Perspective Maps</h5><p>Implement extreme fish-eye lens perspective lines and dramatic low-angle bounding frames to make the action look highly cinematic. Exaggerate the size of the forward fist or extended weapon to create an authentic shonen-style depth perception that breaks the canvas grid. Perspective is what makes fight scenes feel intense and immersive. Study how camera angles affect the perception of power and speed in action sequences. Low angles make characters look more powerful, while high angles can create a sense of vulnerability.</p></div>
+                    <div class="step-item"><h5>💨 Step 3: Kinetic Speed Vectors</h5><p>Draw intense impact debris, exploding concrete fragments, and jagged energy shockwaves radiating outward from the main clash zone. This structural environmental damage is critical to visually communicating the immense, supernatural power behind each fighter's strike. Environmental effects add excitement and drama to action scenes. Practice drawing different types of impact effects - energy waves, dust clouds, debris fragments, and spark trails. Each element adds to the intensity of the action.</p></div>
+                    <div class="step-item"><h5>🎭 Step 4: High-Speed Expression Cuts</h5><p>Incorporate sharp, continuous motion lines and sweeping wind friction streaks behind the characters to simulate unbelievable speed. Ensure these background tracking vectors converge directly toward the focal point of impact to guide the viewer's eye seamlessly through the frame. Speed lines are essential for conveying motion in static images. Learn the difference between action lines (following the character's movement) and impact lines (radiating from points of collision). Both are crucial for dynamic anime art.</p></div>
+                    <div class="step-item"><h5>🌌 Step 5: Composition Framing Borders</h5><p>Incorporate off-axis debris shapes and dynamic environment breaks to build depth across your action layout scene panels. Learn how to use panel composition and framing to control the pacing and intensity of your action sequences. Good composition makes the difference between a good fight scene and an unforgettable one. Study how manga artists use panel layout to create rhythm and tension. Sometimes, breaking the panel borders with action elements can create a powerful visual impact.</p></div>
+                    <div class="step-item"><h5>🎯 Step 6: Character Design & Expressions</h5><p>Develop unique character designs that convey personality and fighting style through their appearance and expressions. In fight scenes, character faces tell a story - intense battle cries, confident smirks, or desperate grimaces add emotional depth to the action. Study how body language and facial expressions work together to create compelling characters. Remember, the best fight scenes are not just about the action, but about the characters and their motivations behind the battle.</p></div>
                 </div>
                 <div class="portal-media-frame">
                     <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?w=600" alt="Manga Layout">
+                    <img src="https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?w=600" alt="Anime Art" style="margin-top:20px;">
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- =============================== -->
-    <!-- ===== JAVASCRIPT ===== -->
-    <!-- =============================== -->
-    <script>
-        // ===============================
-        // PORTAL FUNCTIONS
-        // ===============================
-        function openPortal(portalId) {
-            document.getElementById(portalId).classList.add('portal-active');
-            document.body.style.overflow = 'hidden';
-        }
-        function closePortal(portalId) {
-            document.getElementById(portalId).classList.remove('portal-active');
-            document.body.style.overflow = 'auto';
-        }
+    <!-- ===== DASHBOARD PAGE ===== -->
+    <div id="dashboardPage" class="dashboard-page">
+        <div class="dash-header">
+            <h1>🎨 <span>My</span> Dashboard</h1>
+            <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
+                <span id="dashLevelBadge" class="level-badge">🏅 Level 1</span>
+                <button class="dash-close-btn" onclick="closeDashboardPage()"><i class="fa-solid fa-arrow-left"></i> Back to Site</button>
+                <button class="dash-close-btn" style="background: rgba(255,0,0,0.15); border-color: #ff4444; color: #ff4444;" onclick="handleLogout()"><i class="fa-solid fa-sign-out-alt"></i> Logout</button>
+            </div>
+        </div>
 
+        <div class="dash-stats-grid">
+            <div class="dash-stat-card">
+                <i class="fa-solid fa-calendar-check"></i>
+                <span class="stat-number" id="dashStreak">0</span>
+                <span class="stat-label">🔥 Day Streak</span>
+            </div>
+            <div class="dash-stat-card">
+                <i class="fa-solid fa-star"></i>
+                <span class="stat-number" id="dashXP">0</span>
+                <span class="stat-label">⭐ XP Points</span>
+            </div>
+            <div class="dash-stat-card">
+                <i class="fa-solid fa-certificate"></i>
+                <span class="stat-number" id="dashCertificates">0</span>
+                <span class="stat-label">📜 Certificates</span>
+            </div>
+            <div class="dash-stat-card">
+                <i class="fa-solid fa-paintbrush"></i>
+                <span class="stat-number" id="dashArtworks">0</span>
+                <span class="stat-label">🖼️ Artworks</span>
+            </div>
+            <div class="dash-stat-card">
+                <i class="fa-solid fa-trophy"></i>
+                <span class="stat-number" id="dashLevel">1</span>
+                <span class="stat-label">🏅 Level</span>
+            </div>
+            <div class="dash-stat-card">
+                <i class="fa-solid fa-clock"></i>
+                <span class="stat-number" id="dashLastLogin">-</span>
+                <span class="stat-label">⏰ Last Login</span>
+            </div>
+        </div>
+
+        <div style="margin: 10px 0 30px;">
+            <div style="display: flex; justify-content: space-between; color: var(--pearl-white); font-size: 0.85rem;">
+                <span>XP Progress</span>
+                <span id="dashXpText">0 / 100</span>
+            </div>
+            <div class="xp-bar-container">
+                <div class="xp-bar-fill" id="dashXpBar" style="width: 0%;">0%</div>
+            </div>
+        </div>
+
+        <h3 style="color: var(--pink-cream); margin: 30px 0 15px;"><i class="fa-solid fa-palette"></i> Your Artworks</h3>
+        <div id="dashArtworksGrid" class="dash-artworks-grid">
+            <p style="grid-column:1/-1; text-align:center; color:var(--rose-dust);">No artworks submitted yet.</p>
+        </div>
+
+        <div id="certificateTrigger" style="display: none; margin-top: 30px; text-align: center; padding: 20px; background: linear-gradient(135deg, #ffd70020, #ff6b0020); border-radius: 16px; border: 2px solid #ffd700;">
+            <h3 style="color: #ffd700;">🎉 Congratulations!</h3>
+            <p style="color: var(--pearl-white);">You've completed 100 days streak! You've earned a certificate.</p>
+            <button onclick="showCertificate()" style="padding: 12px 30px; background: #ffd700; color: #0b0f19; border: none; border-radius: 12px; font-weight: 700; cursor: pointer; margin-top: 10px;">
+                📜 View Certificate
+            </button>
+        </div>
+    </div>
+
+    <!-- ===== CERTIFICATE MODAL ===== -->
+    <div id="certificateModal" class="certificate-modal">
+        <div class="certificate-box">
+            <button class="close-cert-btn" onclick="closeCertificate()">&times;</button>
+            <div class="cert-badge">🏆</div>
+            <h2>Certificate of Achievement</h2>
+            <p>This certificate is proudly presented to</p>
+            <p class="cert-name" id="certUserName">User</p>
+            <p>for completing <strong>100 days</strong> of consistent drawing practice on AYARTSTUDIO - India's #1 Drawing Learning Platform</p>
+            <p style="font-size: 1.5rem; margin: 10px 0;">🎨✨</p>
+            <p style="font-size: 0.9rem;">"Dedication and passion create masterpieces."</p>
+            <p class="cert-date" id="certDate">July 16, 2026</p>
+            <button class="download-cert-btn" onclick="downloadCertificate()">
+                <i class="fa-solid fa-download"></i> Download PDF
+            </button>
+        </div>
+    </div>
+
+    <script>
         // ===============================
         // FIREBASE CONFIG
         // ===============================
@@ -2014,6 +2149,31 @@
         firebase.initializeApp(firebaseConfig);
         const auth = firebase.auth();
         const db = firebase.firestore();
+
+        // ===============================
+        // GOOGLE FORM LINK - YOUR FORM
+        // ===============================
+        function openGoogleForm() {
+            window.open('https://docs.google.com/forms/d/e/1FAIpQLSdwy7SW8tIAFEEgViw4wuB0DV5t3j_b-4R4jUuhu67sD1faPw/viewform?usp=publish-editor', '_blank');
+        }
+
+        // ===============================
+        // PORTAL FUNCTIONS
+        // ===============================
+        function openPortal(portalId) {
+            const portal = document.getElementById(portalId);
+            if (portal) {
+                portal.classList.add('portal-active');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+        function closePortal(portalId) {
+            const portal = document.getElementById(portalId);
+            if (portal) {
+                portal.classList.remove('portal-active');
+                document.body.style.overflow = 'auto';
+            }
+        }
 
         // ===============================
         // AUTH FUNCTIONS
@@ -2081,7 +2241,11 @@
                         createdAt: firebase.firestore.FieldValue.serverTimestamp(),
                         certificates: 0,
                         streak: 0,
-                        artworks: 0
+                        artworks: 0,
+                        xp: 0,
+                        level: 1,
+                        lastLoginDate: null,
+                        streakDays: []
                     }).then(() => {
                         return user.updateProfile({ displayName: name });
                     });
@@ -2096,7 +2260,7 @@
 
         function handleLogout() {
             auth.signOut().then(() => {
-                closeDashboard();
+                closeDashboardPage();
             });
         }
 
@@ -2107,6 +2271,7 @@
                 userDisplayName.textContent = user.displayName || user.email;
                 loadFeedbacks();
                 loadArtworks();
+                updateStreak(user);
             } else {
                 authButtons.style.display = 'flex';
                 userProfile.style.display = 'none';
@@ -2114,34 +2279,280 @@
         }
 
         // ===============================
-        // DASHBOARD
+        // STREAK SYSTEM
         // ===============================
-        function openDashboard() {
+        function updateStreak(user) {
+            if (!user) return;
+            
+            const today = new Date().toDateString();
+            const userRef = db.collection('users').doc(user.uid);
+            
+            userRef.get().then((doc) => {
+                if (doc.exists) {
+                    const data = doc.data();
+                    const lastLogin = data.lastLoginDate || '';
+                    const streak = data.streak || 0;
+                    const streakDays = data.streakDays || [];
+                    
+                    if (lastLogin === today) return;
+                    
+                    const yesterday = new Date();
+                    yesterday.setDate(yesterday.getDate() - 1);
+                    const yesterdayStr = yesterday.toDateString();
+                    
+                    let newStreak = streak;
+                    if (lastLogin === yesterdayStr) {
+                        newStreak = streak + 1;
+                    } else {
+                        newStreak = 1;
+                    }
+                    
+                    const updates = {
+                        streak: newStreak,
+                        lastLoginDate: today,
+                        xp: firebase.firestore.FieldValue.increment(10)
+                    };
+                    
+                    if (!streakDays.includes(today)) {
+                        updates.streakDays = firebase.firestore.FieldValue.arrayUnion(today);
+                    }
+                    
+                    if (newStreak >= 100 && streak < 100) {
+                        updates.certificates = firebase.firestore.FieldValue.increment(1);
+                        setTimeout(() => showCertificate(), 1000);
+                    }
+                    
+                    userRef.update(updates).then(() => {
+                        updateLevel(user.uid);
+                    });
+                }
+            }).catch((err) => {
+                console.log('Streak update error:', err);
+            });
+        }
+
+        // ===============================
+        // LEVEL & XP SYSTEM
+        // ===============================
+        function updateLevel(userId) {
+            db.collection('users').doc(userId).get().then((doc) => {
+                if (doc.exists) {
+                    const data = doc.data();
+                    const xp = data.xp || 0;
+                    const level = Math.floor(xp / 100) + 1;
+                    db.collection('users').doc(userId).update({ level: level });
+                }
+            });
+        }
+
+        function getLevelInfo(xp) {
+            const level = Math.floor(xp / 100) + 1;
+            const nextLevelXp = level * 100;
+            const currentXp = xp % 100;
+            return { level, nextLevelXp, currentXp };
+        }
+
+        // ===============================
+        // DASHBOARD PAGE
+        // ===============================
+        function openDashboardPage() {
             const user = auth.currentUser;
             if (!user) {
                 openAuthModal('login');
                 return;
             }
-
-            const dashboardModal = document.getElementById('dashboardModal');
-            document.getElementById('dashboardUserName').textContent = user.displayName || user.email;
-
-            db.collection('users').doc(user.uid).get()
-                .then((doc) => {
-                    if (doc.exists) {
-                        const data = doc.data();
-                        document.getElementById('certCount').textContent = data.certificates || 0;
-                        document.getElementById('streakCount').textContent = (data.streak || 0) + ' days';
-                        document.getElementById('artworkCount').textContent = data.artworks || 0;
-                    }
-                })
-                .catch(() => {});
-
-            dashboardModal.style.display = 'flex';
+            document.getElementById('dashboardPage').classList.add('active');
+            document.body.style.overflow = 'hidden';
+            loadDashboardData(user);
         }
 
-        function closeDashboard() {
-            document.getElementById('dashboardModal').style.display = 'none';
+        function closeDashboardPage() {
+            document.getElementById('dashboardPage').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        function loadDashboardData(user) {
+            if (!user) return;
+            
+            db.collection('users').doc(user.uid).get().then((doc) => {
+                if (doc.exists) {
+                    const data = doc.data();
+                    const streak = data.streak || 0;
+                    const xp = data.xp || 0;
+                    const certificates = data.certificates || 0;
+                    const level = data.level || 1;
+                    const lastLogin = data.lastLoginDate || 'Never';
+                    
+                    document.getElementById('dashStreak').textContent = streak;
+                    document.getElementById('dashXP').textContent = xp;
+                    document.getElementById('dashCertificates').textContent = certificates;
+                    document.getElementById('dashLevel').textContent = level;
+                    document.getElementById('dashLastLogin').textContent = lastLogin;
+                    document.getElementById('dashLevelBadge').textContent = '🏅 Level ' + level;
+                    
+                    const levelInfo = getLevelInfo(xp);
+                    const percent = (levelInfo.currentXp / 100) * 100;
+                    document.getElementById('dashXpBar').style.width = percent + '%';
+                    document.getElementById('dashXpBar').textContent = Math.round(percent) + '%';
+                    document.getElementById('dashXpText').textContent = levelInfo.currentXp + ' / 100';
+                    
+                    if (streak >= 100) {
+                        document.getElementById('certificateTrigger').style.display = 'block';
+                    } else {
+                        document.getElementById('certificateTrigger').style.display = 'none';
+                    }
+                    
+                    loadUserArtworks(user.uid);
+                    document.getElementById('dashArtworks').textContent = data.artworks || 0;
+                }
+            }).catch((err) => {
+                console.log('Dashboard load error:', err);
+            });
+        }
+
+        function loadUserArtworks(userId) {
+            const grid = document.getElementById('dashArtworksGrid');
+            
+            db.collection('artworks')
+                .where('userId', '==', userId)
+                .orderBy('createdAt', 'desc')
+                .limit(20)
+                .get()
+                .then((snapshot) => {
+                    if (snapshot.empty) {
+                        grid.innerHTML = '<p style="grid-column:1/-1; text-align:center; color:var(--rose-dust);">No artworks submitted yet.</p>';
+                        return;
+                    }
+                    
+                    let html = '';
+                    snapshot.forEach((doc) => {
+                        const data = doc.data();
+                        const imageSrc = data.image || 'https://via.placeholder.com/300?text=No+Image';
+                        html += `
+                            <div class="dash-artwork-item">
+                                <img src="${imageSrc}" alt="${data.title}" onerror="this.src='https://via.placeholder.com/300?text=Image+Error'">
+                                <div class="info">
+                                    <h5>${data.title}</h5>
+                                    <p>${data.description ? data.description.substring(0, 50) + '...' : ''}</p>
+                                </div>
+                            </div>
+                        `;
+                    });
+                    grid.innerHTML = html;
+                })
+                .catch((err) => {
+                    console.log('Error loading user artworks:', err);
+                    grid.innerHTML = '<p style="grid-column:1/-1; text-align:center; color:var(--rose-dust);">Error loading artworks.</p>';
+                });
+        }
+
+        // ===============================
+        // SYLLABUS WITH IMAGES
+        // ===============================
+        const syllabusData = [
+            { class: 1, title: 'Basic Shapes & Lines', desc: 'Learn to draw circles, squares, triangles and straight lines. Foundation of all drawings.', img: 'https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=300' },
+            { class: 2, title: 'Shading Basics', desc: 'Introduction to light, shadow and basic shading techniques. Create depth in drawings.', img: 'https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?w=300' },
+            { class: 3, title: 'Still Life Drawing', desc: 'Draw simple objects like fruits, bottles and cups. Learn composition basics.', img: 'https://images.unsplash.com/photo-1547891654-e66ed7ebb968?w=300' },
+            { class: 4, title: 'Perspective Basics', desc: 'Learn 1-point and 2-point perspective drawing. Create 3D illusions on paper.', img: 'https://images.unsplash.com/photo-1580428180764-6644b7c01b37?w=300' },
+            { class: 5, title: 'Portrait Basics', desc: 'Learn facial proportions and basic portrait drawing. Capture human expressions.', img: 'https://images.unsplash.com/photo-1544273677-c433136021d4?w=300' },
+            { class: 6, title: 'Advanced Shading', desc: 'Master hatching, cross-hatching and blending. Professional shading techniques.', img: 'https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=300' },
+            { class: 7, title: 'Color Theory', desc: 'Understand color wheel, complementary colors and harmony. Vibrant artwork creation.', img: 'https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?w=300' },
+            { class: 8, title: 'Landscape Drawing', desc: 'Draw natural and urban landscapes with depth. Master outdoor scenes.', img: 'https://images.unsplash.com/photo-1547891654-e66ed7ebb968?w=300' },
+            { class: 9, title: 'Human Anatomy', desc: 'Learn skeletal structure and muscle anatomy for artists. Perfect figure drawing.', img: 'https://images.unsplash.com/photo-1580428180764-6644b7c01b37?w=300' },
+            { class: 10, title: 'Dynamic Poses', desc: 'Draw action figures and dynamic character poses. Bring energy to your art.', img: 'https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?w=300' },
+            { class: 11, title: 'Digital Art Basics', desc: 'Introduction to digital drawing tools and techniques. Modern art creation.', img: 'https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=300' },
+            { class: 12, title: 'Master Portfolio', desc: 'Create a professional art portfolio with your best works. Launch your art career.', img: 'https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?w=300' }
+        ];
+
+        function loadSyllabusGrid() {
+            const grid = document.getElementById('syllabusGrid');
+            if (!grid) return;
+            
+            let html = '';
+            syllabusData.forEach((item) => {
+                html += `
+                    <div class="syllabus-card" onclick="alert('📚 ${item.title}\\n\\n${item.desc}\\n\\nClass ${item.class} curriculum includes detailed lessons, practice exercises, and video tutorials. Stay tuned for full access!')">
+                        <img class="syllabus-img" src="${item.img}" alt="${item.title}" onerror="this.style.display='none'">
+                        <span class="class-number">${item.class}</span>
+                        <h4>${item.title}</h4>
+                        <p>${item.desc}</p>
+                        <span class="status-badge locked">🔒 Locked</span>
+                    </div>
+                `;
+            });
+            grid.innerHTML = html;
+        }
+
+        // ===============================
+        // CERTIFICATE
+        // ===============================
+        function showCertificate() {
+            const user = auth.currentUser;
+            if (!user) return;
+            
+            document.getElementById('certUserName').textContent = user.displayName || user.email;
+            document.getElementById('certDate').textContent = new Date().toLocaleDateString('en-US', { 
+                year: 'numeric', month: 'long', day: 'numeric' 
+            });
+            document.getElementById('certificateModal').classList.add('active');
+        }
+
+        function closeCertificate() {
+            document.getElementById('certificateModal').classList.remove('active');
+        }
+
+        function downloadCertificate() {
+            const user = auth.currentUser;
+            if (!user) return;
+            
+            const name = user.displayName || user.email;
+            const date = new Date().toLocaleDateString('en-US', { 
+                year: 'numeric', month: 'long', day: 'numeric' 
+            });
+            
+            const certHTML = `
+                <!DOCTYPE html>
+                <html>
+                <head>
+                    <style>
+                        body { margin: 0; padding: 0; display: flex; justify-content: center; align-items: center; min-height: 100vh; background: #f5f0eb; font-family: 'Georgia', serif; }
+                        .certificate { width: 800px; height: 600px; background: linear-gradient(135deg, #fff 0%, #f5f0eb 100%); border: 10px double #854F6C; padding: 40px; text-align: center; box-shadow: 0 10px 40px rgba(0,0,0,0.1); }
+                        .certificate h1 { color: #2B124C; font-size: 2.5rem; margin: 10px 0 5px; letter-spacing: 4px; }
+                        .certificate .subtitle { color: #854F6C; font-size: 1.1rem; letter-spacing: 6px; margin-bottom: 20px; }
+                        .certificate .badge { font-size: 4rem; margin: 10px 0; }
+                        .certificate .name { font-size: 2.2rem; color: #2B124C; font-weight: bold; border-bottom: 2px solid #DFB6B2; display: inline-block; padding: 0 30px 10px; margin: 10px 0; }
+                        .certificate .desc { font-size: 1.1rem; color: #333; margin: 15px 0; line-height: 1.6; }
+                        .certificate .date { color: #888; font-size: 0.9rem; margin-top: 20px; }
+                        .certificate .footer { margin-top: 20px; border-top: 1px solid #DFB6B2; padding-top: 15px; color: #666; font-size: 0.8rem; }
+                        .certificate .india-badge { color: #FF9933; font-weight: bold; }
+                    </style>
+                </head>
+                <body>
+                    <div class="certificate">
+                        <div class="badge">🏆</div>
+                        <h1>CERTIFICATE</h1>
+                        <div class="subtitle">OF ACHIEVEMENT</div>
+                        <p style="color: #666; font-size: 1rem;">This certificate is proudly presented to</p>
+                        <div class="name">${name}</div>
+                        <p class="desc">for completing <strong>100 days</strong> of consistent drawing practice<br>on AYARTSTUDIO - India's #1 Drawing Learning Platform</p>
+                        <p style="font-size: 1.5rem; margin: 10px 0;">🎨✨</p>
+                        <p style="font-size: 0.9rem; color: #666;">"Dedication and passion create masterpieces."</p>
+                        <div class="date">${date}</div>
+                        <div class="footer">AYARTSTUDIO • India's #1 Drawing Learning Platform • 🇮🇳</div>
+                    </div>
+                </body>
+                </html>
+            `;
+            
+            const blob = new Blob([certHTML], { type: 'text/html' });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = `AYARTSTUDIO_Certificate_${name.replace(/\s/g, '_')}.html`;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            URL.revokeObjectURL(url);
         }
 
         // ===============================
@@ -2149,13 +2560,10 @@
         // ===============================
         auth.onAuthStateChanged((user) => {
             updateUI(user);
+            if (user && document.getElementById('dashboardPage').classList.contains('active')) {
+                loadDashboardData(user);
+            }
         });
-
-        // Click outside to close modals
-        window.onclick = function(event) {
-            if (event.target === authModal) closeAuthModal();
-            if (event.target === document.getElementById('dashboardModal')) closeDashboard();
-        }
 
         // ===============================
         // GRID MAKER
@@ -2266,6 +2674,12 @@
                     timer.innerHTML = "✔";
                     startBtn.disabled = false;
                     confetti();
+                    const user = auth.currentUser;
+                    if (user) {
+                        db.collection('users').doc(user.uid).update({
+                            xp: firebase.firestore.FieldValue.increment(5)
+                        });
+                    }
                 }
             }, 1000);
         };
@@ -2320,12 +2734,10 @@
                 alert('Please write your feedback!');
                 return;
             }
-
             if (text.length < 10) {
                 alert('Please write at least 10 characters of feedback.');
                 return;
             }
-
             if (rating < 1 || rating > 5) {
                 alert('Please enter a rating between 1 and 5');
                 return;
@@ -2389,7 +2801,7 @@
         }
 
         // ===============================
-        // ARTWORK SUBMISSION (Pure Base64)
+        // ARTWORK SUBMISSION
         // ===============================
         function compressImage(file) {
             return new Promise((resolve, reject) => {
@@ -2451,7 +2863,6 @@
                 alert('Please select an image of your artwork.');
                 return;
             }
-
             if (file.size > 50 * 1024 * 1024) {
                 alert('Image size should be less than 50MB.');
                 return;
@@ -2473,11 +2884,20 @@
                     });
                 })
                 .then(() => {
+                    return db.collection('users').doc(user.uid).update({
+                        artworks: firebase.firestore.FieldValue.increment(1),
+                        xp: firebase.firestore.FieldValue.increment(15)
+                    });
+                })
+                .then(() => {
                     alert('✅ Artwork submitted successfully!');
                     document.getElementById('artworkTitle').value = '';
                     document.getElementById('artworkDesc').value = '';
                     fileInput.value = '';
                     loadArtworks();
+                    if (document.getElementById('dashboardPage').classList.contains('active')) {
+                        loadDashboardData(user);
+                    }
                 })
                 .catch((error) => {
                     alert('Error submitting artwork: ' + error.message);
@@ -2567,11 +2987,15 @@
         document.addEventListener('DOMContentLoaded', function() {
             loadArtworks();
             loadFeedbacks();
+            loadSyllabusGrid();
         });
 
         auth.onAuthStateChanged((user) => {
             loadArtworks();
             loadFeedbacks();
+            if (user) {
+                loadSyllabusGrid();
+            }
         });
     </script>
 </body>

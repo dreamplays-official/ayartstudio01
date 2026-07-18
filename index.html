@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="canonical" href="https://dreamplays-official.github.io/ayartstudio01/" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AYARTSTUDIO - India's #1 Free Drawing Learning Platform</title>
-    <meta name="description" content="India's top free drawing learning platform. Practice drawing online with Grid Maker, anime sketch practice, perspective training & professional artist tools.">
-    <meta name="keywords" content="drawing, drawing practice, grid maker, anime drawing, sketch practice, artist tools, free drawing website, India drawing platform, online drawing classes">
+    <title>AYARTSTUDIO - India's #1 Free Drawing Learning Platform | Drawing Tutorials, Grid Maker, Art Classes</title>
+    <meta name="description" content="Learn drawing online with India's best free platform. Pencil drawing tutorials, grid maker, anime art, watercolor techniques, sketch practice, art classes for beginners. Join 10,000+ artists!">
+    <meta name="keywords" content="drawing, drawing tutorial, pencil drawing, grid maker, grid method, drawing for beginners, anime drawing, sketch practice, art classes, learn drawing, how to draw, drawing lessons, portrait drawing, landscape drawing, shading techniques, color pencil art, India drawing platform, free drawing classes, online art school, drawing course, beginner drawing, grid drawing">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://dreamplays-official.github.io/ayartstudio01/">
     
+    <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-PRKLVYNM53"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -17,6 +17,8 @@
       gtag('js', new Date());
       gtag('config', 'G-PRKLVYNM53');
     </script>
+    
+    <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7245992753977832" crossorigin="anonymous"></script>
     
     <meta name="google-site-verification" content="qDFHq96CBi3ZOsoICWLmNDME-kRANb4ZDdo2kTcjMjA" />
@@ -28,6 +30,28 @@
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+
+    <!-- Schema Markup for SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "EducationalOrganization",
+      "name": "AYARTSTUDIO",
+      "description": "India's #1 Free Drawing Learning Platform - Learn pencil drawing, grid method, anime art, and more with AI assistant Doodly.",
+      "url": "https://dreamplays-official.github.io/ayartstudio01/",
+      "foundingDate": "2024",
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "IN"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "INR",
+        "availability": "https://schema.org/InStock"
+      }
+    }
+    </script>
 
     <style>
         :root {
@@ -57,6 +81,7 @@
             width: 100%;
         }
 
+        /* ===== NAVBAR ===== */
         .navbar {
             display: flex;
             justify-content: space-between;
@@ -165,6 +190,369 @@
             border-radius: 2px;
         }
 
+        /* ===== AI CHAT BUTTON ===== */
+        .ai-chat-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #a855f7, #6366f1);
+            border: 3px solid rgba(255, 255, 255, 0.25);
+            color: #fff;
+            font-size: 30px;
+            cursor: pointer;
+            z-index: 9999;
+            box-shadow: 0 8px 35px rgba(168, 85, 247, 0.6);
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: pulse 2.5s infinite;
+            position: relative;
+        }
+        .ai-chat-btn::after {
+            content: '';
+            position: absolute;
+            inset: -5px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #a855f7, #6366f1, #ec4899);
+            z-index: -1;
+            opacity: 0.5;
+            filter: blur(12px);
+            animation: glowPulse 3s infinite;
+        }
+        @keyframes glowPulse {
+            0%, 100% { opacity: 0.4; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(1.1); }
+        }
+        .ai-chat-btn:hover {
+            transform: scale(1.12) rotate(-8deg);
+            box-shadow: 0 12px 50px rgba(168, 85, 247, 0.8);
+        }
+        .ai-chat-btn .tooltip {
+            position: absolute;
+            bottom: 80px;
+            right: 0;
+            background: rgba(43, 18, 76, 0.95);
+            color: var(--pearl-white);
+            padding: 8px 18px;
+            border-radius: 12px;
+            font-size: 12px;
+            white-space: nowrap;
+            border: 1px solid rgba(223, 182, 178, 0.2);
+            opacity: 0;
+            pointer-events: none;
+            transition: 0.3s;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+        .ai-chat-btn:hover .tooltip {
+            opacity: 1;
+        }
+        .ai-chat-btn .chat-badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: #ef4444;
+            color: #fff;
+            border-radius: 50%;
+            width: 22px;
+            height: 22px;
+            font-size: 11px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            border: 2px solid var(--purple-darkest);
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 8px 35px rgba(168, 85, 247, 0.4); }
+            50% { box-shadow: 0 8px 55px rgba(168, 85, 247, 0.8), 0 0 30px rgba(99, 102, 241, 0.3); }
+            100% { box-shadow: 0 8px 35px rgba(168, 85, 247, 0.4); }
+        }
+
+        /* ===== AI CHAT PAGE ===== */
+        .chat-page {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--purple-darkest);
+            z-index: 100000;
+            flex-direction: column;
+        }
+        .chat-page.active {
+            display: flex;
+        }
+        .chat-header {
+            background: linear-gradient(135deg, var(--purple-midnight), var(--purple-plum));
+            padding: 20px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(223, 182, 178, 0.1);
+            flex-shrink: 0;
+        }
+        .chat-header h2 {
+            color: #fff;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .chat-header h2 .doodly-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #a855f7, #6366f1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            border: 2px solid rgba(255,255,255,0.2);
+        }
+        .chat-header .close-chat-btn {
+            background: rgba(223, 182, 178, 0.1);
+            border: 1px solid var(--pink-cream);
+            color: var(--pink-cream);
+            padding: 8px 20px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 700;
+            transition: 0.3s;
+        }
+        .chat-header .close-chat-btn:hover {
+            background: var(--pink-cream);
+            color: var(--purple-darkest);
+        }
+
+        .chat-messages {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .chat-message {
+            max-width: 80%;
+            padding: 14px 20px;
+            border-radius: 16px;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            word-wrap: break-word;
+            animation: fadeIn 0.3s ease;
+        }
+        .chat-message.user {
+            align-self: flex-end;
+            background: linear-gradient(135deg, #a855f7, #6366f1);
+            color: #fff;
+            border-bottom-right-radius: 4px;
+        }
+        .chat-message.ai {
+            align-self: flex-start;
+            background: rgba(43, 18, 76, 0.6);
+            border: 1px solid rgba(223, 182, 178, 0.15);
+            color: var(--pearl-white);
+            border-bottom-left-radius: 4px;
+        }
+        .chat-message .typing-indicator {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--pink-cream);
+            margin: 0 3px;
+            animation: typingBounce 1.4s infinite ease-in-out;
+        }
+        .chat-message .typing-indicator:nth-child(2) { animation-delay: 0.2s; }
+        .chat-message .typing-indicator:nth-child(3) { animation-delay: 0.4s; }
+        @keyframes typingBounce {
+            0%, 60%, 100% { transform: translateY(0); }
+            30% { transform: translateY(-10px); }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .chat-input-area {
+            padding: 16px 30px;
+            background: rgba(43, 18, 76, 0.3);
+            border-top: 1px solid rgba(223, 182, 178, 0.08);
+            display: flex;
+            gap: 12px;
+            flex-shrink: 0;
+        }
+        .chat-input-area input {
+            flex: 1;
+            padding: 14px 20px;
+            border-radius: 30px;
+            border: 1px solid rgba(223, 182, 178, 0.2);
+            background: rgba(25, 0, 25, 0.4);
+            color: #fff;
+            font-size: 15px;
+            outline: none;
+            transition: 0.3s;
+        }
+        .chat-input-area input:focus {
+            border-color: var(--pink-cream);
+        }
+        .chat-input-area input::placeholder {
+            color: rgba(255, 255, 255, 0.4);
+        }
+        .chat-input-area button {
+            padding: 14px 30px;
+            border: none;
+            border-radius: 30px;
+            background: linear-gradient(135deg, #a855f7, #6366f1);
+            color: #fff;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.3s;
+            font-size: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .chat-input-area button:hover {
+            transform: scale(1.02);
+            box-shadow: 0 4px 20px rgba(168, 85, 247, 0.4);
+        }
+        .chat-input-area button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* ===== TUTORIAL PAGE ===== */
+        .tutorial-page {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--purple-darkest);
+            z-index: 999999;
+            overflow-y: auto;
+            padding: 30px 5%;
+        }
+        .tutorial-page.active {
+            display: block;
+        }
+        .tutorial-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0 25px;
+            border-bottom: 1px solid rgba(223, 182, 178, 0.1);
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        .tutorial-header h1 {
+            color: #fff;
+            font-size: 2rem;
+            margin: 0;
+        }
+        .tutorial-header h1 span {
+            color: var(--pink-cream);
+        }
+        .tutorial-close-btn {
+            background: rgba(223, 182, 178, 0.1);
+            border: 1px solid var(--pink-cream);
+            color: var(--pink-cream);
+            padding: 10px 25px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 700;
+            transition: 0.3s;
+        }
+        .tutorial-close-btn:hover {
+            background: var(--pink-cream);
+            color: var(--purple-darkest);
+        }
+        .tutorial-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .tutorial-content .tutorial-hero {
+            background: rgba(43, 18, 76, 0.4);
+            border-radius: 24px;
+            padding: 40px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(82, 43, 91, 0.3);
+        }
+        .tutorial-content .tutorial-hero h2 {
+            color: var(--pink-cream);
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        .tutorial-content .tutorial-hero p {
+            color: var(--pearl-white);
+            font-size: 1.15rem;
+            line-height: 1.8;
+            opacity: 0.9;
+        }
+        .tutorial-content .tutorial-hero .tutorial-meta {
+            display: flex;
+            gap: 20px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+            color: var(--rose-dust);
+            font-size: 0.9rem;
+        }
+        .tutorial-content .tutorial-hero .tutorial-meta span {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .tutorial-section {
+            background: rgba(43, 18, 76, 0.25);
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(82, 43, 91, 0.2);
+        }
+        .tutorial-section h3 {
+            color: var(--pink-cream);
+            font-size: 1.3rem;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .tutorial-section p, .tutorial-section li {
+            color: var(--pearl-white);
+            line-height: 1.8;
+            opacity: 0.85;
+            font-size: 1rem;
+        }
+        .tutorial-section ul {
+            padding-left: 25px;
+            margin: 10px 0;
+        }
+        .tutorial-section ul li {
+            margin-bottom: 8px;
+        }
+        .tutorial-section .tip-box {
+            background: rgba(255, 215, 0, 0.08);
+            border-left: 4px solid #ffd700;
+            padding: 15px 20px;
+            border-radius: 0 12px 12px 0;
+            margin: 15px 0;
+        }
+        .tutorial-section .tip-box strong {
+            color: #ffd700;
+        }
+
+        /* ===== HERO SECTION ===== */
         .hero-section {
             display: flex;
             align-items: center;
@@ -173,7 +561,7 @@
             min-height: 60vh;
         }
         .hero-content {
-            max-width: 52%;
+            max-width: 55%;
         }
         .tagline {
             color: var(--purple-midnight);
@@ -247,7 +635,6 @@
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(99, 102, 241, 0.6);
         }
-
         .google-form-btn {
             display: inline-flex;
             align-items: center;
@@ -308,6 +695,66 @@
             100% { transform: rotateX(360deg) rotateY(360deg); }
         }
 
+        /* ===== SEO TUTORIALS GRID ===== */
+        .tutorials-grid-section {
+            padding: 60px 8%;
+            background: rgba(25, 0, 25, 0.15);
+            border-top: 1px solid rgba(223, 182, 178, 0.05);
+            border-bottom: 1px solid rgba(223, 182, 178, 0.05);
+        }
+        .tutorials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+            max-width: 1200px;
+            margin: 30px auto 0;
+        }
+        .tutorial-card {
+            background: rgba(43, 18, 76, 0.3);
+            border: 1px solid rgba(82, 43, 91, 0.3);
+            border-radius: 20px;
+            padding: 30px 25px;
+            text-align: center;
+            transition: 0.3s;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        .tutorial-card:hover {
+            border-color: var(--pink-cream);
+            transform: translateY(-6px);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+        }
+        .tutorial-card .tut-icon {
+            font-size: 3rem;
+            margin-bottom: 12px;
+            display: block;
+        }
+        .tutorial-card h3 {
+            color: #fff;
+            font-size: 1.2rem;
+            margin: 0 0 8px 0;
+        }
+        .tutorial-card p {
+            color: var(--pearl-white);
+            opacity: 0.75;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin: 0;
+        }
+        .tutorial-card .tut-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--pink-cream), var(--rose-dust));
+            color: var(--purple-darkest);
+            padding: 3px 14px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            margin-top: 12px;
+            letter-spacing: 1px;
+        }
+
+        /* ===== Modules Section ===== */
         .modules-section {
             padding: 80px 8%;
             background: rgba(25, 0, 25, 0.25);
@@ -390,6 +837,7 @@
             letter-spacing: 1px;
         }
 
+        /* ===== Portal ===== */
         .portal-overlay {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -477,6 +925,7 @@
             margin-bottom: 15px;
         }
 
+        /* ===== Practice Box ===== */
         .practice-box {
             margin: 40px auto;
             max-width: 900px;
@@ -511,6 +960,7 @@
             display: block;
         }
 
+        /* ===== Grid Maker ===== */
         .grid-maker-section {
             width: 100%;
             max-width: 1200px;
@@ -591,6 +1041,7 @@
             font-weight: 600;
         }
 
+        /* ===== Auth Modal ===== */
         .modal-wrapper {
             display: none;
             position: fixed;
@@ -631,7 +1082,6 @@
         .modal-close:hover {
             color: #fff;
         }
-
         .form-group {
             margin-bottom: 16px;
         }
@@ -673,6 +1123,7 @@
             box-shadow: 0 6px 20px rgba(223, 182, 178, 0.3);
         }
 
+        /* ===== Syllabus ===== */
         .syllabus-section {
             padding: 60px 8%;
             background: rgba(25, 0, 25, 0.15);
@@ -732,19 +1183,12 @@
             font-size: 0.7rem;
             font-weight: 700;
         }
-        .status-badge.completed {
-            background: #00ff88;
-            color: #0b0f19;
-        }
-        .status-badge.in-progress {
-            background: #ffb300;
-            color: #0b0f19;
-        }
         .status-badge.locked {
             background: rgba(255,255,255,0.1);
             color: var(--rose-dust);
         }
 
+        /* ===== FAQ ===== */
         .faq-section {
             padding: 60px 8%;
             background: rgba(25, 0, 25, 0.15);
@@ -782,6 +1226,7 @@
             margin: 0;
         }
 
+        /* ===== Feedback ===== */
         .feedback-section {
             padding: 60px 8%;
             background: rgba(25, 0, 25, 0.1);
@@ -897,6 +1342,7 @@
             letter-spacing: 2px;
         }
 
+        /* ===== Artwork Gallery ===== */
         .artwork-submission-section {
             padding: 60px 8%;
             background: rgba(25, 0, 25, 0.2);
@@ -999,6 +1445,7 @@
             font-size: 1.2rem;
         }
 
+        /* ===== Video Gallery ===== */
         .video-gallery-section {
             padding: 60px 8%;
             background: rgba(25, 0, 25, 0.1);
@@ -1044,6 +1491,7 @@
             margin-top: 4px;
         }
 
+        /* ===== Footer ===== */
         .footer-section {
             background: #0f000f;
             padding: 60px 8% 30px 8%;
@@ -1105,6 +1553,7 @@
             font-size: 0.85rem;
         }
 
+        /* ===== Dashboard ===== */
         .dashboard-page {
             display: none;
             position: fixed;
@@ -1437,10 +1886,29 @@
             .syllabus-grid {
                 grid-template-columns: 1fr 1fr;
             }
+            .tutorials-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .chat-message {
+                max-width: 90%;
+            }
+            .chat-header h2 {
+                font-size: 1.1rem;
+            }
+            .ai-chat-btn {
+                width: 60px;
+                height: 60px;
+                font-size: 24px;
+                bottom: 20px;
+                right: 20px;
+            }
         }
 
         @media (max-width: 480px) {
             .modules-grid-deck {
+                grid-template-columns: 1fr;
+            }
+            .tutorials-grid {
                 grid-template-columns: 1fr;
             }
             .hero-content h1 {
@@ -1450,7 +1918,7 @@
                 flex-direction: column;
                 align-items: center;
             }
-            .btn-primary, .btn-app {
+            .btn-primary, .btn-app, .google-form-btn {
                 width: 100%;
                 text-align: center;
                 justify-content: center;
@@ -1469,6 +1937,21 @@
             }
             .syllabus-grid {
                 grid-template-columns: 1fr;
+            }
+            .chat-input-area {
+                padding: 12px 16px;
+                flex-direction: column;
+            }
+            .chat-input-area button {
+                width: 100%;
+                justify-content: center;
+            }
+            .ai-chat-btn {
+                width: 55px;
+                height: 55px;
+                font-size: 20px;
+                bottom: 15px;
+                right: 15px;
             }
         }
     </style>
@@ -1499,6 +1982,43 @@
                 <span></span>
             </div>
         </nav>
+
+        <!-- ===== AI CHAT BUTTON (VISIBLE) ===== -->
+        <button class="ai-chat-btn" onclick="openChat()" id="aiChatBtn">
+            <i class="fa-solid fa-robot"></i>
+            <span class="chat-badge">AI</span>
+            <span class="tooltip">🤖 Chat with Doodly - AI Drawing Assistant</span>
+        </button>
+
+        <!-- ===== AI CHAT PAGE ===== -->
+        <div class="chat-page" id="chatPage">
+            <div class="chat-header">
+                <h2>
+                    <span class="doodly-icon"><i class="fa-solid fa-robot"></i></span>
+                    Doodly - AI Drawing Assistant
+                </h2>
+                <button class="close-chat-btn" onclick="closeChat()">&times; Close Chat</button>
+            </div>
+            <div class="chat-messages" id="chatMessages">
+                <div class="chat-message ai">
+                    🎨 <strong>Namaste!</strong> I'm <strong>Doodly</strong>, your AI drawing assistant. I can help you with:
+                    <br><br>
+                    ✏️ Drawing techniques & tips<br>
+                    🎨 Color theory & mixing<br>
+                    📐 Perspective & proportions<br>
+                    👤 Portrait & anatomy<br>
+                    🌄 Landscape & nature<br>
+                    ⚡ Anime & manga art<br>
+                    💡 Creative inspiration
+                    <br><br>
+                    Ask me anything about art and drawing!
+                </div>
+            </div>
+            <div class="chat-input-area">
+                <input type="text" id="chatInput" placeholder="Ask Doodly about drawing, shading, colors, anatomy..." onkeypress="if(event.key==='Enter') sendMessage()">
+                <button onclick="sendMessage()" id="chatSendBtn"><i class="fa-solid fa-paper-plane"></i> Send</button>
+            </div>
+        </div>
 
         <!-- ===== AUTH MODAL ===== -->
         <div id="authModal" class="modal-wrapper">
@@ -1573,6 +2093,66 @@
                 </div>
             </div>
         </header>
+
+        <!-- ===== SEO DRAWING TUTORIALS ===== -->
+        <section class="tutorials-grid-section">
+            <div class="section-header-box" style="text-align: center;">
+                <h2 class="section-main-title">✏️ DRAWING <span class="highlight">TUTORIALS</span></h2>
+                <p class="section-sub-tag">Master drawing with our detailed step-by-step guides - Click any lesson to learn</p>
+            </div>
+            <div class="tutorials-grid">
+                <div class="tutorial-card" onclick="openTutorial('pencil')">
+                    <span class="tut-icon">✏️</span>
+                    <h3>Pencil Drawing Tutorial</h3>
+                    <p>Master pencil techniques - shading, blending, and perfect lines. Learn from basics to advanced levels.</p>
+                    <span class="tut-badge">📖 Open Lesson</span>
+                </div>
+
+                <div class="tutorial-card" onclick="openTutorial('lion')">
+                    <span class="tut-icon">🦁</span>
+                    <h3>Easy Lion Drawing</h3>
+                    <p>Step-by-step guide to drawing a majestic lion. Perfect for beginners with simple shapes and techniques.</p>
+                    <span class="tut-badge">📖 Open Lesson</span>
+                </div>
+
+                <div class="tutorial-card" onclick="openTutorial('anime-eye')">
+                    <span class="tut-icon">👁️</span>
+                    <h3>Anime Eye Drawing</h3>
+                    <p>Learn to draw expressive anime eyes. Master manga-style eyes with our detailed guide.</p>
+                    <span class="tut-badge">📖 Open Lesson</span>
+                </div>
+
+                <div class="tutorial-card" onclick="openTutorial('watercolor')">
+                    <span class="tut-icon">🌹</span>
+                    <h3>Watercolor Rose Tutorial</h3>
+                    <p>Learn to paint beautiful watercolor roses. Perfect for beginners and intermediate artists.</p>
+                    <span class="tut-badge">📖 Open Lesson</span>
+                </div>
+
+                <div class="tutorial-card" onclick="openTutorial('portrait')">
+                    <span class="tut-icon">👤</span>
+                    <h3>Portrait Sketching Guide</h3>
+                    <p>Learn professional portrait sketching techniques. Master facial proportions and realistic details.</p>
+                    <span class="tut-badge">📖 Open Lesson</span>
+                </div>
+
+                <div class="tutorial-card" onclick="openTutorial('landscape')">
+                    <span class="tut-icon">🌄</span>
+                    <h3>Landscape Drawing Tutorial</h3>
+                    <p>Draw beautiful landscapes with perspective, depth, and natural elements. Step-by-step guide.</p>
+                    <span class="tut-badge">📖 Open Lesson</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== TUTORIAL PAGE ===== -->
+        <div id="tutorialPage" class="tutorial-page">
+            <div class="tutorial-header">
+                <h1>📖 <span id="tutorialTitle">Drawing Lesson</span></h1>
+                <button class="tutorial-close-btn" onclick="closeTutorial()">&times; Close Lesson</button>
+            </div>
+            <div class="tutorial-content" id="tutorialContent"></div>
+        </div>
 
         <!-- ===== MODULES ===== -->
         <section id="modules" class="modules-section">
@@ -1670,7 +2250,7 @@
             </div>
         </section>
 
-        <!-- ===== SYLLABUS SECTION ===== -->
+        <!-- ===== SYLLABUS ===== -->
         <section class="syllabus-section" id="syllabusSection">
             <div class="section-header-box" style="text-align: center;">
                 <h2 class="section-main-title">📚 ART SYLLABUS <span class="highlight">(Class 1 to 12)</span></h2>
@@ -1679,7 +2259,7 @@
             <div class="syllabus-grid" id="syllabusGrid"></div>
         </section>
 
-        <!-- ===== ARTWORK SUBMISSION SECTION ===== -->
+        <!-- ===== ARTWORK GALLERY ===== -->
         <section class="artwork-submission-section" id="artworkSection">
             <div class="section-header-box" style="text-align: center;">
                 <h2 class="section-main-title">🖼️ ARTWORK <span class="highlight">GALLERY</span></h2>
@@ -1700,7 +2280,7 @@
             </div>
         </section>
 
-        <!-- ===== COMPETITION SECTION ===== -->
+        <!-- ===== COMPETITION ===== -->
         <section class="artwork-submission-section" style="background: rgba(25, 0, 25, 0.15); border-top: none;">
             <div class="competition-card">
                 <h3>🏆 ART COMPETITION</h3>
@@ -1713,7 +2293,7 @@
             </div>
         </section>
 
-        <!-- ===== VIDEO GALLERY SECTION ===== -->
+        <!-- ===== VIDEO GALLERY ===== -->
         <section class="video-gallery-section" id="videoGallery">
             <div class="section-header-box" style="text-align: center;">
                 <h2 class="section-main-title">🎬 VIDEO <span class="highlight">TUTORIALS</span></h2>
@@ -1823,7 +2403,7 @@
             </div>
         </section>
 
-        <!-- ===== FAQ SECTION ===== -->
+        <!-- ===== FAQ ===== -->
         <section class="faq-section">
             <div class="section-header-box" style="text-align: center;">
                 <h2 class="section-main-title">❓ FREQUENTLY ASKED <span class="highlight">QUESTIONS</span></h2>
@@ -1865,7 +2445,7 @@
             </div>
         </section>
 
-        <!-- ===== FEEDBACK SECTION ===== -->
+        <!-- ===== FEEDBACK ===== -->
         <section class="feedback-section" id="feedbackSection">
             <div class="feedback-container">
                 <div class="section-header-box" style="text-align: center;">
@@ -1931,7 +2511,7 @@
         </footer>
     </div>
 
-    <!-- ===== PORTALS WITH RICH CONTENT ===== -->
+    <!-- ===== PORTALS ===== -->
     <div id="portal-beginner" class="portal-overlay">
         <div class="portal-container">
             <div class="portal-header">
@@ -2047,7 +2627,7 @@
         </div>
     </div>
 
-    <!-- ===== DASHBOARD PAGE ===== -->
+    <!-- ===== DASHBOARD ===== -->
     <div id="dashboardPage" class="dashboard-page">
         <div class="dash-header">
             <h1>🎨 <span>My</span> Dashboard</h1>
@@ -2152,10 +2732,239 @@
         const db = firebase.firestore();
 
         // ===============================
-        // GOOGLE FORM LINK - YOUR FORM
+        // GEMINI API KEY
+        // ===============================
+        const GEMINI_API_KEY = "AIzaSyAb8RN6JC09Phb0_HjO6XhkRdR38vQIO22Ug_Qw0Tc1gLKFkjtQ";
+
+        // ===============================
+        // GOOGLE FORM SUBMIT
         // ===============================
         function openGoogleForm() {
             window.open('https://docs.google.com/forms/d/e/1FAIpQLSdwy7SW8tIAFEEgViw4wuB0DV5t3j_b-4R4jUuhu67sD1faPw/viewform?usp=publish-editor', '_blank');
+        }
+
+        // ===============================
+        // TUTORIAL DATA
+        // ===============================
+        const tutorialData = {
+            'pencil': {
+                title: '✏️ Pencil Drawing Tutorial',
+                description: 'Master the art of pencil drawing with our comprehensive guide. Learn shading, blending, and line techniques for stunning results. This tutorial covers everything from basic pencil grip to advanced shading techniques that professional artists use.',
+                sections: [
+                    { title: '📝 Choosing Your Pencil', content: 'Different pencils create different effects. Hard pencils (H, 2H) create light, precise lines perfect for detailed work. Soft pencils (B, 2B, 4B, 6B) create dark, rich tones ideal for shading. For beginners, start with an HB and 2B pencil. As you progress, build a collection of pencils ranging from 2H to 6B for maximum versatility.' },
+                    { title: '✍️ Basic Pencil Grip', content: 'Hold your pencil about 1-2 inches from the tip using a relaxed grip. There are three main grips: the writing grip for fine details, the overhand grip for loose sketching, and the underhand grip for broad shading. Practice each grip to discover which works best for different drawing tasks.' },
+                    { title: '📐 Basic Shapes Foundation', content: 'Every drawing begins with basic shapes. Practice drawing circles, squares, triangles, and ellipses until they feel natural. These shapes form the foundation of all drawings. Try drawing objects from life by breaking them down into these basic shapes first.' },
+                    { title: '🎯 Shading Techniques', content: 'Master four essential shading techniques: Hatching (parallel lines), Cross-Hatching (criss-cross lines), Stippling (dots), and Blending (smudging). Each creates different textures and values. Practice each technique in small squares before applying them to larger drawings.' },
+                    { title: '💡 Light & Shadow', content: 'Understanding light and shadow is key to realistic drawings. Study how light falls on objects and creates three key areas: highlight (brightest), mid-tone (base color), and shadow (darkest). Practice drawing simple objects like spheres and cubes with a single light source to master this concept.' },
+                    { title: '🎨 Final Tips', content: 'Always start with light guidelines and gradually darken your lines. Use a kneaded eraser for highlights and corrections. Keep your pencils sharp for detailed work. Practice daily, even if just for 15 minutes. Draw from life as much as possible. Most importantly, enjoy the process and don\'t be afraid to make mistakes!' }
+                ]
+            },
+            'lion': {
+                title: '🦁 Easy Lion Drawing',
+                description: 'Learn how to draw a majestic lion step by step. Perfect for beginners with simple shapes and techniques. This tutorial breaks down the lion into easy-to-follow stages that anyone can master.',
+                sections: [
+                    { title: '🟠 Step 1: Basic Shapes', content: 'Start with a large circle for the head and a larger oval for the body. Add simple shapes for the legs and tail. Keep your lines light and loose at this stage. Focus on getting the proportions right before adding any details.' },
+                    { title: '🟡 Step 2: Face Structure', content: 'Add the lion\'s face features. Draw two circles for the eyes, a triangle for the nose, and curved lines for the mouth. The mane adds character - start with basic curved lines around the head. Remember, lions have a distinctive face shape that\'s wider at the bottom.' },
+                    { title: '🟠 Step 3: Mane Details', content: 'The mane is what makes a lion recognizable. Draw flowing, curved lines radiating outward from the head. Use different lengths and directions to create a natural, majestic appearance. Take your time with this - the mane defines the lion\'s character.' },
+                    { title: '🔴 Step 4: Body & Legs', content: 'Connect the head to the body with a curved neck. Add muscular legs with paws. Lions have powerful, sturdy legs. Pay attention to the joints and how the muscles flow. The tail should have a tuft at the end.' },
+                    { title: '🎯 Step 5: Details & Texture', content: 'Add fur texture using short, quick strokes. Create depth with shading on the mane and body. The lion\'s eyes should be expressive. Don\'t forget details like whiskers and paw pads.' },
+                    { title: '🎨 Final Tips', content: 'Study lion photos for reference. Practice drawing the mane with different styles. Use varied pencil pressure for depth. Be patient with the details - they bring the drawing to life. Don\'t forget to sign your artwork when you\'re done!' }
+                ]
+            },
+            'anime-eye': {
+                title: '👁️ Anime Eye Drawing',
+                description: 'Learn to draw expressive anime eyes. Master the art of manga-style eyes with our detailed guide. This tutorial covers everything from basic eye shapes to advanced emotional expressions.',
+                sections: [
+                    { title: '📐 Eye Structure', content: 'Anime eyes are larger and more expressive than realistic eyes. The basic structure includes the upper lid, lower lid, iris, pupil, and highlights. The shape of the eye determines the character\'s emotion - round for cute, sharp for serious, and droopy for sad.' },
+                    { title: '👁️ Basic Eye Shapes', content: 'Practice drawing different eye shapes: round (cute), almond (elegant), sharp (fierce), and droopy (sad). Each shape creates a different character personality. Start with simple shapes and gradually add complexity.' },
+                    { title: '🌈 Iris & Pupil', content: 'The iris is the colored part of the eye. In anime, it\'s often large and detailed. Add rings of color, highlights, and shadows to create depth. The pupil should be dark and centered. Use multiple layers of shading for a glass-like effect.' },
+                    { title: '✨ Highlights & Sparkle', content: 'Highlights give anime eyes their signature sparkle. Add a main highlight (usually a white oval) and smaller secondary highlights. The position of highlights affects the eye\'s expression. This is the key to making eyes look alive.' },
+                    { title: '💫 Emotional Expression', content: 'Eyes convey emotions. Anger: narrow eyes with sharp angles. Happiness: curved, crescent-shaped eyes. Sadness: droopy with tears. Surprise: wide open with large pupils. Practice each expression to add range to your characters.' },
+                    { title: '🎨 Final Tips', content: 'Study different anime styles for inspiration. Practice drawing eyes in various angles. Use references from your favorite anime. Try different eyebrow styles to complement the eyes. Remember, eyes are the window to the soul in anime art.' }
+                ]
+            },
+            'watercolor': {
+                title: '🌹 Watercolor Rose Tutorial',
+                description: 'Learn to paint beautiful watercolor roses. Perfect for beginners and intermediate artists. This tutorial covers everything from color mixing to wet-on-wet techniques.',
+                sections: [
+                    { title: '🎨 Materials Needed', content: 'You\'ll need: watercolor paper (cold-pressed), round brushes (size 4 and 8), watercolor paints (red, pink, green), palette, water container, and paper towel. Good quality materials make a significant difference in your results.' },
+                    { title: '🌊 Wet-on-Wet Technique', content: 'The wet-on-wet technique is essential for watercolor roses. Wet the paper where you want the flower, then drop in color. The colors will bloom and blend naturally. This creates soft, organic petal shapes that are characteristic of watercolor roses.' },
+                    { title: '🩷 Color Mixing', content: 'Create rich rose colors by mixing red with a touch of blue for depth, or red with yellow for warmth. Practice creating gradients from dark to light. Keep a color chart to track your mixtures for future paintings.' },
+                    { title: '🌹 Petal Layers', content: 'Build your rose layer by layer. Start with the center petals, then work outward. Each layer should be slightly larger and lighter in color. Allow each layer to dry slightly before adding the next to maintain definition.' },
+                    { title: '🍃 Leaves & Stems', content: 'Add leaves using a green mixture. Use varied greens from yellow-green to blue-green for depth. The stems should be delicate and curved. Add veins to leaves for realism using a fine brush.' },
+                    { title: '🎨 Final Tips', content: 'Practice on scrap paper first. Don\'t overwork the paint - watercolor looks best when it\'s fresh. Let layers dry completely between applications. Use the paper towel to lift off mistakes or create highlights. Most importantly, enjoy the watercolor process!' }
+                ]
+            },
+            'portrait': {
+                title: '👤 Portrait Sketching Guide',
+                description: 'Learn professional portrait sketching techniques. Master facial proportions and realistic details. This comprehensive guide covers everything from basic anatomy to advanced portrait techniques.',
+                sections: [
+                    { title: '📐 Face Proportions', content: 'Learn the golden rules of facial proportions: eyes are halfway down the head, the bottom of the nose is halfway between eyes and chin, and the mouth is halfway between nose and chin. The width of the face is about 5 eye-widths. These guidelines help create realistic portraits.' },
+                    { title: '✏️ Basic Head Shape', content: 'Start with a basic oval or egg shape. Add a center line and eye line. This helps position features correctly. The head shape varies depending on age and gender - children have rounder faces, adults more angular.' },
+                    { title: '👁️ Eyes in Portraits', content: 'Draw eyes carefully - they are the most important feature. Pay attention to the shape, spacing, and expression. Add depth with eyelashes and eyebrows. The eyes should be placed with the correct distance between them (about one eye-width apart).' },
+                    { title: '👃 Nose & Mouth', content: 'The nose should be in the center of the face. Use subtle lines to define its shape. The mouth should be below the nose. Add lips with natural curves and shadows. Remember, these features should be proportional and positioned correctly.' },
+                    { title: '🎯 Shading the Face', content: 'Use light shading to create depth and form. Pay attention to shadows under the nose, chin, and jawline. Different skin tones require different shading approaches. Practice on simple faces before tackling more complex portraits.' },
+                    { title: '🎨 Final Tips', content: 'Use a mirror to study your own face. Practice drawing faces from photos and life. Focus on one feature at a time. Use a grid for accurate placement. Keep your sketches loose at first. Compare your work to references and adjust accordingly.' }
+                ]
+            },
+            'landscape': {
+                title: '🌄 Landscape Drawing Tutorial',
+                description: 'Draw beautiful landscapes with perspective, depth, and natural elements. Step-by-step guide for creating stunning scenery. This tutorial covers everything from basic perspective to advanced landscape elements.',
+                sections: [
+                    { title: '📐 Perspective Basics', content: 'Understanding perspective is crucial for landscapes. Learn 1-point and 2-point perspective. The horizon line is always at eye level. Objects closer to you should appear larger, and farther objects smaller. Practice drawing simple road and building scenes first.' },
+                    { title: '🌅 Skies & Clouds', content: 'Draw skies with gradients and cloud formations. Use light pressure for distant clouds and darker for closer ones. Different types of clouds (cirrus, cumulus, stratus) create different moods. Study cloud shapes and practice drawing them separately.' },
+                    { title: '🏔️ Mountains & Hills', content: 'Create depth with overlapping mountains. Distant mountains should be lighter and less detailed. Closer mountains have more texture and contrast. Use a combination of straight and curved lines for variety. Add snow caps for realism.' },
+                    { title: '🌳 Trees & Foliage', content: 'Draw trees with different shapes and textures. Use varied pencil strokes for foliage. Different tree types (pine, oak, palm) have different characteristics. Practice drawing individual trees before adding them to landscapes.' },
+                    { title: '💧 Water Elements', content: 'Add lakes, rivers, or oceans to your landscape. Reflections should mirror the sky and surrounding elements. Water textures vary from smooth to rough. Use horizontal lines for water surfaces and vertical lines for movement.' },
+                    { title: '🎨 Final Tips', content: 'Observe real landscapes for inspiration. Practice different times of day (sunrise, sunset, midday). Use varied pencil grades for different elements. Don\'t forget to add details like birds, rocks, or buildings. Sign your work and frame it with pride!' }
+                ]
+            }
+        };
+
+        // ===============================
+        // TUTORIAL FUNCTIONS
+        // ===============================
+        function openTutorial(id) {
+            const data = tutorialData[id];
+            if (!data) return;
+
+            document.getElementById('tutorialTitle').textContent = data.title;
+            
+            let html = `
+                <div class="tutorial-hero">
+                    <h2>${data.title}</h2>
+                    <p>${data.description}</p>
+                    <div class="tutorial-meta">
+                        <span><i class="fa-regular fa-clock"></i> 15 min read</span>
+                        <span><i class="fa-regular fa-user"></i> Beginner to Intermediate</span>
+                        <span><i class="fa-regular fa-star"></i> 4.8/5 Rating</span>
+                    </div>
+                </div>
+            `;
+
+            data.sections.forEach((section, index) => {
+                html += `
+                    <div class="tutorial-section">
+                        <h3>${section.title}</h3>
+                        <p>${section.content}</p>
+                    </div>
+                `;
+            });
+
+            html += `
+                <div class="tutorial-section" style="background: linear-gradient(135deg, rgba(168,85,247,0.15), rgba(99,102,241,0.15)); border-color: #a855f7;">
+                    <h3>🎯 Practice Exercise</h3>
+                    <p>Now it's your turn! Take what you've learned and practice:</p>
+                    <ul>
+                        <li>Spend 15 minutes practicing the techniques taught in this lesson</li>
+                        <li>Share your artwork with the community in the gallery below</li>
+                        <li>Ask Doodly (AI assistant) for personalized feedback</li>
+                        <li>Watch the video tutorials for visual guidance</li>
+                    </ul>
+                    <div class="tip-box">
+                        <strong>💡 Pro Tip:</strong> "The more you practice, the better you become. Don't compare your day 1 to someone else's day 1000."
+                    </div>
+                </div>
+            `;
+
+            document.getElementById('tutorialContent').innerHTML = html;
+            document.getElementById('tutorialPage').classList.add('active');
+            document.body.style.overflow = 'hidden';
+            document.getElementById('tutorialPage').scrollTop = 0;
+        }
+
+        function closeTutorial() {
+            document.getElementById('tutorialPage').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // ===============================
+        // CHAT FUNCTIONS - DOODLY AI with Gemini
+        // ===============================
+        function openChat() {
+            document.getElementById('chatPage').classList.add('active');
+            document.body.style.overflow = 'hidden';
+            document.getElementById('chatInput').focus();
+        }
+
+        function closeChat() {
+            document.getElementById('chatPage').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        const fallbackResponses = [
+            "🎨 That's a great question! For beginners, I recommend starting with basic shapes and practicing line control. Try drawing circles, squares, and straight lines until you feel comfortable.",
+            "✏️ Shading is all about understanding light and shadow. Start with a simple sphere and practice creating smooth gradients from dark to light. Use the side of your pencil for wider strokes.",
+            "🌈 Color theory is fascinating! Remember the color wheel: complementary colors (opposite each other) create contrast, while analogous colors (next to each other) create harmony.",
+            "⚡ For anime style, focus on expressive eyes and dynamic poses. Practice drawing different eye shapes and expressions. The 'line of action' is key for dynamic poses.",
+            "📐 Perspective drawing can be challenging. Start with 1-point perspective - draw a horizon line, place a vanishing point, and practice drawing boxes that recede into the distance.",
+            "👤 Portrait drawing requires careful observation. Study facial proportions: eyes are halfway down the head, and the bottom of the nose is halfway between eyes and chin.",
+            "💪 To improve your drawings, practice daily! Even 15 minutes a day makes a huge difference. Try gesture drawing to warm up and loosen your hand.",
+            "📊 Grid drawing is a great technique! It helps break down complex images into manageable sections. Start with simple images and gradually increase complexity.",
+            "🖍️ Colored pencils require layering. Start with light pressure and build up layers slowly. Use a colorless blender to smooth out your work.",
+            "🌟 Remember: Art is a journey, not a destination. Every artist was once a beginner. Keep practicing and enjoy the process!"
+        ];
+
+        async function sendMessage() {
+            const input = document.getElementById('chatInput');
+            const message = input.value.trim();
+            if (!message) return;
+
+            const messagesContainer = document.getElementById('chatMessages');
+            const sendBtn = document.getElementById('chatSendBtn');
+            
+            messagesContainer.innerHTML += `<div class="chat-message user">${message}</div>`;
+            input.value = '';
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+            
+            sendBtn.disabled = true;
+            sendBtn.innerHTML = '<span class="loading-spinner"></span>';
+            
+            const typingDiv = document.createElement('div');
+            typingDiv.className = 'chat-message ai';
+            typingDiv.innerHTML = `
+                <span class="typing-indicator"></span>
+                <span class="typing-indicator"></span>
+                <span class="typing-indicator"></span>
+            `;
+            messagesContainer.appendChild(typingDiv);
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+            
+            try {
+                const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${GEMINI_API_KEY}`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        contents: [{
+                            parts: [{
+                                text: `You are Doodly, a friendly AI drawing assistant. You help people with drawing techniques, art tips, and creative advice. Keep responses helpful, encouraging, and specific to art and drawing. Always respond in a warm, supportive tone. User question: ${message}`
+                            }]
+                        }]
+                    })
+                });
+
+                const data = await response.json();
+                let aiResponse = fallbackResponses[Math.floor(Math.random() * fallbackResponses.length)];
+                
+                if (data.candidates && data.candidates[0] && data.candidates[0].content) {
+                    aiResponse = data.candidates[0].content.parts[0].text;
+                }
+                
+                messagesContainer.removeChild(typingDiv);
+                messagesContainer.innerHTML += `<div class="chat-message ai">${aiResponse}</div>`;
+                messagesContainer.scrollTop = messagesContainer.scrollHeight;
+                
+            } catch (error) {
+                console.error('Gemini API error:', error);
+                messagesContainer.removeChild(typingDiv);
+                const fallback = fallbackResponses[Math.floor(Math.random() * fallbackResponses.length)];
+                messagesContainer.innerHTML += `<div class="chat-message ai">${fallback}</div>`;
+                messagesContainer.scrollTop = messagesContainer.scrollHeight;
+            }
+            
+            sendBtn.disabled = false;
+            sendBtn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> Send';
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
         }
 
         // ===============================
@@ -2333,7 +3142,7 @@
         }
 
         // ===============================
-        // LEVEL & XP SYSTEM
+        // LEVEL & XP
         // ===============================
         function updateLevel(userId) {
             db.collection('users').doc(userId).get().then((doc) => {
@@ -2354,7 +3163,7 @@
         }
 
         // ===============================
-        // DASHBOARD PAGE
+        // DASHBOARD
         // ===============================
         function openDashboardPage() {
             const user = auth.currentUser;
@@ -2448,7 +3257,7 @@
         }
 
         // ===============================
-        // SYLLABUS WITH IMAGES
+        // SYLLABUS
         // ===============================
         const syllabusData = [
             { class: 1, title: 'Basic Shapes & Lines', desc: 'Learn to draw circles, squares, triangles and straight lines. Foundation of all drawings.', img: 'https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=300' },
@@ -2525,7 +3334,6 @@
                         .certificate .desc { font-size: 1.1rem; color: #333; margin: 15px 0; line-height: 1.6; }
                         .certificate .date { color: #888; font-size: 0.9rem; margin-top: 20px; }
                         .certificate .footer { margin-top: 20px; border-top: 1px solid #DFB6B2; padding-top: 15px; color: #666; font-size: 0.8rem; }
-                        .certificate .india-badge { color: #FF9933; font-weight: bold; }
                     </style>
                 </head>
                 <body>
@@ -2717,7 +3525,7 @@
         }
 
         // ===============================
-        // FEEDBACK FUNCTIONS
+        // FEEDBACK
         // ===============================
         function submitFeedback() {
             const user = auth.currentUser;
@@ -2802,7 +3610,7 @@
         }
 
         // ===============================
-        // ARTWORK SUBMISSION
+        // ARTWORK
         // ===============================
         function compressImage(file) {
             return new Promise((resolve, reject) => {
@@ -2983,7 +3791,7 @@
         }
 
         // ===============================
-        // LOAD DATA ON PAGE LOAD
+        // LOAD DATA
         // ===============================
         document.addEventListener('DOMContentLoaded', function() {
             loadArtworks();

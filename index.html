@@ -1491,6 +1491,72 @@
             margin-top: 4px;
         }
 
+        /* ===== ARTICLES SECTION (NEW) ===== */
+        .articles-section {
+            padding: 60px 8%;
+            background: rgba(25, 0, 25, 0.2);
+            border-top: 1px solid rgba(223, 182, 178, 0.05);
+            border-bottom: 1px solid rgba(223, 182, 178, 0.05);
+        }
+
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 25px;
+            max-width: 1200px;
+            margin: 30px auto 0;
+        }
+
+        .article-card {
+            background: rgba(43, 18, 76, 0.35);
+            border: 1px solid rgba(82, 43, 91, 0.4);
+            border-radius: 20px;
+            padding: 25px 22px;
+            text-align: center;
+            transition: 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .article-card:hover {
+            border-color: var(--pink-cream);
+            transform: translateY(-6px);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .article-card .article-icon {
+            font-size: 2.8rem;
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .article-card h3 {
+            color: #fff;
+            font-size: 1.15rem;
+            margin: 0 0 8px 0;
+        }
+
+        .article-card p {
+            color: var(--pearl-white);
+            opacity: 0.75;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .article-card .article-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--pink-cream), var(--rose-dust));
+            color: var(--purple-darkest);
+            padding: 4px 16px;
+            border-radius: 30px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            margin-top: 14px;
+            letter-spacing: 0.5px;
+        }
+
         /* ===== Footer ===== */
         .footer-section {
             background: #0f000f;
@@ -1889,6 +1955,9 @@
             .tutorials-grid {
                 grid-template-columns: 1fr 1fr;
             }
+            .articles-grid {
+                grid-template-columns: 1fr 1fr;
+            }
             .chat-message {
                 max-width: 90%;
             }
@@ -1909,6 +1978,9 @@
                 grid-template-columns: 1fr;
             }
             .tutorials-grid {
+                grid-template-columns: 1fr;
+            }
+            .articles-grid {
                 grid-template-columns: 1fr;
             }
             .hero-content h1 {
@@ -2400,6 +2472,17 @@
                         <p>Learn the principles of composition for better artwork.</p>
                     </div>
                 </div>
+            </div>
+        </section>
+
+        <!-- ===== ARTICLES SECTION (NEW) ===== -->
+        <section class="articles-section" id="articlesSection">
+            <div class="section-header-box" style="text-align: center;">
+                <h2 class="section-main-title">📰 ART <span class="highlight">ARTICLES</span></h2>
+                <p class="section-sub-tag">Explore our collection of in-depth art articles - Click any card to read</p>
+            </div>
+            <div class="articles-grid" id="articlesGrid">
+                <!-- Cards will be injected by JS -->
             </div>
         </section>
 
@@ -3791,12 +3874,60 @@
         }
 
         // ===============================
+        // ARTICLES DATA (20 cards - links to external pages)
+        // ===============================
+        const articlesData = [
+            { id: 1, title: 'The Ultimate Guide to Pencil Drawing', desc: 'Everything you need to know about pencil drawing techniques, from basic lines to advanced shading.', icon: '✏️', link: 'article1.html' },
+            { id: 2, title: 'Mastering Shading: Light and Shadow', desc: 'Learn how to create depth and realism in your drawings with advanced shading techniques.', icon: '🌓', link: 'article2.html' },
+            { id: 3, title: 'Proportions in Portrait Drawing', desc: 'A complete guide to getting facial proportions right every time.', icon: '👤', link: 'article3.html' },
+            { id: 4, title: 'Anime Art: From Basics to Battle Scenes', desc: 'Step into the world of anime art with dynamic poses and expressive characters.', icon: '⚡', link: 'article4.html' },
+            { id: 5, title: 'Color Theory for Artists', desc: 'Understand the color wheel, harmonies, and how to use color effectively in your art.', icon: '🎨', link: 'article5.html' },
+            { id: 6, title: 'Perspective Drawing Made Easy', desc: 'Learn 1-point, 2-point and 3-point perspective with clear examples.', icon: '📐', link: 'article6.html' },
+            { id: 7, title: 'Landscape Drawing: From Sketch to Scene', desc: 'Create stunning landscapes with composition, depth, and atmospheric effects.', icon: '🌄', link: 'article7.html' },
+            { id: 8, title: 'Still Life Drawing Techniques', desc: 'Master the art of drawing everyday objects with precision and style.', icon: '🍎', link: 'article8.html' },
+            { id: 9, title: 'Watercolor Basics for Beginners', desc: 'Get started with watercolor painting with easy techniques and tips.', icon: '🌊', link: 'article9.html' },
+            { id: 10, title: 'Digital Art: Getting Started', desc: 'Your guide to drawing tablets, software, and digital painting basics.', icon: '💻', link: 'article10.html' },
+            { id: 11, title: 'Figure Drawing: Anatomy for Artists', desc: 'Learn human anatomy and how to draw figures with confidence.', icon: '🏃', link: 'article11.html' },
+            { id: 12, title: 'Drawing Animals: A Complete Guide', desc: 'Techniques for drawing realistic animals, from pets to wildlife.', icon: '🐾', link: 'article12.html' },
+            { id: 13, title: 'The Art of Sketching', desc: 'Develop your sketching skills with daily practice and professional tips.', icon: '✍️', link: 'article13.html' },
+            { id: 14, title: 'Composition and Design Principles', desc: 'Learn how to compose your artwork for maximum visual impact.', icon: '🖼️', link: 'article14.html' },
+            { id: 15, title: 'Creative Block: How to Overcome It', desc: 'Practical strategies to overcome creative blocks and keep making art.', icon: '🧠', link: 'article15.html' },
+            { id: 16, title: 'Drawing Portraits from Photos', desc: 'Techniques for drawing accurate portraits from photo references.', icon: '📸', link: 'article16.html' },
+            { id: 17, title: 'Manga Art: Storytelling Through Panels', desc: 'Learn how to create compelling manga panels and visual storytelling.', icon: '📖', link: 'article17.html' },
+            { id: 18, title: 'Colored Pencil Mastery', desc: 'Advanced techniques for layering, blending, and burnishing with colored pencils.', icon: '🖍️', link: 'article18.html' },
+            { id: 19, title: 'Art Supplies: What You Really Need', desc: 'A guide to choosing the right art supplies for your skill level and budget.', icon: '🛒', link: 'article19.html' },
+            { id: 20, title: 'Building an Art Portfolio', desc: 'How to create a professional art portfolio that showcases your best work.', icon: '📁', link: 'article20.html' }
+        ];
+
+        // ===============================
+        // LOAD ARTICLES
+        // ===============================
+        function loadArticles() {
+            const grid = document.getElementById('articlesGrid');
+            if (!grid) return;
+
+            let html = '';
+            articlesData.forEach((article) => {
+                html += `
+                    <div class="article-card" onclick="window.location.href='${article.link}'">
+                        <span class="article-icon">${article.icon}</span>
+                        <h3>${article.title}</h3>
+                        <p>${article.desc}</p>
+                        <span class="article-badge">📖 Read Article</span>
+                    </div>
+                `;
+            });
+            grid.innerHTML = html;
+        }
+
+        // ===============================
         // LOAD DATA
         // ===============================
         document.addEventListener('DOMContentLoaded', function() {
             loadArtworks();
             loadFeedbacks();
             loadSyllabusGrid();
+            loadArticles(); // Load articles
         });
 
         auth.onAuthStateChanged((user) => {

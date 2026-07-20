@@ -2479,96 +2479,309 @@
                 </div>
             </div>
         </section>
-    
-<section class="latest-articles">
-    <div class="container">
-        <h2>📚 Latest Drawing Articles</h2>
-        <p>Explore our latest drawing tutorials, guides, and educational resources.</p>
+    <!-- ===== LATEST ARTICLES SECTION (Complete Single File Code) ===== -->
+<section class="latest-articles-section" id="latest-articles">
+    <div class="articles-container">
+        <div class="section-header-box" style="text-align: center;">
+            <h2 class="section-main-title">📚 Latest Drawing <span class="highlight">Articles</span></h2>
+            <p class="section-sub-tag">Explore expert drawing tutorials, step-by-step guides, and educational resources created by AyartStudio.</p>
+        </div>
 
-        <div class="article-grid">
+        <div class="articles-grid" id="articlesGrid">
+            <!-- JavaScript se cards yahan generate honge -->
+        </div>
 
-            <a href="article1.html" class="article-card">How to Start Drawing</a>
-
-            <a href="article2.html" class="article-card">Daily Drawing Practice Routine</a>
-
-            <a href="article3.html" class="article-card">Complete Drawing Roadmap for Beginners</a>
-
-            <a href="article4.html" class="article-card">Best Drawing Pencils for Beginners</a>
-
-            <a href="article5.html" class="article-card">Basic Shapes in Drawing</a>
-
-            <a href="article6.html" class="article-card">How to Hold a Pencil Correctly</a>
-
-            <a href="article7.html" class="article-card">Pencil Shading Techniques</a>
-
-            <a href="article8.html" class="article-card">How to Draw Eyes</a>
-
-            <a href="article9.html" class="article-card">How to Draw Face</a>
-
-            <a href="article10.html" class="article-card">How to Draw Hair</a>
-
-            <a href="article11.html" class="article-card">How to Draw Hands</a>
-
-            <a href="article12.html" class="article-card">How to Draw Animals</a>
-
-            <a href="article13.html" class="article-card">Landscape Drawing Guide</a>
-
-            <a href="article14.html" class="article-card">Color Pencil Drawing Guide</a>
-
-            <a href="article15.html" class="article-card">Perspective Drawing Basics</a>
-
-            <a href="article16.html" class="article-card">Drawing Exercises for Beginners</a>
-
-            <a href="article17.html" class="article-card">Light and Shadow in Drawing</a>
-
-            <a href="article18.html" class="article-card">Drawing for Kids</a>
-
-            <a href="article19.html" class="article-card">Fine Arts Beginner Guide</a>
-
-            <a href="article20.html" class="article-card">Drawing Tips & Tricks</a>
-
+        <div class="articles-footer">
+            <a href="articles.html" class="btn-view-all" aria-label="View all drawing articles">
+                View All Articles <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+            </a>
         </div>
     </div>
 </section>
-        <!-- ===== FOOTER ===== -->
-        <footer class="footer-section">
-            <div class="footer-grid">
-                <div class="footer-block main-brand-block">
-                    <div class="footer-logo">AYART<span>STUDIO</span></div>
-                    <p class="footer-about-text">
-                        India's premier free drawing learning platform. We shape imagination into systematic mastery through structured learning modules, powerful tools, and a supportive community of over 10,000+ artists across the country. Join us and start your artistic journey today!
-                    </p>
-                </div>
-                <div class="footer-block">
-                    <h4>EXPLORE</h4>
-                    <ul>
-                        <li><a href="#modules">Our Classes</a></li>
-                        <li><a href="#" onclick="openAuthModal('login')">Login</a></li>
-                        <li><a href="#feedbackSection">Give Feedback</a></li>
-                    </ul>
-                </div>
-                <div class="footer-block">
-                    <h4>LEGAL</h4>
-                    <ul>
-                        <li><a href="terms.html">Terms of Service</a></li>
-                        <li><a href="about.html">Privacy Policy</a></li>
-                    </ul>
-                </div>
-                <div class="footer-block">
-                    <h4>CONNECT</h4>
-                    <p class="contact-email">dreamplaysoffficial01@gmail.com</p>
-                    <p class="contact-email">dreamplaysofficial02@gmail.com</p>
-                    <div class="social-links">
-                        <a href="https://youtube.com/@artarnav-a77?si=zpRnr5szbd_wOOmT" target="_blank" class="yt-link-btn"><i class="fa-brands fa-youtube"></i> YouTube Channel</a>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 AYART STUDIO. India's #1 Drawing Learning Platform. All Rights Reserved.</p>
-            </div>
-        </footer>
-    </div>
 
+<!-- SECTION STYLES (CSS) -->
+<style>
+.latest-articles-section {
+    padding: 80px 8%;
+    background: #120018;
+    position: relative;
+    border-top: 1px solid rgba(223, 182, 178, 0.08);
+}
+
+.articles-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.articles-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-top: 40px;
+}
+
+/* Glassmorphism Article Card */
+.article-card {
+    background: rgba(43, 18, 76, 0.35);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(223, 182, 178, 0.15);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), 
+                box-shadow 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), 
+                border-color 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.article-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(223, 182, 178, 0.4);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 20px rgba(168, 85, 247, 0.2);
+}
+
+/* Card Media Frame */
+.article-thumb-link {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    position: relative;
+    background: #1a0826;
+}
+
+.article-thumb {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.article-card:hover .article-thumb {
+    transform: scale(1.08);
+}
+
+/* Card Content */
+.article-body {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.article-meta-top {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 0.82rem;
+    color: var(--rose-dust, #dfb6b2);
+    margin-bottom: 12px;
+}
+
+.article-meta-top span {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.article-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.4;
+    margin-bottom: 14px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.article-author-info {
+    font-size: 0.85rem;
+    color: var(--pink-cream, #f1e4e8);
+    opacity: 0.9;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.article-footer-btn {
+    margin-top: auto;
+}
+
+/* Purple Gradient CTA Button */
+.btn-read-article {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    padding: 12px 20px;
+    background: linear-gradient(135deg, #a855f7, #6366f1);
+    color: #ffffff !important;
+    font-weight: 700;
+    font-size: 0.9rem;
+    border-radius: 12px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 4px 15px rgba(168, 85, 247, 0.3);
+}
+
+.btn-read-article:hover {
+    box-shadow: 0 6px 20px rgba(168, 85, 247, 0.6);
+    opacity: 0.95;
+}
+
+.btn-read-article i {
+    transition: transform 0.3s ease;
+}
+
+.btn-read-article:hover i {
+    transform: translateX(4px);
+}
+
+/* Center Bottom View All Button */
+.articles-footer {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.btn-view-all {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 15px 36px;
+    background: transparent;
+    border: 2px solid var(--pink-cream, #f1e4e8);
+    color: var(--pink-cream, #f1e4e8) !important;
+    font-weight: 700;
+    font-size: 1rem;
+    border-radius: 30px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.btn-view-all:hover {
+    background: var(--pink-cream, #f1e4e8);
+    color: #120018 !important;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(223, 182, 178, 0.25);
+}
+
+.btn-view-all i {
+    transition: transform 0.3s ease;
+}
+
+.btn-view-all:hover i {
+    transform: translateX(5px);
+}
+
+/* Responsive Grid */
+@media (max-width: 992px) {
+    .articles-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+}
+
+@media (max-width: 576px) {
+    .articles-grid {
+        grid-template-columns: 1fr;
+    }
+    .latest-articles-section {
+        padding: 50px 5%;
+    }
+}
+</style>
+
+<!-- SECTION SCRIPT (JS) -->
+<script>
+    (function() {
+        const articlesData = [
+            { title: "How to Start Drawing", date: "July 10, 2026", time: "5 min read" },
+            { title: "Daily Drawing Practice Routine", date: "July 11, 2026", time: "6 min read" },
+            { title: "Complete Drawing Roadmap for Beginners", date: "July 12, 2026", time: "8 min read" },
+            { title: "Best Drawing Pencils for Beginners", date: "July 13, 2026", time: "4 min read" },
+            { title: "Basic Shapes in Drawing", date: "July 14, 2026", time: "5 min read" },
+            { title: "How to Hold a Pencil Correctly", date: "July 15, 2026", time: "3 min read" },
+            { title: "Pencil Shading Techniques", date: "July 16, 2026", time: "7 min read" },
+            { title: "How to Draw Eyes", date: "July 17, 2026", time: "6 min read" },
+            { title: "How to Draw Face", date: "July 18, 2026", time: "9 min read" },
+            { title: "How to Draw Hair", date: "July 19, 2026", time: "5 min read" },
+            { title: "How to Draw Hands", date: "July 20, 2026", time: "8 min read" },
+            { title: "How to Draw Animals", date: "July 20, 2026", time: "6 min read" },
+            { title: "Landscape Drawing Guide", date: "July 20, 2026", time: "10 min read" },
+            { title: "Color Pencil Drawing Guide", date: "July 20, 2026", time: "7 min read" },
+            { title: "Perspective Drawing Basics", date: "July 20, 2026", time: "8 min read" },
+            { title: "Drawing Exercises for Beginners", date: "July 20, 2026", time: "5 min read" },
+            { title: "Light and Shadow in Drawing", date: "July 20, 2026", time: "6 min read" },
+            { title: "Drawing for Kids", date: "July 20, 2026", time: "4 min read" },
+            { title: "Fine Arts Beginner Guide", date: "July 20, 2026", time: "9 min read" },
+            { title: "Drawing Tips & Tricks", date: "July 20, 2026", time: "5 min read" }
+        ];
+
+        window.handleArticleImgError = function(img, index) {
+            if (!img.dataset.triedPng) {
+                img.dataset.triedPng = "true";
+                img.src = `thumbnail${index}.png`;
+            } else {
+                img.onerror = null;
+                img.src = "https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=600";
+            }
+        };
+
+        function renderArticles() {
+            const grid = document.getElementById('articlesGrid');
+            if (!grid) return;
+
+            const latestArticles = articlesData.slice(0, 6);
+
+            grid.innerHTML = latestArticles.map((article, idx) => {
+                const num = idx + 1;
+                return `
+                    <article class="article-card">
+                        <a href="article${num}.html" class="article-thumb-link" aria-label="${article.title}">
+                            <img 
+                                src="thumbnail${num}.jpg" 
+                                onerror="handleArticleImgError(this, ${num})" 
+                                alt="${article.title}" 
+                                class="article-thumb" 
+                                loading="lazy" 
+                            />
+                        </a>
+                        <div class="article-body">
+                            <div class="article-meta-top">
+                                <span><i class="fa-regular fa-calendar"></i> ${article.date}</span>
+                                <span>•</span>
+                                <span><i class="fa-regular fa-clock"></i> ${article.time}</span>
+                            </div>
+                            <h3 class="article-title">${article.title}</h3>
+                            <div class="article-author-info">
+                                <i class="fa-solid fa-user-nib"></i> AyartStudio Team
+                            </div>
+                            <div class="article-footer-btn">
+                                <a href="article${num}.html" class="btn-read-article" aria-label="Read ${article.title}">
+                                    Read Article <i class="fa-solid fa-arrow-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+                `;
+            }).join('');
+        }
+
+        if (document.readyState === "loading") {
+            document.addEventListener("DOMContentLoaded", renderArticles);
+        } else {
+            renderArticles();
+        }
+    })();
+</script>
+    
     <!-- ===== PORTALS ===== -->
     <div id="portal-beginner" class="portal-overlay">
         <div class="portal-container">

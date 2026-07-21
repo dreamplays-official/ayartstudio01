@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - AYARTSTUDIO</title>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; margin: 20px; color: #333; max-width: 800px; }
+        h1, h2 { color: #111; }
+        a { color: #0066cc; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        .contact-info { background: #f9f9f9; padding: 15px; border-radius: 5px; margin-bottom: 25px; border-left: 4px solid #0066cc; }
+        .form-group { margin-bottom: 15px; }
+        label { display: block; margin-bottom: 5px; font-weight: bold; }
+        input[type="text"], input[type="email"], textarea { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
+        .name-fields { display: flex; gap: 10px; }
+        .name-fields div { flex: 1; }
+        button { background-color: #0066cc; color: white; padding: 12px 20px; border: none; border-radius: 4px; cursor: pointer; font-size: 16px; }
+        button:hover { background-color: #0052a3; }
+    </style>
+</head>
+<body>
+
+    <h1>Contact Us</h1>
+
+    <p>Hey, I’d like to thank you for taking the time to visit my website. I appreciate you visiting and choosing us as your information provider when it comes to making the move to Digital Life.</p>
+
+    <p>For questions, suggestions, or any concerns, please leave us a message by filling out the form below.</p>
+
+    <p>We’ll get back to you as soon as we can.</p>
+
+    <div class="contact-info">
+        <h2>Direct Contact Information</h2>
+        <p>For questions about our content, technical issues, and more, please contact us at:</p>
+        <p><strong>Email:</strong> <a href="mailto:dreamplaysoffficial01@gmail.com">dreamplaysoffficial01@gmail.com</a> / <a href="mailto:dreamplaysofficial02@gmail.com">dreamplaysofficial02@gmail.com</a></p>
+        <p><strong>Mailing Address:</strong> City Delhi, Area: Mukherjee Nagar, Postal code - 110009</p>
+        <p><strong>Tel:</strong> <a href="tel:+919416655527">+91 9416655527</a></p>
+    </div>
+
+    <h2>Send Us a Message</h2>
+    <form action="#" method="post">
+        <div class="form-group">
+            <label>Name *</label>
+            <div class="name-fields">
+                <div>
+                    <input type="text" id="first-name" name="first_name" placeholder="First" required>
+                </div>
+                <div>
+                    <input type="text" id="last-name" name="last_name" placeholder="Last" required>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email *</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+
+        <div class="form-group">
+            <label for="message">Comment or Message *</label>
+            <textarea id="message" name="message" rows="5" required></textarea>
+        </div>
+
+        <button type="submit">Submit</button>
+    </form>
+
+</body>
+</html>
+

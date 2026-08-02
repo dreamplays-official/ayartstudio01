@@ -3,14 +3,14 @@
 <head>
 <title>Free Drawing Grid Maker Tool & Online Art Classes | AYARTSTUDIO</title>
 
-<meta name="description" content="Use India's #1 free online drawing grid maker tool for accurate reference sketching. Learn pencil drawing, anime art, and watercolor tutorials at AYARTSTUDIO.">
+<meta name="description" content="AYART Studio is a free drawing-learning platform where beginners can learn drawing step by step, practice with useful tools, and improve their artistic skills.">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1142709115290142"
      crossorigin="anonymous"></script>
     
     <meta name="google-site-verification" content="Xq7rZSH5-F3ZLkd56PsOgwo2-HEfbfCYHr3uxsrl1D0" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AYARTSTUDIO - India's #1 Free Drawing Learning Platform | Drawing Tutorials, Grid Maker, Art Classes</title>
+    <title>AYARTSTUDIO -A Drawing Learning Platform for Beginners</title>
     <meta name="description" content="Learn drawing online with India's best free platform. Pencil drawing tutorials, grid maker, anime art, watercolor techniques, sketch practice, art classes for beginners. Join 10,000+ artists!">
     <meta name="keywords" content="drawing, drawing tutorial, pencil drawing, grid maker, grid method, drawing for beginners, anime drawing, sketch practice, art classes, learn drawing, how to draw, drawing lessons, portrait drawing, landscape drawing, shading techniques, color pencil art, India drawing platform, free drawing classes, online art school, drawing course, beginner drawing, grid drawing">
     <meta name="robots" content="index, follow">
@@ -2029,6 +2029,145 @@
                 right: 15px;
             }
         }
+                /* ===== NAVIGATION MENU ===== */
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-menu li {
+            margin: 0;
+        }
+
+        .nav-menu a {
+            color: var(--pearl-white);
+            text-decoration: none;
+            font-size: 0.8rem;
+            font-weight: 600;
+            padding: 6px 12px;
+            border-radius: 8px;
+            transition: 0.3s;
+            position: relative;
+            letter-spacing: 0.3px;
+            white-space: nowrap;
+        }
+
+        .nav-menu a:hover {
+            background: rgba(223, 182, 178, 0.12);
+            color: var(--pink-cream);
+        }
+
+        .nav-menu a.active {
+            color: var(--pink-cream);
+        }
+
+        .nav-menu a.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 16px;
+            height: 2px;
+            background: var(--pink-cream);
+            border-radius: 2px;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 5px;
+            background: transparent;
+            border: none;
+            z-index: 1001;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 26px;
+            height: 2.5px;
+            background: #fff;
+            border-radius: 3px;
+            transition: 0.3s ease;
+            transform-origin: center;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 6px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+            transform: scaleX(0);
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -6px);
+        }
+
+        .nav-menu.mobile-open {
+            display: flex !important;
+            flex-direction: column;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(25, 0, 25, 0.98);
+            backdrop-filter: blur(10px);
+            justify-content: center;
+            align-items: center;
+            gap: 16px;
+            z-index: 1000;
+            padding: 40px 20px;
+            animation: fadeInMenu 0.3s ease;
+        }
+
+        @keyframes fadeInMenu {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .nav-menu.mobile-open li {
+            margin: 0;
+        }
+
+        .nav-menu.mobile-open a {
+            font-size: 1.3rem;
+            padding: 12px 30px;
+            width: 100%;
+            text-align: center;
+            border-radius: 12px;
+            color: #fff;
+        }
+
+        .nav-menu.mobile-open a:hover {
+            background: rgba(223, 182, 178, 0.15);
+            color: var(--pink-cream);
+        }
+
+        .nav-menu.mobile-open a.active {
+            color: var(--pink-cream);
+        }
+
+        .nav-menu.mobile-open a.active::after {
+            display: none;
+        }
+
+        @media (max-width: 992px) {
+            .nav-menu {
+                display: none;
+            }
+            .hamburger {
+                display: flex;
+            }
+    }
     </style>
 </head>
 <body>
@@ -2047,11 +2186,29 @@
 </script>
     <div class="wrapper">
         <!-- ===== NAVBAR ===== -->
+                <!-- ===== NAVBAR ===== -->
         <nav class="navbar">
             <div class="logo-container">
                 <img src="favicon.png" alt="AYART STUDIO Logo" class="nav-favicon-logo">
                 <div class="logo">AYART<span>STUDIO</span></div>
             </div>
+
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#" class="active">Home</a></li>
+                <li><a href="#modules">Learn</a></li>
+                <li><a href="#practiceBox">Practice</a></li>
+                <li><a href="#gridMakerSection">Grid Maker</a></li>
+                <li><a href="#" onclick="openChat(); return false;">AI Assistant</a></li>
+                <li><a href="#artworkSection">Community</a></li>
+                <li><a href="#articlesSection">Articles</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+
+            <button class="hamburger" id="hamburgerBtn" aria-label="Toggle navigation menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
 
             <div id="authArea" class="auth-area">
                 <div id="authButtons" style="display: flex; gap: 8px; align-items: center;">
@@ -2064,13 +2221,7 @@
                     <i class="fa-solid fa-chevron-down" style="color: var(--pink-cream); font-size: 10px;"></i>
                 </div>
             </div>
-
-            <div class="menu-icon">
-                <span></span>
-                <span></span>
-            </div>
         </nav>
-
         <!-- ===== AI CHAT BUTTON (VISIBLE) ===== -->
         <button class="ai-chat-btn" onclick="openChat()" id="aiChatBtn">
             <i class="fa-solid fa-robot"></i>
@@ -2151,36 +2302,37 @@
         </div>
 
         <!-- ===== HERO ===== -->
-        <header class="hero-section">
-            <div class="hero-content">
-                <p class="tagline">🇮🇳 INDIA'S #1 DRAWING PLATFORM</p>
-                <h1>Where Art Meets <br><span class="gradient-text">Pure Passion</span></h1>
-                <p class="hero-thought">
-                    "Every line you draw is a step toward finding your own voice. Art isn't just about perfection; it's about translating your imagination into reality, one stroke at a time. At AYARTSTUDIO, we believe that every Indian has an artist hidden inside them waiting to be discovered."
-                </p>
-                <div class="cta-group">
-                    <button class="btn-primary" onclick="document.getElementById('modules').scrollIntoView({behavior: 'smooth'})">
-                        EXPLORE MASTERCLASS <i class="fa-solid fa-arrow-right"></i>
-                    </button>
-                    <a href="https://apkpure.com/p/com.wAYARTSTUDIO01_19990469" target="_blank" class="btn-app">
-                        <i class="fa-brands fa-android"></i> DOWNLOAD APP
-                    </a>
-                    <button class="google-form-btn" onclick="openGoogleForm()">
-                        <i class="fa-solid fa-google"></i> Submit Artwork
-                    </button>
-                </div>
-            </div>
-            <div class="scene3d">
-                <div class="cube3d">
-                    <div class="cube-face front">AYART</div>
-                    <div class="cube-face back">STUDIO</div>
-                    <div class="cube-face left">DRAW</div>
-                    <div class="cube-face right">LEARN</div>
-                    <div class="cube-face top">CREATE</div>
-                    <div class="cube-face bottom">INDIA</div>
-                </div>
-            </div>
-        </header>
+
+<!-- ================= NAVBAR START ================= -->
+<header class="ayart-header">
+  <div class="ayart-nav-container">
+    <a href="index.html" class="ayart-logo">
+      <span class="logo-symbol">🎨</span> AYART Studio
+    </a>
+
+    <!-- Mobile Hamburger Button -->
+    <button class="ayart-hamburger" id="ayartHamburger" aria-label="Toggle Navigation Menu" aria-expanded="false">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+
+    <!-- Navigation Menu Links -->
+    <nav class="ayart-nav" id="ayartNavMenu">
+      <ul class="ayart-nav-list">
+        <li><a href="index.html" class="ayart-nav-link active">Home</a></li>
+        <li><a href="#tutorials" class="ayart-nav-link">Learn</a></li>
+        <li><a href="#practice-tools" class="ayart-nav-link">Practice</a></li>
+        <li><a href="grid.html" class="ayart-nav-link">Grid Maker</a></li>
+        <li><a href="#ai-assistant" class="ayart-nav-link">AI Assistant</a></li>
+        <li><a href="#community" class="ayart-nav-link">Community</a></li>
+        <li><a href="#articles" class="ayart-nav-link">Articles</a></li>
+        <li><a href="about.html" class="ayart-nav-link">About</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<!-- ================= NAVBAR END ================= -->
 
         <!-- ===== SEO DRAWING TUTORIALS ===== -->
         <section class="tutorials-grid-section">
@@ -3901,6 +4053,43 @@ const articlesData = [
             if (user) {
                 loadSyllabusGrid();
             }
+        });
+                // ===============================
+        // MOBILE MENU FUNCTIONS
+        // ===============================
+        const hamburgerBtn = document.getElementById('hamburgerBtn');
+        const navMenu = document.getElementById('navMenu');
+        let isMenuOpen = false;
+
+        function toggleMobileMenu() {
+            isMenuOpen = !isMenuOpen;
+            hamburgerBtn.classList.toggle('active', isMenuOpen);
+            navMenu.classList.toggle('mobile-open', isMenuOpen);
+            hamburgerBtn.setAttribute('aria-expanded', isMenuOpen);
+            document.body.style.overflow = isMenuOpen ? 'hidden' : 'auto';
+        }
+
+        function closeMobileMenu() {
+            if (isMenuOpen) {
+                isMenuOpen = false;
+                hamburgerBtn.classList.remove('active');
+                navMenu.classList.remove('mobile-open');
+                hamburgerBtn.setAttribute('aria-expanded', 'false');
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        hamburgerBtn.addEventListener('click', toggleMobileMenu);
+
+        document.addEventListener('click', function(e) {
+            if (isMenuOpen && !navMenu.contains(e.target) && e.target !== hamburgerBtn && !hamburgerBtn.contains(e.target)) {
+                closeMobileMenu();
+            }
+        });
+
+        // Close mobile menu when any nav link is clicked
+        document.querySelectorAll('.nav-menu a').forEach(function(link) {
+            link.addEventListener('click', closeMobileMenu);
         });
     </script>
 </body>
